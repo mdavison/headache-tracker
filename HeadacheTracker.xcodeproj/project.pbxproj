@@ -8,20 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		90A8F62A1BF2B15D00356B56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6291BF2B15D00356B56 /* AppDelegate.swift */; };
-		90A8F62C1BF2B15D00356B56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F62B1BF2B15D00356B56 /* ViewController.swift */; };
 		90A8F62F1BF2B15D00356B56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A8F62D1BF2B15D00356B56 /* Main.storyboard */; };
 		90A8F6311BF2B15D00356B56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90A8F6301BF2B15D00356B56 /* Assets.xcassets */; };
 		90A8F6341BF2B15D00356B56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A8F6321BF2B15D00356B56 /* LaunchScreen.storyboard */; };
+		90A8F63C1BF2BCCC00356B56 /* HeadacheTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */; };
+		90A8F63E1BF2D59B00356B56 /* Headache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F63D1BF2D59B00356B56 /* Headache.swift */; };
+		90A8F6401BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */; };
+		90A8F6421BF3FCB400356B56 /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6411BF3FCB400356B56 /* WeekViewController.swift */; };
+		90A8F6441BF3FEB900356B56 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6431BF3FEB900356B56 /* DataModel.swift */; };
+		90A8F6461BF44B7D00356B56 /* HeadacheTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */; };
+		90D5D6491BF667520005B7D1 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5D6481BF667520005B7D1 /* Week.swift */; };
+		90D5D64B1BF6675A0005B7D1 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5D64A1BF6675A0005B7D1 /* Year.swift */; };
+		90D5D64D1BF77C560005B7D1 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5D64C1BF77C560005B7D1 /* MonthViewController.swift */; };
+		90D5D64F1BF7BC370005B7D1 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5D64E1BF7BC370005B7D1 /* Month.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		90A8F6261BF2B15D00356B56 /* HeadacheTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeadacheTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A8F6291BF2B15D00356B56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		90A8F62B1BF2B15D00356B56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		90A8F62E1BF2B15D00356B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		90A8F6301BF2B15D00356B56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90A8F6331BF2B15D00356B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90A8F6351BF2B15D00356B56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheTableViewController.swift; sourceTree = "<group>"; };
+		90A8F63D1BF2D59B00356B56 /* Headache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Headache.swift; sourceTree = "<group>"; };
+		90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheDetailTableViewController.swift; sourceTree = "<group>"; };
+		90A8F6411BF3FCB400356B56 /* WeekViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
+		90A8F6431BF3FEB900356B56 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheTabBarController.swift; sourceTree = "<group>"; };
+		90D5D6481BF667520005B7D1 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		90D5D64A1BF6675A0005B7D1 /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
+		90D5D64C1BF77C560005B7D1 /* MonthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
+		90D5D64E1BF7BC370005B7D1 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +72,18 @@
 		90A8F6281BF2B15D00356B56 /* HeadacheTracker */ = {
 			isa = PBXGroup;
 			children = (
-				90A8F6291BF2B15D00356B56 /* AppDelegate.swift */,
-				90A8F62B1BF2B15D00356B56 /* ViewController.swift */,
 				90A8F62D1BF2B15D00356B56 /* Main.storyboard */,
+				90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */,
+				90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */,
+				90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */,
+				90A8F6411BF3FCB400356B56 /* WeekViewController.swift */,
+				90D5D64C1BF77C560005B7D1 /* MonthViewController.swift */,
+				90A8F63D1BF2D59B00356B56 /* Headache.swift */,
+				90D5D6481BF667520005B7D1 /* Week.swift */,
+				90D5D64E1BF7BC370005B7D1 /* Month.swift */,
+				90D5D64A1BF6675A0005B7D1 /* Year.swift */,
+				90A8F6431BF3FEB900356B56 /* DataModel.swift */,
+				90A8F6291BF2B15D00356B56 /* AppDelegate.swift */,
 				90A8F6301BF2B15D00356B56 /* Assets.xcassets */,
 				90A8F6321BF2B15D00356B56 /* LaunchScreen.storyboard */,
 				90A8F6351BF2B15D00356B56 /* Info.plist */,
@@ -136,8 +163,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A8F62C1BF2B15D00356B56 /* ViewController.swift in Sources */,
+				90A8F6461BF44B7D00356B56 /* HeadacheTabBarController.swift in Sources */,
+				90D5D64D1BF77C560005B7D1 /* MonthViewController.swift in Sources */,
+				90D5D6491BF667520005B7D1 /* Week.swift in Sources */,
+				90D5D64F1BF7BC370005B7D1 /* Month.swift in Sources */,
+				90A8F6421BF3FCB400356B56 /* WeekViewController.swift in Sources */,
+				90A8F63C1BF2BCCC00356B56 /* HeadacheTableViewController.swift in Sources */,
+				90D5D64B1BF6675A0005B7D1 /* Year.swift in Sources */,
+				90A8F63E1BF2D59B00356B56 /* Headache.swift in Sources */,
 				90A8F62A1BF2B15D00356B56 /* AppDelegate.swift in Sources */,
+				90A8F6401BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift in Sources */,
+				90A8F6441BF3FEB900356B56 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +323,7 @@
 				90A8F63A1BF2B15D00356B56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

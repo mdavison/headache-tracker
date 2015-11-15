@@ -12,10 +12,23 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let dataModel = DataModel()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        let tabBarController = window!.rootViewController as! HeadacheTabBarController
+        let allHeadachesNavigationController = tabBarController.viewControllers![0] as! UINavigationController
+        let weekViewNavigationController = tabBarController.viewControllers![1] as! UINavigationController
+        let monthViewNavigationController = tabBarController.viewControllers![2] as! UINavigationController
+        
+        let allHeadachesController = allHeadachesNavigationController.viewControllers[0] as! HeadacheTableViewController
+        let weekViewController = weekViewNavigationController.viewControllers[0] as! WeekViewController
+        let monthViewController = monthViewNavigationController.viewControllers[0] as! MonthViewController
+        
+        tabBarController.dataModel = dataModel
+        allHeadachesController.dataModel = dataModel
+        weekViewController.dataModel = dataModel
+        monthViewController.dataModel = dataModel
         return true
     }
 
