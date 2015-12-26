@@ -18,9 +18,11 @@ class HeadacheDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var severitySlider: UISlider!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     weak var delegate: HeadacheDetailTableViewControllerDelegate?
     var headacheToEdit: Headache?
+    var headaches = [Headache]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +62,26 @@ class HeadacheDetailTableViewController: UITableViewController {
             headache.severity = lroundf(severitySlider.value)
             
             delegate?.headacheDetailTableViewController(self, didFinishAddingHeadache: headache)
+        }
+    }
+    
+    @IBAction func dateChanged(sender: UIDatePicker) {
+        doneButton.enabled = true
+        let calendar = NSCalendar.currentCalendar()
+        
+        for headache in headaches {
+            var order = calendar.compareDate(headache.date, toDate: sender.date, toUnitGranularity: .Day)
+            if order == .OrderedSame {
+                doneButton.enabled = false
+                
+                // Unless editing that date
+                if let editingHeadache = headacheToEdit?.date {
+                    order = calendar.compareDate(editingHeadache, toDate: sender.date, toUnitGranularity: .Day)
+                    if order == .OrderedSame {
+                        doneButton.enabled = true
+                    }
+                }
+            }
         }
     }
     

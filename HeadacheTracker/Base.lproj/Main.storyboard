@@ -147,6 +147,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="468902642.52157599">
                                                         <!--2015-11-11 02:44:02 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="dateChanged:" destination="LiJ-42-7le" eventType="valueChanged" id="Yhd-Cp-z6m"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -247,6 +250,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="datePicker" destination="yZk-Jm-Z62" id="Bdj-sC-5ST"/>
+                        <outlet property="doneButton" destination="LTw-hC-gcS" id="80k-FL-16n"/>
                         <outlet property="severitySlider" destination="gEe-Yx-Nv4" id="QuO-jF-79k"/>
                     </connections>
                 </tableViewController>

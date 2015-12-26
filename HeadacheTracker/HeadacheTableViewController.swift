@@ -129,12 +129,13 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         if segue.identifier == Storyboard.AddHeadacheSegueIdentifier {
             let navigationController = segue.destinationViewController as! UINavigationController
             let controller = navigationController.topViewController as! HeadacheDetailTableViewController
-            controller.delegate = self            
+            controller.delegate = self
+            controller.headaches = dataModel.headaches
         } else if segue.identifier == Storyboard.EditHeadacheSegueIdentifier {
             let navigationController = segue.destinationViewController as! UINavigationController
             let controller = navigationController.topViewController as! HeadacheDetailTableViewController
             controller.delegate = self
-            
+            controller.headaches = dataModel.headaches
             if let indexPath = tableView.indexPathForCell(sender as! UITableViewCell) {
                 controller.headacheToEdit = dataModel.headaches[indexPath.row]
             }
