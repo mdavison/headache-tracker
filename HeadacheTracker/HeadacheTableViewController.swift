@@ -150,6 +150,10 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         
         label.text = dateFormatter.stringFromDate(headache.date)
         cell.detailTextLabel?.text = headache.severityDescription()
+        let severityColor = headache.severityColor()
+        if let red = severityColor["red"], green = severityColor["green"], blue = severityColor["blue"] {
+            cell.detailTextLabel?.textColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
+        }
     }
 
 }

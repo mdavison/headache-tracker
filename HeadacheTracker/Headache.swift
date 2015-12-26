@@ -6,7 +6,7 @@
 //  Copyright © 2015 Morgan Davison. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Headache: NSObject, NSCoding {
     
@@ -30,12 +30,23 @@ class Headache: NSObject, NSCoding {
     
     func severityDescription() -> String {
         switch severity {
-        case 1: return "Mild"
-        case 2: return "Mild-Moderate"
-        case 3: return "Moderate"
-        case 4: return "Moderate-Severe"
-        case 5: return "Severe"
+        case 1: return "❶"
+        case 2: return "❷"
+        case 3: return "❸"
+        case 4: return "❹"
+        case 5: return "❺"
         default: return ""
+        }
+    }
+    
+    func severityColor() -> [String: CGFloat] {
+        switch severity {
+        case 1: return ["red": CGFloat(204.0/255.0), "green": 1.0, "blue": CGFloat(102.0/255.0)]
+        case 2: return ["red": 1.0, "green": 1.0, "blue": CGFloat(102.0/255.0)]
+        case 3: return ["red": 1.0, "green": CGFloat(204.0/255.0), "blue": CGFloat(102.0/255.0)]
+        case 4: return ["red": 1.0, "green": CGFloat(128.0/255.0), "blue": 0]
+        case 5: return ["red": 1.0, "green": 0, "blue": 0]
+        default: return ["red": 0, "green": 0, "blue": 0]
         }
     }
 
