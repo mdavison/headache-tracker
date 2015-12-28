@@ -28,6 +28,7 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -99,15 +100,19 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     }
     
     func headacheDetailTableViewController(controller: HeadacheDetailTableViewController, didFinishAddingHeadache headache: Headache) {
-        let newRowIndex = dataModel.headaches.count
+        //let newRowIndex = dataModel.headaches.count
         dataModel.headaches.append(headache)
+        dataModel.headaches.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
         
-        let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
+        //let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        tableView.reloadData()
         
         dismissViewControllerAnimated(true, completion: nil)
         
         dataModel.saveHeadaches()
+        
     }
     
     func headacheDetailTableViewController(controller: HeadacheDetailTableViewController, didFinishEditingHeadache headache: Headache) {
@@ -117,6 +122,9 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
                 configureTableCell(cell, withHeadache: headache)
             }
         }
+        dataModel.headaches.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
+        tableView.reloadData()
+        
         dismissViewControllerAnimated(true, completion: nil)
         
         dataModel.saveHeadaches()
