@@ -32,6 +32,9 @@ class HeadacheDetailTableViewController: UITableViewController {
             datePicker.date = headache.date
             severitySlider.value = Float(headache.severity)
         }
+        
+        // Prevent future dates
+        datePicker.maximumDate = NSDate()
     }
     
     // MARK: - UITableViewControllerDelegate
@@ -68,7 +71,8 @@ class HeadacheDetailTableViewController: UITableViewController {
     @IBAction func dateChanged(sender: UIDatePicker) {
         doneButton.enabled = true
         let calendar = NSCalendar.currentCalendar()
-        
+                
+        // Prevent duplicate dates
         for headache in headaches {
             var order = calendar.compareDate(headache.date, toDate: sender.date, toUnitGranularity: .Day)
             if order == .OrderedSame {
