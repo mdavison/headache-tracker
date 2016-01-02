@@ -71,7 +71,7 @@ class HeadacheDetailTableViewController: UITableViewController {
     @IBAction func dateChanged(sender: UIDatePicker) {
         doneButton.enabled = true
         let calendar = NSCalendar.currentCalendar()
-                
+        
         // Prevent duplicate dates
         for headache in headaches {
             var order = calendar.compareDate(headache.date, toDate: sender.date, toUnitGranularity: .Day)

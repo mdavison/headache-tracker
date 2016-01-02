@@ -75,14 +75,17 @@ class WeekViewController: UITableViewController, UITabBarControllerDelegate {
         dayComponent.year = year
         var date = calendar.dateFromComponents(dayComponent)
         
+        // If headache occured in the last month but that week extends to the next year,
+        // it becomes week 1, so we need to back up the year
         if(week == 1 && calendar.components(.Month, fromDate: date!).month != 1){
-            //print(calendar.components(.Month, fromDate: date!).month)
             dayComponent.year = year - 1
             date = calendar.dateFromComponents(dayComponent)
         }
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        
+        print("\(dateFormatter.stringFromDate(date!)) | week: \(week), month: \(calendar.components(.Month, fromDate: date!).month) year: \(year)")
         
         var detailText = ""
         
