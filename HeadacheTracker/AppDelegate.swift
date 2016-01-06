@@ -18,17 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let tabBarController = window!.rootViewController as! HeadacheTabBarController
         let allHeadachesNavigationController = tabBarController.viewControllers![0] as! UINavigationController
-        let weekViewNavigationController = tabBarController.viewControllers![1] as! UINavigationController
-        let monthViewNavigationController = tabBarController.viewControllers![2] as! UINavigationController
+        let monthBarChartViewNavigationController = tabBarController.viewControllers![1] as! UINavigationController
+        let severityPieChartViewNavigationController = tabBarController.viewControllers![2] as! UINavigationController
         
         let allHeadachesController = allHeadachesNavigationController.viewControllers[0] as! HeadacheTableViewController
-        let weekViewController = weekViewNavigationController.viewControllers[0] as! WeekViewController
-        let monthViewController = monthViewNavigationController.viewControllers[0] as! MonthViewController
+        let monthBarChartViewController = monthBarChartViewNavigationController.viewControllers[0] as! MonthBarChartViewController
+        let severityPieChartViewController = severityPieChartViewNavigationController.viewControllers[0] as! SeverityPieChartViewController
         
         tabBarController.dataModel = dataModel
         allHeadachesController.dataModel = dataModel
-        weekViewController.dataModel = dataModel
-        monthViewController.dataModel = dataModel
+        monthBarChartViewController.dataModel = dataModel
+        severityPieChartViewController.dataModel = dataModel
         return true
     }
 

@@ -17,13 +17,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="WCg-bk-8Tm" kind="relationship" relationship="viewControllers" id="GaF-tV-sbm"/>
-                        <segue destination="ADi-kV-8s4" kind="relationship" relationship="viewControllers" id="2La-gH-JV8"/>
-                        <segue destination="fpz-l4-U5l" kind="relationship" relationship="viewControllers" id="WZx-eg-svr"/>
+                        <segue destination="lWf-Vd-grW" kind="relationship" relationship="viewControllers" id="3ZI-ew-M6G"/>
+                        <segue destination="njP-DU-NK4" kind="relationship" relationship="viewControllers" id="pq2-Wa-ezX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wn2-gU-VYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-514" y="1087"/>
+            <point key="canvasLocation" x="-810" y="1391"/>
         </scene>
         <!--Headache List-->
         <scene sceneID="rcW-bu-S1l">
@@ -77,52 +77,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzm-63-XJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="297"/>
-        </scene>
-        <!--Headaches by Week-->
-        <scene sceneID="xJ7-LI-XRG">
-            <objects>
-                <tableViewController id="Zcb-Bd-Lw9" customClass="WeekViewController" customModule="HeadacheTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="R9f-L6-ZZ6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeekCell" textLabel="Uz9-YW-eTZ" detailTextLabel="9G5-Kk-Xzp" style="IBUITableViewCellStyleValue1" id="2sv-ng-xaO">
-                                <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2sv-ng-xaO" id="HiE-wc-EjE">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uz9-YW-eTZ">
-                                            <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9G5-Kk-Xzp">
-                                            <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Zcb-Bd-Lw9" id="6x9-cG-Xa7"/>
-                            <outlet property="delegate" destination="Zcb-Bd-Lw9" id="OKv-40-JPw"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Headaches by Week" id="Apg-Nu-cV7"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dQj-RX-9eA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1124" y="1087"/>
+            <point key="canvasLocation" x="1132" y="569"/>
         </scene>
         <!--Record New Headache-->
         <scene sceneID="4s5-GK-Ns4">
@@ -256,7 +211,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OfF-Ex-QHu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2646" y="297"/>
+            <point key="canvasLocation" x="2673" y="569"/>
         </scene>
         <!--All-->
         <scene sceneID="yZD-2p-viC">
@@ -275,7 +230,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4VI-ze-UwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="293" y="297"/>
+            <point key="canvasLocation" x="320" y="569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QWR-gA-Af4">
@@ -293,93 +248,150 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xua-4Q-hYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1834" y="297"/>
+            <point key="canvasLocation" x="1861" y="569"/>
         </scene>
-        <!--Week-->
-        <scene sceneID="Ypc-5l-9XF">
+        <!--Number of Headaches-->
+        <scene sceneID="kRT-wZ-ORb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ADi-kV-8s4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Week" id="CTB-BD-mkk"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vYQ-WI-8kx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController id="tzb-Wl-wLa" customClass="MonthBarChartViewController" customModule="HeadacheTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sNr-q0-U3n"/>
+                        <viewControllerLayoutGuide type="bottom" id="TiR-4D-Yc8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rMX-Yo-wWT">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXp-am-iCS" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="44" width="560" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LsW-GN-yXg">
+                                <rect key="frame" x="239" y="8" width="121" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segementChanged:" destination="tzb-Wl-wLa" eventType="valueChanged" id="cwV-Pp-l5H"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rXp-am-iCS" firstAttribute="top" secondItem="LsW-GN-yXg" secondAttribute="bottom" constant="8" symbolic="YES" id="2vi-Ip-2Nc"/>
+                            <constraint firstItem="rXp-am-iCS" firstAttribute="top" secondItem="sNr-q0-U3n" secondAttribute="bottom" id="944-vE-WGh"/>
+                            <constraint firstItem="rXp-am-iCS" firstAttribute="leading" secondItem="rMX-Yo-wWT" secondAttribute="leadingMargin" id="9ED-li-ZTp"/>
+                            <constraint firstItem="LsW-GN-yXg" firstAttribute="top" secondItem="sNr-q0-U3n" secondAttribute="bottom" constant="8" symbolic="YES" id="Nk7-2G-l9h"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="rXp-am-iCS" secondAttribute="bottom" id="QWD-z7-Mz0"/>
+                            <constraint firstItem="LsW-GN-yXg" firstAttribute="centerX" secondItem="rMX-Yo-wWT" secondAttribute="centerX" id="glW-E7-2dc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rXp-am-iCS" secondAttribute="trailing" id="yxd-0O-peO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="944-vE-WGh"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Number of Headaches" id="GLB-qa-wKj"/>
                     <connections>
-                        <segue destination="Zcb-Bd-Lw9" kind="relationship" relationship="rootViewController" id="81h-zG-ozt"/>
+                        <outlet property="barChartView" destination="rXp-am-iCS" id="67K-lR-XYV"/>
+                        <outlet property="segmentedControl" destination="LsW-GN-yXg" id="chP-gF-LWe"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0LR-9X-hnl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ovu-hu-lan" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312" y="1087"/>
+            <point key="canvasLocation" x="1132" y="1401"/>
         </scene>
-        <!--Headaches by Month-->
-        <scene sceneID="wsL-k4-a2y">
+        <!--Severity of Headaches-->
+        <scene sceneID="k79-D0-Ncn">
             <objects>
-                <tableViewController id="Qdf-V4-Sfw" customClass="MonthViewController" customModule="HeadacheTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="jaL-ri-OeB">
+                <viewController id="bhc-cH-hbZ" customClass="SeverityPieChartViewController" customModule="HeadacheTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SdF-dt-W4S"/>
+                        <viewControllerLayoutGuide type="bottom" id="FQr-wA-hDH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rlj-GN-Q3b">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MonthCell" textLabel="V5T-BD-41x" detailTextLabel="1fS-Ev-VfQ" style="IBUITableViewCellStyleValue1" id="AY3-po-AS5">
-                                <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AY3-po-AS5" id="2Tm-c2-dEk">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V5T-BD-41x">
-                                            <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1fS-Ev-VfQ">
-                                            <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Qdf-V4-Sfw" id="uxK-sS-5Z7"/>
-                            <outlet property="delegate" destination="Qdf-V4-Sfw" id="Tzl-uc-Hl4"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Headaches by Month" id="49V-nr-II4"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YD1-b6-tVJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l03-P7-DMB" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="108" width="560" height="443"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1JJ-q3-1be">
+                                <rect key="frame" x="220" y="72" width="161" height="29"/>
+                                <segments>
+                                    <segment title="Week"/>
+                                    <segment title="Month"/>
+                                    <segment title="Year"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="bhc-cH-hbZ" eventType="valueChanged" id="kYa-Dd-A7K"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FQr-wA-hDH" firstAttribute="top" secondItem="l03-P7-DMB" secondAttribute="bottom" id="4VE-AG-qJU"/>
+                            <constraint firstItem="l03-P7-DMB" firstAttribute="leading" secondItem="Rlj-GN-Q3b" secondAttribute="leadingMargin" id="ARq-lt-Az2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="l03-P7-DMB" secondAttribute="trailing" id="JHz-iR-mE8"/>
+                            <constraint firstItem="l03-P7-DMB" firstAttribute="top" secondItem="1JJ-q3-1be" secondAttribute="bottom" constant="8" symbolic="YES" id="V2F-Ke-6cC"/>
+                            <constraint firstItem="1JJ-q3-1be" firstAttribute="centerX" secondItem="Rlj-GN-Q3b" secondAttribute="centerX" id="ejA-QQ-K8A"/>
+                            <constraint firstItem="1JJ-q3-1be" firstAttribute="top" secondItem="SdF-dt-W4S" secondAttribute="bottom" constant="8" symbolic="YES" id="xnA-pa-1hK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Severity of Headaches" id="2Ny-bT-x8O"/>
+                    <connections>
+                        <outlet property="pieChartView" destination="l03-P7-DMB" id="Z4p-NJ-RRm"/>
+                        <outlet property="segmentedControl" destination="1JJ-q3-1be" id="sfV-iq-9Ik"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ofs-IY-81l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="1850"/>
+            <point key="canvasLocation" x="1143" y="2302"/>
         </scene>
-        <!--Month-->
-        <scene sceneID="EMx-VY-LEt">
+        <!--Chart Total-->
+        <scene sceneID="RAT-W7-9fq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fpz-l4-U5l" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Month" id="mc6-Kc-XVE"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lWf-Vd-grW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chart Total" id="Bz4-DF-8jQ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BNL-nf-gjf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tOu-Gp-vW5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Qdf-V4-Sfw" kind="relationship" relationship="rootViewController" id="wGx-UG-zJ8"/>
+                        <segue destination="tzb-Wl-wLa" kind="relationship" relationship="rootViewController" id="NUW-3v-ZdY"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ite-d8-UlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rf5-aG-Zft" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312" y="1850"/>
+            <point key="canvasLocation" x="320" y="1401"/>
+        </scene>
+        <!--Severity Chart-->
+        <scene sceneID="mG6-sc-LYe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="njP-DU-NK4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Severity Chart" id="AQV-z4-pPS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uk2-Ru-0Tl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bhc-cH-hbZ" kind="relationship" relationship="rootViewController" id="Hgt-fD-rEc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ghC-g9-dcv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="331" y="2302"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Mp6-UQ-ecs"/>
+        <segue reference="QkT-QA-PWP"/>
     </inferredMetricsTieBreakers>
 </document>

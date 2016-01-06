@@ -13,10 +13,12 @@ class Week {
     var number = 0
     var headaches = [Headache]() // this gets ALL headaches, not just headaches for this week
     var headachesForWeeks = [Int: [Headache]]()
+    var headachesForPastWeek = [Headache]()
     
     init(headaches: [Headache]) {
         self.headaches = headaches
         loadHeadachesForWeeks()
+        loadHeadachesForPastWeek()
     }
     
     private func loadHeadachesForWeeks() {
@@ -34,6 +36,24 @@ class Week {
                 if !h.contains(headache) {
                     headachesForWeeks[headacheWeek]?.append(headache)
                 }
+            }
+        }
+    }
+    
+    private func loadHeadachesForPastWeek() {
+        let calendar = NSCalendar.currentCalendar()
+        
+        if let oneWeekAgo = calendar.dateByAddingUnit(.Day, value: -7, toDate: NSDate(), options: []) {
+            //print("one week ago: \(oneWeekAgo)")
+            for headache in headaches {
+                //print("headache date: \(headache.date)")
+                //print(headache.date.compare(oneWeekAgo) == NSComparisonResult.OrderedDescending)
+                //print(headache.date.compare(oneWeekAgo) == NSComparisonResult.OrderedSame)
+                
+                if (headache.date.compare(oneWeekAgo) == NSComparisonResult.OrderedDescending) ||
+                    (headache.date.compare(oneWeekAgo) == NSComparisonResult.OrderedSame) {
+                    headachesForPastWeek.append(headache)
+                }            
             }
         }
     }

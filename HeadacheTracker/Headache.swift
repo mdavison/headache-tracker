@@ -49,5 +49,16 @@ class Headache: NSObject, NSCoding {
         default: return ["red": 0, "green": 0, "blue": 0]
         }
     }
+    
+    static func colorForSeverity(severity: Int) -> UIColor {
+        switch severity {
+        case 1: return UIColor(red: CGFloat(204.0/255.0), green: CGFloat(1.0), blue: CGFloat(102.0/255.0), alpha: 1)
+        case 2: return UIColor(red: CGFloat(1.0), green: CGFloat(1.0), blue: CGFloat(102.0/255.0), alpha: 1)
+        case 3: return UIColor(red: CGFloat(1.0), green: CGFloat(204.0/255.0), blue: CGFloat(102.0/255.0), alpha: 1)
+        case 4: return UIColor(red: CGFloat(1.0), green: CGFloat(128.0/255.0), blue: CGFloat(102.0/255.0), alpha: 1)
+        case 5: return UIColor(red: CGFloat(1.0), green: CGFloat(0), blue: CGFloat(0), alpha: 1)
+        default: return UIColor(red: CGFloat(1.0), green: CGFloat(1.0), blue: CGFloat(1.0), alpha: 1)
+        }
+    }
 
 }

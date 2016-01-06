@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		903EA9161C3888B70086BBF4 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903EA9111C38889B0086BBF4 /* Charts.framework */; };
+		903EA9171C3888B70086BBF4 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 903EA9111C38889B0086BBF4 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		903EA91C1C388AD70086BBF4 /* MonthBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */; };
+		903EA91E1C3C11090086BBF4 /* SeverityPieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EA91D1C3C11090086BBF4 /* SeverityPieChartViewController.swift */; };
 		90A8F62A1BF2B15D00356B56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6291BF2B15D00356B56 /* AppDelegate.swift */; };
 		90A8F62F1BF2B15D00356B56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A8F62D1BF2B15D00356B56 /* Main.storyboard */; };
 		90A8F6311BF2B15D00356B56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90A8F6301BF2B15D00356B56 /* Assets.xcassets */; };
@@ -14,16 +18,62 @@
 		90A8F63C1BF2BCCC00356B56 /* HeadacheTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */; };
 		90A8F63E1BF2D59B00356B56 /* Headache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F63D1BF2D59B00356B56 /* Headache.swift */; };
 		90A8F6401BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */; };
-		90A8F6421BF3FCB400356B56 /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6411BF3FCB400356B56 /* WeekViewController.swift */; };
 		90A8F6441BF3FEB900356B56 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6431BF3FEB900356B56 /* DataModel.swift */; };
 		90A8F6461BF44B7D00356B56 /* HeadacheTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */; };
 		90D5D6491BF667520005B7D1 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5D6481BF667520005B7D1 /* Week.swift */; };
 		90D5D64B1BF6675A0005B7D1 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5D64A1BF6675A0005B7D1 /* Year.swift */; };
-		90D5D64D1BF77C560005B7D1 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5D64C1BF77C560005B7D1 /* MonthViewController.swift */; };
 		90D5D64F1BF7BC370005B7D1 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5D64E1BF7BC370005B7D1 /* Month.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		903EA9101C38889B0086BBF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 903EA90A1C38889A0086BBF4 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		903EA9121C38889B0086BBF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 903EA90A1C38889A0086BBF4 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		903EA9141C38889B0086BBF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 903EA90A1C38889A0086BBF4 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		903EA9181C3888B70086BBF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 903EA90A1C38889A0086BBF4 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		903EA91A1C3888B70086BBF4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				903EA9171C3888B70086BBF4 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		903EA90A1C38889A0086BBF4 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+		903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthBarChartViewController.swift; sourceTree = "<group>"; };
+		903EA91D1C3C11090086BBF4 /* SeverityPieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeverityPieChartViewController.swift; sourceTree = "<group>"; };
 		90A8F6261BF2B15D00356B56 /* HeadacheTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeadacheTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A8F6291BF2B15D00356B56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90A8F62E1BF2B15D00356B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -33,12 +83,10 @@
 		90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheTableViewController.swift; sourceTree = "<group>"; };
 		90A8F63D1BF2D59B00356B56 /* Headache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Headache.swift; sourceTree = "<group>"; };
 		90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheDetailTableViewController.swift; sourceTree = "<group>"; };
-		90A8F6411BF3FCB400356B56 /* WeekViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
 		90A8F6431BF3FEB900356B56 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheTabBarController.swift; sourceTree = "<group>"; };
 		90D5D6481BF667520005B7D1 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		90D5D64A1BF6675A0005B7D1 /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
-		90D5D64C1BF77C560005B7D1 /* MonthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		90D5D64E1BF7BC370005B7D1 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,15 +95,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				903EA9161C3888B70086BBF4 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		903EA90B1C38889A0086BBF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				903EA9111C38889B0086BBF4 /* Charts.framework */,
+				903EA9131C38889B0086BBF4 /* Charts.framework */,
+				903EA9151C38889B0086BBF4 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		90A8F61D1BF2B15D00356B56 = {
 			isa = PBXGroup;
 			children = (
+				903EA90A1C38889A0086BBF4 /* Charts.xcodeproj */,
 				90A8F6281BF2B15D00356B56 /* HeadacheTracker */,
 				90A8F6271BF2B15D00356B56 /* Products */,
 			);
@@ -76,8 +136,8 @@
 				90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */,
 				90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */,
 				90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */,
-				90A8F6411BF3FCB400356B56 /* WeekViewController.swift */,
-				90D5D64C1BF77C560005B7D1 /* MonthViewController.swift */,
+				903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */,
+				903EA91D1C3C11090086BBF4 /* SeverityPieChartViewController.swift */,
 				90A8F63D1BF2D59B00356B56 /* Headache.swift */,
 				90D5D6481BF667520005B7D1 /* Week.swift */,
 				90D5D64E1BF7BC370005B7D1 /* Month.swift */,
@@ -101,10 +161,12 @@
 				90A8F6221BF2B15D00356B56 /* Sources */,
 				90A8F6231BF2B15D00356B56 /* Frameworks */,
 				90A8F6241BF2B15D00356B56 /* Resources */,
+				903EA91A1C3888B70086BBF4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				903EA9191C3888B70086BBF4 /* PBXTargetDependency */,
 			);
 			name = HeadacheTracker;
 			productName = HeadacheTracker;
@@ -138,12 +200,42 @@
 			mainGroup = 90A8F61D1BF2B15D00356B56;
 			productRefGroup = 90A8F6271BF2B15D00356B56 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 903EA90B1C38889A0086BBF4 /* Products */;
+					ProjectRef = 903EA90A1C38889A0086BBF4 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				90A8F6251BF2B15D00356B56 /* HeadacheTracker */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		903EA9111C38889B0086BBF4 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 903EA9101C38889B0086BBF4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		903EA9131C38889B0086BBF4 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 903EA9121C38889B0086BBF4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		903EA9151C38889B0086BBF4 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 903EA9141C38889B0086BBF4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		90A8F6241BF2B15D00356B56 /* Resources */ = {
@@ -163,11 +255,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				903EA91C1C388AD70086BBF4 /* MonthBarChartViewController.swift in Sources */,
 				90A8F6461BF44B7D00356B56 /* HeadacheTabBarController.swift in Sources */,
-				90D5D64D1BF77C560005B7D1 /* MonthViewController.swift in Sources */,
 				90D5D6491BF667520005B7D1 /* Week.swift in Sources */,
 				90D5D64F1BF7BC370005B7D1 /* Month.swift in Sources */,
-				90A8F6421BF3FCB400356B56 /* WeekViewController.swift in Sources */,
+				903EA91E1C3C11090086BBF4 /* SeverityPieChartViewController.swift in Sources */,
 				90A8F63C1BF2BCCC00356B56 /* HeadacheTableViewController.swift in Sources */,
 				90D5D64B1BF6675A0005B7D1 /* Year.swift in Sources */,
 				90A8F63E1BF2D59B00356B56 /* Headache.swift in Sources */,
@@ -178,6 +270,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		903EA9191C3888B70086BBF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = 903EA9181C3888B70086BBF4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		90A8F62D1BF2B15D00356B56 /* Main.storyboard */ = {
@@ -286,6 +386,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = HeadacheTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morgandavison.HeadacheTracker;
@@ -297,6 +398,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = HeadacheTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morgandavison.HeadacheTracker;

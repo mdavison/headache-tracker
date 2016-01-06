@@ -24,6 +24,7 @@ xcuserdata
 *.xcscmblueprint
 *.xcscheme
 AppIcon/
+Charts/
 
 ## Obj-C/Swift specific
 *.hmap

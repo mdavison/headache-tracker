@@ -13,10 +13,12 @@ class Month {
     var number = 0 // Month number
     var headaches = [Headache]() // this gets ALL headaches, not just headaches for this week
     var headachesForMonths = [Int: [Headache]]()
+    var headachesForPastMonth = [Headache]()
 
     init(headaches: [Headache]) {
         self.headaches = headaches
         loadHeadachesForMonths()
+        loadHeadachesForPastMonth()
     }
 
     private func loadHeadachesForMonths() {
@@ -36,6 +38,25 @@ class Month {
                 }
             }
         }
+    }
+    
+    private func loadHeadachesForPastMonth() {
+        let calendar = NSCalendar.currentCalendar()
+        
+        if let oneMonthAgo = calendar.dateByAddingUnit(.Month, value: -1, toDate: NSDate(), options: []) {
+            //print("one month ago: \(oneMonthAgo)")
+            for headache in headaches {
+//                print("headache date: \(headache.date)")
+//                print(headache.date.compare(oneMonthAgo) == NSComparisonResult.OrderedDescending)
+//                print(headache.date.compare(oneMonthAgo) == NSComparisonResult.OrderedSame)
+                
+                if (headache.date.compare(oneMonthAgo) == NSComparisonResult.OrderedDescending) ||
+                    (headache.date.compare(oneMonthAgo) == NSComparisonResult.OrderedSame) {
+                        headachesForPastMonth.append(headache)
+                }
+            }
+        }
+
     }
     
 }

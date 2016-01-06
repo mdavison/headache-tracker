@@ -16,10 +16,12 @@ class Year {
     var allYears = [Int]()
     var weeksForYears = [Int: [Int]]()
     var monthsForYears = [Int: [Int]]()
+    var headachesForPastYear = [Headache]()
     
     init(headaches: [Headache]) {
         self.headaches = headaches
         loadWeeksForYears()
+        loadHeadachesForPastYear()
     }
     
     private func loadWeeksForYears() {
@@ -60,5 +62,23 @@ class Year {
         //print(monthsForYears)
     }
 
+    private func loadHeadachesForPastYear() {
+        let calendar = NSCalendar.currentCalendar()
+        
+        if let oneYearAgo = calendar.dateByAddingUnit(.Year, value: -1, toDate: NSDate(), options: []) {
+            //print("one year ago: \(oneYearAgo)")
+            for headache in headaches {
+//                print("headache date: \(headache.date)")
+//                print(headache.date.compare(oneYearAgo) == NSComparisonResult.OrderedDescending)
+//                print(headache.date.compare(oneYearAgo) == NSComparisonResult.OrderedSame)
+                
+                if (headache.date.compare(oneYearAgo) == NSComparisonResult.OrderedDescending) ||
+                    (headache.date.compare(oneYearAgo) == NSComparisonResult.OrderedSame) {
+                        headachesForPastYear.append(headache)
+                }
+            }
+        }
+
+    }
     
 }
