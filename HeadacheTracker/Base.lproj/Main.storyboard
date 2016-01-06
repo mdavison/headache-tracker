@@ -213,11 +213,11 @@
             </objects>
             <point key="canvasLocation" x="2673" y="569"/>
         </scene>
-        <!--All-->
+        <!--Navigation Controller-->
         <scene sceneID="yZD-2p-viC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WCg-bk-8Tm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="All" id="Nrn-E9-BnA"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" image="ListIcon" selectedImage="ListIconFilled" id="Nrn-E9-BnA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q6V-7Y-7eO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -259,10 +259,10 @@
                         <viewControllerLayoutGuide type="bottom" id="TiR-4D-Yc8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rMX-Yo-wWT">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXp-am-iCS" customClass="BarChartView" customModule="Charts">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXp-am-iCS" customClass="BarChartView" customModule="Charts">
                                 <rect key="frame" x="20" y="44" width="560" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -293,7 +293,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Number of Headaches" id="GLB-qa-wKj"/>
                     <connections>
                         <outlet property="barChartView" destination="rXp-am-iCS" id="67K-lR-XYV"/>
@@ -352,11 +352,11 @@
             </objects>
             <point key="canvasLocation" x="1143" y="2302"/>
         </scene>
-        <!--Chart Total-->
+        <!--Navigation Controller-->
         <scene sceneID="RAT-W7-9fq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lWf-Vd-grW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chart Total" id="Bz4-DF-8jQ"/>
+                    <tabBarItem key="tabBarItem" title="" image="BarChartIcon" selectedImage="BarChartIconFilled" id="Bz4-DF-8jQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tOu-Gp-vW5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -371,11 +371,11 @@
             </objects>
             <point key="canvasLocation" x="320" y="1401"/>
         </scene>
-        <!--Severity Chart-->
+        <!--Navigation Controller-->
         <scene sceneID="mG6-sc-LYe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="njP-DU-NK4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Severity Chart" id="AQV-z4-pPS"/>
+                    <tabBarItem key="tabBarItem" title="" image="DoughnutChartIcon" selectedImage="DoughnutChartIconFilled" id="AQV-z4-pPS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uk2-Ru-0Tl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -391,6 +391,14 @@
             <point key="canvasLocation" x="331" y="2302"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BarChartIcon" width="25" height="25"/>
+        <image name="BarChartIconFilled" width="25" height="25"/>
+        <image name="DoughnutChartIcon" width="25" height="25"/>
+        <image name="DoughnutChartIconFilled" width="25" height="25"/>
+        <image name="ListIcon" width="25" height="25"/>
+        <image name="ListIconFilled" width="26" height="26"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QkT-QA-PWP"/>
     </inferredMetricsTieBreakers>

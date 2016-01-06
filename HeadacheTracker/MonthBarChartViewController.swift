@@ -105,6 +105,8 @@ class MonthBarChartViewController: UIViewController {
         // Converting to Int for small numbers rounds weird
         //barChartView.rightAxis.valueFormatter = numberFormatter
         //barChartView.leftAxis.valueFormatter = numberFormatter
+        
+        barChartView.descriptionText = "Total headaches by month"
     }
     
     private func setHeadachesForYear(year: Int) -> [Double]? {
