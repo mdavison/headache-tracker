@@ -58,6 +58,10 @@ class MonthBarChartViewController: UIViewController {
         
     }
     
+    @IBAction func saveChart(sender: UIBarButtonItem) {
+        barChartView.saveToCameraRoll()
+    }
+    
     
     private func setYears() {
         yearModel = Year(headaches: dataModel.headaches)

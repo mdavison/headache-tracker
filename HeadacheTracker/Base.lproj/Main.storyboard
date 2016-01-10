@@ -294,7 +294,13 @@
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Number of Headaches" id="GLB-qa-wKj"/>
+                    <navigationItem key="navigationItem" title="Number of Headaches" id="GLB-qa-wKj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="eiv-d8-RLo">
+                            <connections>
+                                <action selector="saveChart:" destination="tzb-Wl-wLa" id="9ut-pB-6GW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="barChartView" destination="rXp-am-iCS" id="67K-lR-XYV"/>
                         <outlet property="segmentedControl" destination="LsW-GN-yXg" id="chP-gF-LWe"/>
@@ -342,7 +348,13 @@
                             <constraint firstItem="1JJ-q3-1be" firstAttribute="top" secondItem="SdF-dt-W4S" secondAttribute="bottom" constant="8" symbolic="YES" id="xnA-pa-1hK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Severity of Headaches" id="2Ny-bT-x8O"/>
+                    <navigationItem key="navigationItem" title="Severity of Headaches" id="2Ny-bT-x8O">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="CPS-Xh-PdT">
+                            <connections>
+                                <action selector="saveChart:" destination="bhc-cH-hbZ" id="6q2-W4-ix7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="pieChartView" destination="l03-P7-DMB" id="Z4p-NJ-RRm"/>
                         <outlet property="segmentedControl" destination="1JJ-q3-1be" id="sfV-iq-9Ik"/>

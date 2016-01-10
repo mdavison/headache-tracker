@@ -63,6 +63,9 @@ class SeverityPieChartViewController: UIViewController {
         }
     }
     
+    @IBAction func saveChart(sender: UIBarButtonItem) {
+        pieChartView.saveToCameraRoll()
+    }
     
     private func setChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [ChartDataEntry] = []
