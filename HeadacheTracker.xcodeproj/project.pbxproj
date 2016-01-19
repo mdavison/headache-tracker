@@ -11,14 +11,16 @@
 		903EA9171C3888B70086BBF4 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 903EA9111C38889B0086BBF4 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		903EA91C1C388AD70086BBF4 /* MonthBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */; };
 		903EA91E1C3C11090086BBF4 /* SeverityPieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EA91D1C3C11090086BBF4 /* SeverityPieChartViewController.swift */; };
+		904E4C481C4DDC1300104B3D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C471C4DDC1300104B3D /* CoreDataStack.swift */; };
+		904E4C4D1C4DDE1600104B3D /* Headache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C4B1C4DDE1600104B3D /* Headache.xcdatamodeld */; };
+		904E4C501C4DDE9000104B3D /* Headache+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C4E1C4DDE9000104B3D /* Headache+CoreDataProperties.swift */; };
+		904E4C511C4DDE9000104B3D /* Headache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C4F1C4DDE9000104B3D /* Headache.swift */; };
 		90A8F62A1BF2B15D00356B56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6291BF2B15D00356B56 /* AppDelegate.swift */; };
 		90A8F62F1BF2B15D00356B56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A8F62D1BF2B15D00356B56 /* Main.storyboard */; };
 		90A8F6311BF2B15D00356B56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90A8F6301BF2B15D00356B56 /* Assets.xcassets */; };
 		90A8F6341BF2B15D00356B56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A8F6321BF2B15D00356B56 /* LaunchScreen.storyboard */; };
 		90A8F63C1BF2BCCC00356B56 /* HeadacheTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */; };
-		90A8F63E1BF2D59B00356B56 /* Headache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F63D1BF2D59B00356B56 /* Headache.swift */; };
 		90A8F6401BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */; };
-		90A8F6441BF3FEB900356B56 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6431BF3FEB900356B56 /* DataModel.swift */; };
 		90A8F6461BF44B7D00356B56 /* HeadacheTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */; };
 		90D5D6491BF667520005B7D1 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5D6481BF667520005B7D1 /* Week.swift */; };
 		90D5D64B1BF6675A0005B7D1 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5D64A1BF6675A0005B7D1 /* Year.swift */; };
@@ -72,23 +74,25 @@
 
 /* Begin PBXFileReference section */
 		903EA90A1C38889A0086BBF4 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
-		903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthBarChartViewController.swift; sourceTree = "<group>"; };
+		903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MonthBarChartViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		903EA91D1C3C11090086BBF4 /* SeverityPieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeverityPieChartViewController.swift; sourceTree = "<group>"; };
 		903EA9221C3D96080086BBF4 /* HeadacheTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HeadacheTracker.entitlements; sourceTree = "<group>"; };
+		904E4C471C4DDC1300104B3D /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CoreDataStack.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		904E4C4C1C4DDE1600104B3D /* Headache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Headache.xcdatamodel; sourceTree = "<group>"; };
+		904E4C4E1C4DDE9000104B3D /* Headache+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Headache+CoreDataProperties.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		904E4C4F1C4DDE9000104B3D /* Headache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Headache.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		90A8F6261BF2B15D00356B56 /* HeadacheTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeadacheTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		90A8F6291BF2B15D00356B56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		90A8F6291BF2B15D00356B56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		90A8F62E1BF2B15D00356B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		90A8F6301BF2B15D00356B56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90A8F6331BF2B15D00356B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90A8F6351BF2B15D00356B56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheTableViewController.swift; sourceTree = "<group>"; };
-		90A8F63D1BF2D59B00356B56 /* Headache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Headache.swift; sourceTree = "<group>"; };
-		90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheDetailTableViewController.swift; sourceTree = "<group>"; };
-		90A8F6431BF3FEB900356B56 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheTabBarController.swift; sourceTree = "<group>"; };
+		90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HeadacheTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HeadacheDetailTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HeadacheTabBarController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		90D5D6481BF667520005B7D1 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		90D5D64A1BF6675A0005B7D1 /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
-		90D5D64E1BF7BC370005B7D1 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		90D5D64E1BF7BC370005B7D1 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Month.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,22 +137,24 @@
 		90A8F6281BF2B15D00356B56 /* HeadacheTracker */ = {
 			isa = PBXGroup;
 			children = (
-				903EA9221C3D96080086BBF4 /* HeadacheTracker.entitlements */,
-				90A8F62D1BF2B15D00356B56 /* Main.storyboard */,
 				90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */,
 				90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */,
 				90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */,
 				903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */,
 				903EA91D1C3C11090086BBF4 /* SeverityPieChartViewController.swift */,
-				90A8F63D1BF2D59B00356B56 /* Headache.swift */,
 				90D5D6481BF667520005B7D1 /* Week.swift */,
 				90D5D64E1BF7BC370005B7D1 /* Month.swift */,
 				90D5D64A1BF6675A0005B7D1 /* Year.swift */,
-				90A8F6431BF3FEB900356B56 /* DataModel.swift */,
+				904E4C4E1C4DDE9000104B3D /* Headache+CoreDataProperties.swift */,
+				904E4C4F1C4DDE9000104B3D /* Headache.swift */,
 				90A8F6291BF2B15D00356B56 /* AppDelegate.swift */,
+				904E4C471C4DDC1300104B3D /* CoreDataStack.swift */,
+				904E4C4B1C4DDE1600104B3D /* Headache.xcdatamodeld */,
 				90A8F6301BF2B15D00356B56 /* Assets.xcassets */,
+				90A8F62D1BF2B15D00356B56 /* Main.storyboard */,
 				90A8F6321BF2B15D00356B56 /* LaunchScreen.storyboard */,
 				90A8F6351BF2B15D00356B56 /* Info.plist */,
+				903EA9221C3D96080086BBF4 /* HeadacheTracker.entitlements */,
 			);
 			path = HeadacheTracker;
 			sourceTree = "<group>";
@@ -264,15 +270,17 @@
 			files = (
 				903EA91C1C388AD70086BBF4 /* MonthBarChartViewController.swift in Sources */,
 				90A8F6461BF44B7D00356B56 /* HeadacheTabBarController.swift in Sources */,
+				904E4C501C4DDE9000104B3D /* Headache+CoreDataProperties.swift in Sources */,
 				90D5D6491BF667520005B7D1 /* Week.swift in Sources */,
+				904E4C481C4DDC1300104B3D /* CoreDataStack.swift in Sources */,
 				90D5D64F1BF7BC370005B7D1 /* Month.swift in Sources */,
 				903EA91E1C3C11090086BBF4 /* SeverityPieChartViewController.swift in Sources */,
+				904E4C511C4DDE9000104B3D /* Headache.swift in Sources */,
 				90A8F63C1BF2BCCC00356B56 /* HeadacheTableViewController.swift in Sources */,
+				904E4C4D1C4DDE1600104B3D /* Headache.xcdatamodeld in Sources */,
 				90D5D64B1BF6675A0005B7D1 /* Year.swift in Sources */,
-				90A8F63E1BF2D59B00356B56 /* Headache.swift in Sources */,
 				90A8F62A1BF2B15D00356B56 /* AppDelegate.swift in Sources */,
 				90A8F6401BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift in Sources */,
-				90A8F6441BF3FEB900356B56 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +451,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		904E4C4B1C4DDE1600104B3D /* Headache.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				904E4C4C1C4DDE1600104B3D /* Headache.xcdatamodel */,
+			);
+			currentVersion = 904E4C4C1C4DDE1600104B3D /* Headache.xcdatamodel */;
+			path = Headache.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 90A8F61E1BF2B15D00356B56 /* Project object */;
 }

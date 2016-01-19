@@ -28,9 +28,9 @@ class Year {
         let calendar = NSCalendar.currentCalendar()
         
         for headache in headaches {
-            let headacheWeek = calendar.components(NSCalendarUnit.WeekOfYear, fromDate: headache.date).weekOfYear
-            let headacheMonth = calendar.components(NSCalendarUnit.Month, fromDate: headache.date).month
-            let headacheYear = calendar.components(NSCalendarUnit.Year, fromDate: headache.date).year
+            let headacheWeek = calendar.components(NSCalendarUnit.WeekOfYear, fromDate: headache.date!).weekOfYear
+            let headacheMonth = calendar.components(NSCalendarUnit.Month, fromDate: headache.date!).month
+            let headacheYear = calendar.components(NSCalendarUnit.Year, fromDate: headache.date!).year
             
             // Add the year as the dictionary key for weeksForYears
             if !weeksForYears.keys.contains(headacheYear) {
@@ -72,8 +72,8 @@ class Year {
 //                print(headache.date.compare(oneYearAgo) == NSComparisonResult.OrderedDescending)
 //                print(headache.date.compare(oneYearAgo) == NSComparisonResult.OrderedSame)
                 
-                if (headache.date.compare(oneYearAgo) == NSComparisonResult.OrderedDescending) ||
-                    (headache.date.compare(oneYearAgo) == NSComparisonResult.OrderedSame) {
+                if (headache.date!.compare(oneYearAgo) == NSComparisonResult.OrderedDescending) ||
+                    (headache.date!.compare(oneYearAgo) == NSComparisonResult.OrderedSame) {
                         headachesForPastYear.append(headache)
                 }
             }

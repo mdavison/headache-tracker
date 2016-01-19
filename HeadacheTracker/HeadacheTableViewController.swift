@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class HeadacheTableViewController: UITableViewController, HeadacheDetailTableViewControllerDelegate {
 
-    var dataModel: DataModel!
+    //var dataModel: DataModel!
+    var managedContext: NSManagedObjectContext!
+    var headaches = [Headache]()
     
     struct Storyboard {
         static let HeadacheCellReuseIdentifier = "HeadacheCell"
@@ -20,12 +23,8 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        loadHeadaches()
     }
 
 
@@ -42,32 +41,37 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataModel.headaches.count
+        return headaches.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.HeadacheCellReuseIdentifier, forIndexPath: indexPath)
-        let headache = dataModel.headaches[indexPath.row]
 
+        let headache = headaches[indexPath.row]
         configureTableCell(cell, withHeadache: headache)
         
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+    
+//    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        return true
+//    }
 
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        //print(indexPath.row)
         if editingStyle == .Delete {
-            dataModel.headaches.removeAtIndex(indexPath.row)
+            let headacheToDelete = headaches[indexPath.row] as Headache!
+            managedContext.deleteObject(headacheToDelete)
+            
+            do {
+                try managedContext.save()
+            } catch let error as NSError {
+                print("Could not delete: \(error)")
+            }
+            
+            headaches.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            dataModel.saveHeadaches()
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -100,34 +104,28 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     }
     
     func headacheDetailTableViewController(controller: HeadacheDetailTableViewController, didFinishAddingHeadache headache: Headache) {
-        //let newRowIndex = dataModel.headaches.count
-        dataModel.headaches.append(headache)
-        dataModel.headaches.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
+        let newRowIndex = headaches.count
+        headaches.append(headache)
+        headaches.sortInPlace({ $0.date!.compare($1.date!) == NSComparisonResult.OrderedDescending })
         
-        //let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
         tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         tableView.reloadData()
         
         dismissViewControllerAnimated(true, completion: nil)
-        
-        dataModel.saveHeadaches()
-        
     }
     
     func headacheDetailTableViewController(controller: HeadacheDetailTableViewController, didFinishEditingHeadache headache: Headache) {
-        if let index = dataModel.headaches.indexOf(headache) {
+        if let index = headaches.indexOf(headache) {
             let indexPath = NSIndexPath(forRow: index, inSection: 0)
             if let cell = tableView.cellForRowAtIndexPath(indexPath) {
                 configureTableCell(cell, withHeadache: headache)
             }
         }
-        dataModel.headaches.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
+        headaches.sortInPlace({ $0.date!.compare($1.date!) == NSComparisonResult.OrderedDescending })
         tableView.reloadData()
-        
+
         dismissViewControllerAnimated(true, completion: nil)
-        
-        dataModel.saveHeadaches()
     }
     
 
@@ -138,18 +136,37 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
             let navigationController = segue.destinationViewController as! UINavigationController
             let controller = navigationController.topViewController as! HeadacheDetailTableViewController
             controller.delegate = self
-            controller.headaches = dataModel.headaches
+            controller.managedContext = managedContext
         } else if segue.identifier == Storyboard.EditHeadacheSegueIdentifier {
             let navigationController = segue.destinationViewController as! UINavigationController
             let controller = navigationController.topViewController as! HeadacheDetailTableViewController
             controller.delegate = self
-            controller.headaches = dataModel.headaches
+            controller.managedContext = managedContext
+            controller.headaches = headaches
             if let indexPath = tableView.indexPathForCell(sender as! UITableViewCell) {
-                controller.headacheToEdit = dataModel.headaches[indexPath.row]
+                controller.headacheToEdit = headaches[indexPath.row]
             }
         }
     }
     
+    
+    
+    // MARK: - Helper Methods
+    
+    private func loadHeadaches() {
+        let headacheFetch = NSFetchRequest(entityName: "Headache")
+        headacheFetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        
+        do {
+            let results = try managedContext.executeFetchRequest(headacheFetch) as! [Headache]
+            
+            if results.count > 0 {
+                headaches = results
+            }
+        } catch let error as NSError {
+            print("Error: \(error) " + "description: \(error.localizedDescription)")
+        }
+    }
     
     private func configureTableCell(cell: UITableViewCell, withHeadache headache: Headache) {
         let label = cell.viewWithTag(1000) as! UILabel
@@ -157,7 +174,7 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         
-        label.text = dateFormatter.stringFromDate(headache.date)
+        label.text = dateFormatter.stringFromDate(headache.date!)
         cell.detailTextLabel?.text = headache.severityDescription()
         let severityColor = headache.severityColor()
         if let red = severityColor["red"], green = severityColor["green"], blue = severityColor["blue"] {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol HeadacheDetailTableViewControllerDelegate: class {
     func headacheDetailTableViewControllerDidCancel(controller: HeadacheDetailTableViewController)
@@ -20,6 +21,7 @@ class HeadacheDetailTableViewController: UITableViewController {
     @IBOutlet weak var severitySlider: UISlider!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
+    var managedContext: NSManagedObjectContext!
     weak var delegate: HeadacheDetailTableViewControllerDelegate?
     var headacheToEdit: Headache?
     var headaches = [Headache]()
@@ -29,8 +31,8 @@ class HeadacheDetailTableViewController: UITableViewController {
         
         if let headache = headacheToEdit {
             title = "Edit Headache"
-            datePicker.date = headache.date
-            severitySlider.value = Float(headache.severity)
+            datePicker.date = headache.date!
+            severitySlider.value = Float(headache.severity!)
         }
         
         // Prevent future dates
@@ -56,15 +58,27 @@ class HeadacheDetailTableViewController: UITableViewController {
     @IBAction func done() {
         if let headache = headacheToEdit {
             headache.date = datePicker.date
-            headache.severity = lroundf(severitySlider.value)
+            headache.severity = NSNumber(integer: lroundf(severitySlider.value))
             
-            delegate?.headacheDetailTableViewController(self, didFinishEditingHeadache: headache)
+            do {
+                try managedContext.save()
+                delegate?.headacheDetailTableViewController(self, didFinishEditingHeadache: headache)
+            } catch let error as NSError {
+                print("Error: \(error) " + "description: \(error.localizedDescription)")
+            }
+
         } else {
-            let headache = Headache()
-            headache.date = datePicker.date
-            headache.severity = lroundf(severitySlider.value)
-            
-            delegate?.headacheDetailTableViewController(self, didFinishAddingHeadache: headache)
+            do {
+                let headacheEntity = NSEntityDescription.entityForName("Headache", inManagedObjectContext: managedContext)
+                let headache = Headache(entity: headacheEntity!, insertIntoManagedObjectContext: managedContext)
+                headache.date = datePicker.date
+                headache.severity = NSNumber(integer: lroundf(severitySlider.value))
+                
+                try managedContext.save()
+                delegate?.headacheDetailTableViewController(self, didFinishAddingHeadache: headache)
+            } catch let error as NSError {
+                print("Error: \(error) " + "description: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -74,7 +88,7 @@ class HeadacheDetailTableViewController: UITableViewController {
         
         // Prevent duplicate dates
         for headache in headaches {
-            var order = calendar.compareDate(headache.date, toDate: sender.date, toUnitGranularity: .Day)
+            var order = calendar.compareDate(headache.date!, toDate: sender.date, toUnitGranularity: .Day)
             if order == .OrderedSame {
                 doneButton.enabled = false
                 

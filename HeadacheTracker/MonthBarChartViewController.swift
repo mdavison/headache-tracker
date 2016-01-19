@@ -8,13 +8,16 @@
 
 import UIKit
 import Charts
+import CoreData
 
 class MonthBarChartViewController: UIViewController {
 
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    var dataModel: DataModel!
+    var managedContext: NSManagedObjectContext!
+    var headaches = [Headache]()
+    
     var yearModel: Year?
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var years: [Int]!
@@ -25,6 +28,7 @@ class MonthBarChartViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        setHeadaches()
         setYears()
         setSegmentedControl()
         
@@ -60,11 +64,27 @@ class MonthBarChartViewController: UIViewController {
     
     @IBAction func saveChart(sender: UIBarButtonItem) {
         barChartView.saveToCameraRoll()
+        // TODO: alert user if successful or not
     }
     
     
+    private func setHeadaches() {
+        let headacheFetch = NSFetchRequest(entityName: "Headache")
+        headacheFetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        
+        do {
+            let results = try managedContext.executeFetchRequest(headacheFetch) as! [Headache]
+            
+            if results.count > 0 {
+                headaches = results
+            }
+        } catch let error as NSError {
+            print("Error: \(error) " + "description: \(error.localizedDescription)")
+        }
+    }
+    
     private func setYears() {
-        yearModel = Year(headaches: dataModel.headaches)
+        yearModel = Year(headaches: headaches)
         years = yearModel!.allYears
         years.sortInPlace()
     }
@@ -114,7 +134,6 @@ class MonthBarChartViewController: UIViewController {
     }
     
     private func setHeadachesForYear(year: Int) -> [Double]? {
-        let headaches = dataModel.headaches
         var noData = true
         
         var headachesForMonths = [
@@ -137,9 +156,9 @@ class MonthBarChartViewController: UIViewController {
         let calendar = NSCalendar.currentCalendar()
         
         for headache in headaches {
-            let headacheMonth = calendar.components(NSCalendarUnit.Month, fromDate: headache.date).month
+            let headacheMonth = calendar.components(NSCalendarUnit.Month, fromDate: headache.date!).month
             
-            let headacheYear = calendar.components(NSCalendarUnit.Year, fromDate: headache.date).year
+            let headacheYear = calendar.components(NSCalendarUnit.Year, fromDate: headache.date!).year
             
             if headacheYear == year {
                 headachesForMonths[headacheMonth]?.append(headache)

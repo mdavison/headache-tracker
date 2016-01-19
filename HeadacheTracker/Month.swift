@@ -25,7 +25,7 @@ class Month {
         let calender = NSCalendar.currentCalendar()
         
         for headache in headaches {
-            let headacheMonth = calender.components(NSCalendarUnit.Month, fromDate: headache.date).month
+            let headacheMonth = calender.components(NSCalendarUnit.Month, fromDate: headache.date!).month
             // Add the month as the dictionary key
             if !headachesForMonths.keys.contains(headacheMonth) {
                 headachesForMonths[headacheMonth] = []
@@ -50,8 +50,8 @@ class Month {
 //                print(headache.date.compare(oneMonthAgo) == NSComparisonResult.OrderedDescending)
 //                print(headache.date.compare(oneMonthAgo) == NSComparisonResult.OrderedSame)
                 
-                if (headache.date.compare(oneMonthAgo) == NSComparisonResult.OrderedDescending) ||
-                    (headache.date.compare(oneMonthAgo) == NSComparisonResult.OrderedSame) {
+                if (headache.date!.compare(oneMonthAgo) == NSComparisonResult.OrderedDescending) ||
+                    (headache.date!.compare(oneMonthAgo) == NSComparisonResult.OrderedSame) {
                         headachesForPastMonth.append(headache)
                 }
             }

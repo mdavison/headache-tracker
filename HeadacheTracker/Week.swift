@@ -25,7 +25,7 @@ class Week {
         let calender = NSCalendar.currentCalendar()
         
         for headache in headaches {
-            let headacheWeek = calender.components(NSCalendarUnit.WeekOfYear, fromDate: headache.date).weekOfYear
+            let headacheWeek = calender.components(NSCalendarUnit.WeekOfYear, fromDate: headache.date!).weekOfYear
             // Add the week as the dictionary key
             if !headachesForWeeks.keys.contains(headacheWeek) {
                 headachesForWeeks[headacheWeek] = []
@@ -50,8 +50,8 @@ class Week {
                 //print(headache.date.compare(oneWeekAgo) == NSComparisonResult.OrderedDescending)
                 //print(headache.date.compare(oneWeekAgo) == NSComparisonResult.OrderedSame)
                 
-                if (headache.date.compare(oneWeekAgo) == NSComparisonResult.OrderedDescending) ||
-                    (headache.date.compare(oneWeekAgo) == NSComparisonResult.OrderedSame) {
+                if (headache.date!.compare(oneWeekAgo) == NSComparisonResult.OrderedDescending) ||
+                    (headache.date!.compare(oneWeekAgo) == NSComparisonResult.OrderedSame) {
                     headachesForPastWeek.append(headache)
                 }            
             }
