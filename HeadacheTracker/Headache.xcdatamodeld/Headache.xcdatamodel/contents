@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
     <entity name="Headache" representedClassName=".Headache" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="severity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="month" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Month" inverseName="headaches" inverseEntity="Month" syncable="YES"/>
+        <relationship name="week" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Week" inverseName="headaches" inverseEntity="Week" syncable="YES"/>
+        <relationship name="year" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Year" inverseName="headaches" inverseEntity="Year" syncable="YES"/>
+    </entity>
+    <entity name="Month" representedClassName=".Month" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="headaches" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Headache" inverseName="month" inverseEntity="Headache" syncable="YES"/>
+    </entity>
+    <entity name="Week" representedClassName=".Week" syncable="YES">
+        <attribute name="numberInYear" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="headaches" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Headache" inverseName="week" inverseEntity="Headache" syncable="YES"/>
+    </entity>
+    <entity name="Year" representedClassName=".Year" syncable="YES">
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="headaches" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Headache" inverseName="year" inverseEntity="Headache" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Headache" positionX="-9" positionY="36" width="128" height="75"/>
+        <element name="Headache" positionX="106" positionY="-117" width="128" height="118"/>
+        <element name="Month" positionX="-180" positionY="-315" width="128" height="88"/>
+        <element name="Week" positionX="63" positionY="-306" width="128" height="73"/>
+        <element name="Year" positionX="288" positionY="-306" width="128" height="73"/>
     </elements>
 </model>

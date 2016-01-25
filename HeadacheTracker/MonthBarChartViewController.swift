@@ -15,12 +15,13 @@ class MonthBarChartViewController: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    var managedContext: NSManagedObjectContext!
-    var headaches = [Headache]()
+    var coreDataStack: CoreDataStack!
+    var fetchedResultsController: NSFetchedResultsController!
+    var yearsFetchedResultsController: NSFetchedResultsController!
     
-    var yearModel: Year?
+    //var yearModel: Year?
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    var years: [Int]!
+    var years = [Int]()
     var selectedYear = 0
     
     override func viewDidLoad() {
@@ -28,7 +29,8 @@ class MonthBarChartViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        setHeadaches()
+        fetchYears()
+        fetchHeadaches()
         setYears()
         setSegmentedControl()
         
@@ -68,27 +70,46 @@ class MonthBarChartViewController: UIViewController {
     }
     
     
-    private func setHeadaches() {
+    private func fetchHeadaches() {
         let headacheFetch = NSFetchRequest(entityName: "Headache")
         headacheFetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: headacheFetch, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
         do {
-            let results = try managedContext.executeFetchRequest(headacheFetch) as! [Headache]
-            
-            if results.count > 0 {
-                headaches = results
-            }
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Error: \(error) " + "description: \(error.localizedDescription)")
+        }
+    }
+    
+
+    private func fetchYears() {
+        let yearFetch = NSFetchRequest(entityName: "Year")
+        let sortDescriptor = NSSortDescriptor(key: "number", ascending: true)
+        yearFetch.sortDescriptors = [sortDescriptor]
+        
+        yearsFetchedResultsController = NSFetchedResultsController(fetchRequest: yearFetch, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try yearsFetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Error: \(error) " + "description: \(error.localizedDescription)")
         }
     }
     
     private func setYears() {
-        yearModel = Year(headaches: headaches)
-        years = yearModel!.allYears
-        years.sortInPlace()
+        years = [] // reset so don't keep appennding and getting duplicates
+        
+        for year in yearsFetchedResultsController.fetchedObjects as! [Year] {
+            years.append(Int(year.number!))
+        }
+        
+        if let latestYear = years.last {
+            selectedYear = latestYear
+        }
     }
-    
+
     private func setSegmentedControl() {
         segmentedControl.removeAllSegments()
         
@@ -102,6 +123,7 @@ class MonthBarChartViewController: UIViewController {
         
         if let latestYear = years.last {
             selectedYear = latestYear
+            
             segmentedControl.selectedSegmentIndex = years.count - 1
         }
     }
@@ -155,26 +177,70 @@ class MonthBarChartViewController: UIViewController {
         
         let calendar = NSCalendar.currentCalendar()
         
-        for headache in headaches {
-            let headacheMonth = calendar.components(NSCalendarUnit.Month, fromDate: headache.date!).month
+        if let headachesForYear = fetchHeadachesForYear(year) {
             
-            let headacheYear = calendar.components(NSCalendarUnit.Year, fromDate: headache.date!).year
-            
-            if headacheYear == year {
+            for headache in headachesForYear {
+                let headacheMonth = calendar.components(NSCalendarUnit.Month, fromDate: headache.date!).month
+                
                 headachesForMonths[headacheMonth]?.append(headache)
             }
-        }
-        
-        for month in monthNumbers {
-            if let ha = headachesForMonths[month] {
-                if ha.count > 0 { noData = false }
-                numberOfHeadachesPerMonth.append(Double(ha.count))
-            }
-        }
 
-        if noData { return nil }
-        
-        return numberOfHeadachesPerMonth
+            for month in monthNumbers {
+                if let ha = headachesForMonths[month] {
+                    if ha.count > 0 { noData = false }
+                    numberOfHeadachesPerMonth.append(Double(ha.count))
+                }
+            }
+
+            if noData { return nil }
+            
+            return numberOfHeadachesPerMonth
+        } else {
+            return nil
+        }
     }
+    
+    private func fetchHeadachesForYear(year: Int) -> [Headache]? {
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "yyyy"
+//        let nsDateYear = dateFormatter.dateFromString("\(year)")
+        
+//        let headacheFetch = NSFetchRequest(entityName: "Headache")
+//        headacheFetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+//        headacheFetch.relationshipKeyPathsForPrefetching = ["year"]
+//        headacheFetch.predicate = NSPredicate(format: "date >= %@", nsDateYear!)
+//        
+//        fetchedResultsController = NSFetchedResultsController(fetchRequest: headacheFetch, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        let yearFetch = NSFetchRequest(entityName: "Year")
+        yearFetch.sortDescriptors = [NSSortDescriptor(key: "number", ascending: true)]
+        yearFetch.relationshipKeyPathsForPrefetching = ["headaches"]
+        yearFetch.predicate = NSPredicate(format: "number == %d", year)
+        
+        let headachesForYearFetchedResultsController = NSFetchedResultsController(fetchRequest: yearFetch, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+
+        
+        do {
+            try headachesForYearFetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Error: \(error) " + "description: \(error.localizedDescription)")
+        }
+        
+        if let yearFetched = headachesForYearFetchedResultsController.fetchedObjects?.first as? Year {
+            //print(yearFetched.headaches)
+            
+            var headaches = [Headache]()
+            for headache in yearFetched.headaches! {
+                headaches.append(headache as! Headache)
+            }
+            
+            //return yearFetched.headaches! as AnyObject as! [Headache]
+            //return headachesForYearFetchedResultsController.fetchedObjects as! [Headache]
+            return headaches
+        } else {
+            return nil
+        }
+    }
+    
 
 }
