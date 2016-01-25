@@ -22,10 +22,8 @@ class HeadacheDetailTableViewController: UITableViewController {
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     var coreDataStack: CoreDataStack!
-    //var managedContext: NSManagedObjectContext!
     weak var delegate: HeadacheDetailTableViewControllerDelegate?
     var headacheToEdit: Headache?
-    var headaches = [Headache]()
     var fetchedResultsController: NSFetchedResultsController!
     
     override func viewDidLoad() {
@@ -39,6 +37,8 @@ class HeadacheDetailTableViewController: UITableViewController {
         
         // Prevent future dates
         datePicker.maximumDate = NSDate()
+        
+        validateSelectedDate(datePicker.date)
     }
     
     // MARK: - UITableViewControllerDelegate
@@ -85,23 +85,7 @@ class HeadacheDetailTableViewController: UITableViewController {
     
     @IBAction func dateChanged(sender: UIDatePicker) {
         doneButton.enabled = true
-        let calendar = NSCalendar.currentCalendar()
-        
-        // Prevent duplicate dates
-        for headache in headaches {
-            var order = calendar.compareDate(headache.date!, toDate: sender.date, toUnitGranularity: .Day)
-            if order == .OrderedSame {
-                doneButton.enabled = false
-                
-                // Unless editing that date
-                if let editingHeadache = headacheToEdit?.date {
-                    order = calendar.compareDate(editingHeadache, toDate: sender.date, toUnitGranularity: .Day)
-                    if order == .OrderedSame {
-                        doneButton.enabled = true
-                    }
-                }
-            }
-        }
+        validateSelectedDate(sender.date)
     }
     
     @IBAction func severityChanged(sender: UISlider) {
@@ -150,5 +134,25 @@ class HeadacheDetailTableViewController: UITableViewController {
         headacheYear.headaches = headaches.copy() as? NSOrderedSet
 
     }
+    
+    private func validateSelectedDate(date: NSDate) {
+        let calendar = NSCalendar.currentCalendar()
+        
+        for headache in fetchedResultsController.fetchedObjects as! [Headache] {
+            var order = calendar.compareDate(headache.date!, toDate: date, toUnitGranularity: .Day)
+            if order == .OrderedSame {
+                doneButton.enabled = false
+                
+                // Unless editing that date
+                if let editingHeadache = headacheToEdit?.date {
+                    order = calendar.compareDate(editingHeadache, toDate: date, toUnitGranularity: .Day)
+                    if order == .OrderedSame {
+                        doneButton.enabled = true
+                    }
+                }
+            }
+        }
+    }
+
     
 }
