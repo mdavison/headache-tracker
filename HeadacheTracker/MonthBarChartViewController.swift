@@ -19,10 +19,10 @@ class MonthBarChartViewController: UIViewController {
     var fetchedResultsController: NSFetchedResultsController!
     var yearsFetchedResultsController: NSFetchedResultsController!
     
-    //var yearModel: Year?
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var years = [Int]()
     var selectedYear = 0
+    var segmentedControlSelectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,6 @@ class MonthBarChartViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         fetchYears()
         fetchHeadaches()
-        setYears()
         setSegmentedControl()
         
         if let headaches = setHeadachesForYear(selectedYear) {
@@ -58,7 +57,9 @@ class MonthBarChartViewController: UIViewController {
     
     
     @IBAction func segementChanged(sender: UISegmentedControl) {
+        segmentedControlSelectedIndex = sender.selectedSegmentIndex
         selectedYear = years[sender.selectedSegmentIndex]
+        
         if let headaches = setHeadachesForYear(selectedYear) {
             setChart(months, values: headaches)
         }
@@ -99,21 +100,20 @@ class MonthBarChartViewController: UIViewController {
         }
     }
     
-    private func setYears() {
-        years = [] // reset so don't keep appennding and getting duplicates
+    private func loadYears() {
+        years = [] // reset so don't keep appending and getting duplicates
         
+        // Yes, I end up looping through the years twice but it's just a lot easier
+        // to deal with a simple array and there shouldn't ever be that many years
         for year in yearsFetchedResultsController.fetchedObjects as! [Year] {
             years.append(Int(year.number!))
-        }
-        
-        if let latestYear = years.last {
-            selectedYear = latestYear
         }
     }
 
     private func setSegmentedControl() {
         segmentedControl.removeAllSegments()
-        
+        loadYears()
+
         for year in years {
             var index = 0
             if let i = years.indexOf(year) {
@@ -122,10 +122,14 @@ class MonthBarChartViewController: UIViewController {
             segmentedControl.insertSegmentWithTitle("\(year)", atIndex: index, animated: false)
         }
         
-        if let latestYear = years.last {
-            selectedYear = latestYear
-            
-            segmentedControl.selectedSegmentIndex = years.count - 1
+        if let index = segmentedControlSelectedIndex {
+            segmentedControl.selectedSegmentIndex = index
+            selectedYear = years[index]
+        } else {
+            if let latestYear = years.last {
+                selectedYear = latestYear
+                segmentedControl.selectedSegmentIndex = years.count - 1
+            }
         }
     }
     
@@ -202,17 +206,6 @@ class MonthBarChartViewController: UIViewController {
     }
     
     private func fetchHeadachesForYear(year: Int) -> [Headache]? {
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "yyyy"
-//        let nsDateYear = dateFormatter.dateFromString("\(year)")
-        
-//        let headacheFetch = NSFetchRequest(entityName: "Headache")
-//        headacheFetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-//        headacheFetch.relationshipKeyPathsForPrefetching = ["year"]
-//        headacheFetch.predicate = NSPredicate(format: "date >= %@", nsDateYear!)
-//        
-//        fetchedResultsController = NSFetchedResultsController(fetchRequest: headacheFetch, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
-        
         let yearFetch = NSFetchRequest(entityName: "Year")
         yearFetch.sortDescriptors = [NSSortDescriptor(key: "number", ascending: true)]
         yearFetch.relationshipKeyPathsForPrefetching = ["headaches"]
@@ -228,15 +221,12 @@ class MonthBarChartViewController: UIViewController {
         }
         
         if let yearFetched = headachesForYearFetchedResultsController.fetchedObjects?.first as? Year {
-            //print(yearFetched.headaches)
             
             var headaches = [Headache]()
             for headache in yearFetched.headaches! {
                 headaches.append(headache as! Headache)
             }
-            
-            //return yearFetched.headaches! as AnyObject as! [Headache]
-            //return headachesForYearFetchedResultsController.fetchedObjects as! [Headache]
+
             return headaches
         } else {
             return nil

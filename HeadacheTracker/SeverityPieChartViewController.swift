@@ -18,12 +18,8 @@ class SeverityPieChartViewController: UIViewController {
     var coreDataStack: CoreDataStack!
     let severityLevels = ["1", "2", "3", "4", "5"]
     
-    //var managedContext: NSManagedObjectContext!
     var headaches = [Headache]()
-    
-    //var weekModel: Week?
-    //var monthModel: Month?
-    //var yearModel: Year?
+
     var selectedSegmentIndex = 0
     
     override func viewDidLoad() {
@@ -32,10 +28,6 @@ class SeverityPieChartViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         setHeadaches()
-
-//        weekModel = Week(headaches: headaches)
-//        monthModel = Month(headaches: headaches)
-//        yearModel = Year(headaches: headaches)
 
         if let selectedSegment = getSelectedSegment(selectedSegmentIndex) {
             if let headaches = getHeadachesBySeverity(selectedSegment) {
@@ -128,46 +120,6 @@ class SeverityPieChartViewController: UIViewController {
         }
     }
     
-//    private func getHeadaches(timePeriod: String) -> [Double]? {
-//        var severityArray = [[Headache](), [Headache](), [Headache](), [Headache](), [Headache]()]
-//        var headacheCountBySeverity = [Double]()
-//        var headachesForTimePeriod = [Headache]()
-//        
-//        switch timePeriod {
-//        case "week":
-////            if let headaches = weekModel?.headachesForPastWeek {
-////                headachesForTimePeriod = headaches
-////            }
-//            break
-//        case "month":
-////            if let headaches = monthModel?.headachesForPastMonth {
-////                headachesForTimePeriod = headaches
-////            }
-//            break
-//        case "year":
-////            if let headaches = yearModel?.headachesForPastYear {
-////                headachesForTimePeriod = headaches
-////            }
-//            
-//            // get headaches for year
-//            // yearFetch.first = headaches
-//            headachesForTimePeriod = fetchHeadachesForPastYear()
-//            
-//        default:
-//            return nil
-//        }
-//        
-//        for headache in headachesForTimePeriod {
-//            let severityInt = Int(headache.severity!)
-//            severityArray[severityInt-1] += [headache]
-//        }
-//        
-//        for ha in severityArray {
-//            headacheCountBySeverity.append(Double(ha.count))
-//        }
-//        return headacheCountBySeverity
-//    }
-    
     private func getHeadachesBySeverity(timePeriod: String) -> [Double]? {
         var severityArray = [[Headache](), [Headache](), [Headache](), [Headache](), [Headache]()]
         var headacheCountBySeverity = [Double]()
@@ -213,7 +165,6 @@ class SeverityPieChartViewController: UIViewController {
         default:
             return nil
         }
-        //let oneYearAgo = calendar.dateByAddingUnit(.Year, value: -1, toDate: NSDate(), options: [])
 
         let headacheFetch = NSFetchRequest(entityName: "Headache")
         headacheFetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
