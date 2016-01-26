@@ -62,7 +62,10 @@ class SeverityPieChartViewController: UIViewController {
     }
     
     @IBAction func saveChart(sender: UIBarButtonItem) {
-        pieChartView.saveToCameraRoll()
+        //pieChartView.saveToCameraRoll()
+        
+        let image = pieChartView.getChartImage(transparent: false)
+        UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
     }
     
     
@@ -182,6 +185,24 @@ class SeverityPieChartViewController: UIViewController {
         
         return headacheFetchedResultsController.fetchedObjects as? [Headache]
     }
+    
+    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        if let error = error {
+            print(error.domain)
+            alert.title = "Error"
+            alert.message = "Unable to save chart. Please check permissions for this app in Settings."
+        } else {
+            alert.title = "Saved"
+            alert.message = "Chart was saved to Photos"
+        }
+        
+        alert.addAction(defaultAction)
+        presentViewController(alert, animated: true, completion:nil)
+    }
+
 
 
 }

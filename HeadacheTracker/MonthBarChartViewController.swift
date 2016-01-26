@@ -67,8 +67,11 @@ class MonthBarChartViewController: UIViewController {
     }
     
     @IBAction func saveChart(sender: UIBarButtonItem) {
-        barChartView.saveToCameraRoll()
-        // TODO: alert user if successful or not
+        //barChartView.saveToCameraRoll()
+        
+        let image = barChartView.getChartImage(transparent: false)
+        UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
+        
     }
     
     
@@ -233,5 +236,21 @@ class MonthBarChartViewController: UIViewController {
         }
     }
     
+    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        if let error = error {
+            print(error.domain)
+            alert.title = "Error"
+            alert.message = "Unable to save chart. Please check permissions for this app in Settings."
+        } else {
+            alert.title = "Saved"
+            alert.message = "Chart was saved to Photos"
+        }
+        
+        alert.addAction(defaultAction)
+        presentViewController(alert, animated: true, completion:nil)
+    }
 
 }
