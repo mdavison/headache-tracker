@@ -319,23 +319,10 @@ class HeadacheDetailTableViewController: UITableViewController {
     }
     
     private func fetchMedications() {
-//        let fetch = NSFetchRequest(entityName: "Medication")
-//        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-//        fetch.sortDescriptors = [sortDescriptor]
-//        
-//        medicationFetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
-//        
-//        do {
-//            try medicationFetchedResultsController.performFetch()
-//        } catch let error as NSError {
-//            print("Error: \(error) " + "description: \(error.localizedDescription)")
-//        }
-//        
-//        numberOfMedications = medicationFetchedResultsController.fetchedObjects?.count ?? 0
-
         // Can't use NSFetchedResultsController in this table view because of the static sections
         let fetchRequest = NSFetchRequest(entityName: "Medication")
-        // Need a predicate to order
+        let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [nameSortDescriptor]
         
         do {
             let results = try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Medication]
