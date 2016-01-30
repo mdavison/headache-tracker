@@ -246,9 +246,18 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         
-        //label.text = dateFormatter.stringFromDate(headache.date!)
-        cell.dateLabel.text = dateFormatter.stringFromDate(headache.date!)
-        //cell.detailTextLabel?.text = headache.severityDescription()
+        let calendar = NSCalendar.currentCalendar()
+        let compareToToday = calendar.compareDate(headache.date!, toDate: NSDate(), toUnitGranularity: .Day)
+        let yesterday = calendar.dateByAddingUnit(.Day, value: -1, toDate: NSDate(), options: [])
+        let compareToYesterday = calendar.compareDate(headache.date!, toDate: yesterday!, toUnitGranularity: .Day)
+        if compareToToday == .OrderedSame {
+            cell.dateLabel.text = "Today"
+        } else if compareToYesterday == .OrderedSame {
+            cell.dateLabel.text = "Yesterday"
+        } else {
+            cell.dateLabel.text = dateFormatter.stringFromDate(headache.date!)
+        }
+        
         cell.severityLabel.text = headache.severityDescription()
         
         let severityColor = headache.severityColor()
