@@ -3,9 +3,14 @@
     <entity name="Headache" representedClassName=".Headache" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="severity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="medications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Medication" inverseName="headaches" inverseEntity="Medication" syncable="YES"/>
         <relationship name="month" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Month" inverseName="headaches" inverseEntity="Month" syncable="YES"/>
         <relationship name="week" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Week" inverseName="headaches" inverseEntity="Week" syncable="YES"/>
         <relationship name="year" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Year" inverseName="headaches" inverseEntity="Year" syncable="YES"/>
+    </entity>
+    <entity name="Medication" representedClassName=".Medication" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="headaches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Headache" inverseName="medications" inverseEntity="Headache" syncable="YES"/>
     </entity>
     <entity name="Month" representedClassName=".Month" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,9 +26,10 @@
         <relationship name="headaches" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Headache" inverseName="year" inverseEntity="Headache" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Headache" positionX="106" positionY="-117" width="128" height="118"/>
+        <element name="Headache" positionX="106" positionY="-117" width="128" height="135"/>
         <element name="Month" positionX="-180" positionY="-315" width="128" height="88"/>
         <element name="Week" positionX="63" positionY="-306" width="128" height="73"/>
         <element name="Year" positionX="288" positionY="-306" width="128" height="73"/>
+        <element name="Medication" positionX="27" positionY="-171" width="128" height="75"/>
     </elements>
 </model>

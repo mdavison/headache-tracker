@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class HeadacheTableViewController: UITableViewController, HeadacheDetailTableViewControllerDelegate {
-
+    
     //var dataModel: DataModel!
     var coreDataStack: CoreDataStack!
     //var managedContext: NSManagedObjectContext!
@@ -31,6 +31,9 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         
 //        let yearFetchedResultsController = fetchYears()
 //        print(yearFetchedResultsController.fetchedObjects?.count)
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 90.0
     }
 
 
@@ -54,7 +57,7 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.HeadacheCellReuseIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.HeadacheCellReuseIdentifier, forIndexPath: indexPath) as! HeadacheListTableViewCell
 
         let headache = fetchedResultsController.objectAtIndexPath(indexPath) as! Headache
         
@@ -104,12 +107,15 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
 //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        tableView.deselectRowAtIndexPath(indexPath, animated: true)
 //    }
+        
     
     
     // MARK: HeadacheDetailTableViewControllerDelegate
     
     func headacheDetailTableViewControllerDidCancel(controller: HeadacheDetailTableViewController) {
         dismissViewControllerAnimated(true, completion: nil)
+        // Reload data in case medications were changed
+        tableView.reloadData()
     }
     
     func headacheDetailTableViewController(controller: HeadacheDetailTableViewController, didFinishAddingHeadache headache: Headache) {
@@ -127,7 +133,7 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     func headacheDetailTableViewController(controller: HeadacheDetailTableViewController, didFinishEditingHeadache headache: Headache) {
         if let index = headaches.indexOf(headache) {
             let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) as? HeadacheListTableViewCell {
                 configureTableCell(cell, withHeadache: headache)
             }
         }
@@ -170,6 +176,7 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     private func loadHeadaches() {
         let headacheFetch = NSFetchRequest(entityName: "Headache")
         headacheFetch.relationshipKeyPathsForPrefetching = ["year"]
+        headacheFetch.relationshipKeyPathsForPrefetching = ["medications"]
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
         headacheFetch.sortDescriptors = [sortDescriptor]
         
@@ -233,18 +240,28 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         return headachesForYearFetchedResultsController
     }
     
-    private func configureTableCell(cell: UITableViewCell, withHeadache headache: Headache) {
-        let label = cell.viewWithTag(1000) as! UILabel
+    private func configureTableCell(cell: HeadacheListTableViewCell, withHeadache headache: Headache) {
+        //let label = cell.viewWithTag(1000) as! UILabel
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         
-        label.text = dateFormatter.stringFromDate(headache.date!)
-        cell.detailTextLabel?.text = headache.severityDescription()
+        //label.text = dateFormatter.stringFromDate(headache.date!)
+        cell.dateLabel.text = dateFormatter.stringFromDate(headache.date!)
+        //cell.detailTextLabel?.text = headache.severityDescription()
+        cell.severityLabel.text = headache.severityDescription()
+        
         let severityColor = headache.severityColor()
         if let red = severityColor["red"], green = severityColor["green"], blue = severityColor["blue"] {
-            cell.detailTextLabel?.textColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
+            //cell.detailTextLabel?.textColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
+            cell.severityLabel.textColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
         }
+        
+        var medicationsArray = [String]()
+        for medication in headache.medications! {
+            medicationsArray.append(medication.name)
+        }
+        cell.medicationsLabel.text = medicationsArray.joinWithSeparator(", ")
     }
     
     private func deleteYearIfNoHeadaches(headacheYear: Int) {
@@ -281,9 +298,9 @@ extension HeadacheTableViewController: NSFetchedResultsControllerDelegate {
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!)
+            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! HeadacheListTableViewCell
             let headache = fetchedResultsController.objectAtIndexPath(indexPath!) as! Headache
-            configureTableCell(cell!, withHeadache: headache)
+            configureTableCell(cell, withHeadache: headache)
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)

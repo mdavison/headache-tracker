@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let allHeadachesController = allHeadachesNavigationController.viewControllers[0] as! HeadacheTableViewController
         let monthBarChartViewController = monthBarChartViewNavigationController.viewControllers[0] as! MonthBarChartViewController
         let severityPieChartViewController = severityPieChartViewNavigationController.viewControllers[0] as! SeverityPieChartViewController
-        
+
         //allHeadachesController.managedContext = coreDataStack.context
         //monthBarChartViewController.managedContext = coreDataStack.context
         //severityPieChartViewController.managedContext = coreDataStack.context

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9018BFE51C5973C800168E7D /* MedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFE41C5973C800168E7D /* MedicationTableViewController.swift */; };
+		9018BFE91C599CDD00168E7D /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFE81C599CDD00168E7D /* DatePickerTableViewCell.swift */; };
+		9018BFEB1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFEA1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift */; };
+		9018BFED1C59BCD900168E7D /* SeverityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFEC1C59BCD900168E7D /* SeverityTableViewCell.swift */; };
+		9018BFEF1C5A634C00168E7D /* MedicationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFEE1C5A634C00168E7D /* MedicationsTableViewCell.swift */; };
+		9018BFF11C5A637800168E7D /* MedicationsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFF01C5A637800168E7D /* MedicationsListTableViewCell.swift */; };
+		9018BFF41C5AC6C200168E7D /* Medication+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFF21C5AC6C200168E7D /* Medication+CoreDataProperties.swift */; };
+		9018BFF51C5AC6C200168E7D /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFF31C5AC6C200168E7D /* Medication.swift */; };
+		9018BFF71C5BB28F00168E7D /* HeadacheListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFF61C5BB28F00168E7D /* HeadacheListTableViewCell.swift */; };
 		903EA9161C3888B70086BBF4 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903EA9111C38889B0086BBF4 /* Charts.framework */; };
 		903EA9171C3888B70086BBF4 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 903EA9111C38889B0086BBF4 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		903EA91C1C388AD70086BBF4 /* MonthBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */; };
@@ -76,6 +85,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9018BFE41C5973C800168E7D /* MedicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationTableViewController.swift; sourceTree = "<group>"; };
+		9018BFE81C599CDD00168E7D /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
+		9018BFEA1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = backupHeadacheDetailTableViewController.swift; sourceTree = "<group>"; };
+		9018BFEC1C59BCD900168E7D /* SeverityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeverityTableViewCell.swift; sourceTree = "<group>"; };
+		9018BFEE1C5A634C00168E7D /* MedicationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationsTableViewCell.swift; sourceTree = "<group>"; };
+		9018BFF01C5A637800168E7D /* MedicationsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationsListTableViewCell.swift; sourceTree = "<group>"; };
+		9018BFF21C5AC6C200168E7D /* Medication+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medication+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9018BFF31C5AC6C200168E7D /* Medication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
+		9018BFF61C5BB28F00168E7D /* HeadacheListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheListTableViewCell.swift; sourceTree = "<group>"; };
 		903EA90A1C38889A0086BBF4 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MonthBarChartViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		903EA91D1C3C11090086BBF4 /* SeverityPieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeverityPieChartViewController.swift; sourceTree = "<group>"; };
@@ -131,10 +149,12 @@
 				904E4C591C51CEE200104B3D /* Year+CoreDataProperties.swift */,
 				904E4C5B1C51CEE200104B3D /* Month+CoreDataProperties.swift */,
 				904E4C571C51CEE200104B3D /* Week+CoreDataProperties.swift */,
+				9018BFF21C5AC6C200168E7D /* Medication+CoreDataProperties.swift */,
 				904E4C4F1C4DDE9000104B3D /* Headache.swift */,
 				904E4C581C51CEE200104B3D /* Week.swift */,
 				904E4C5A1C51CEE200104B3D /* Year.swift */,
 				904E4C5C1C51CEE200104B3D /* Month.swift */,
+				9018BFF31C5AC6C200168E7D /* Medication.swift */,
 			);
 			name = CoreDataStack;
 			sourceTree = "<group>";
@@ -161,10 +181,17 @@
 			children = (
 				90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */,
 				90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */,
+				9018BFF61C5BB28F00168E7D /* HeadacheListTableViewCell.swift */,
 				90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */,
+				9018BFE81C599CDD00168E7D /* DatePickerTableViewCell.swift */,
+				9018BFEC1C59BCD900168E7D /* SeverityTableViewCell.swift */,
+				9018BFEE1C5A634C00168E7D /* MedicationsTableViewCell.swift */,
+				9018BFF01C5A637800168E7D /* MedicationsListTableViewCell.swift */,
+				9018BFE41C5973C800168E7D /* MedicationTableViewController.swift */,
 				903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */,
 				903EA91D1C3C11090086BBF4 /* SeverityPieChartViewController.swift */,
 				90A8F6291BF2B15D00356B56 /* AppDelegate.swift */,
+				9018BFEA1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift */,
 				904E4C631C51CF0000104B3D /* CoreDataStack */,
 				904E4C4B1C4DDE1600104B3D /* Headache.xcdatamodeld */,
 				90A8F6301BF2B15D00356B56 /* Assets.xcassets */,
@@ -287,20 +314,29 @@
 			files = (
 				903EA91C1C388AD70086BBF4 /* MonthBarChartViewController.swift in Sources */,
 				90A8F6461BF44B7D00356B56 /* HeadacheTabBarController.swift in Sources */,
+				9018BFEF1C5A634C00168E7D /* MedicationsTableViewCell.swift in Sources */,
 				904E4C5E1C51CEE200104B3D /* Week.swift in Sources */,
 				904E4C501C4DDE9000104B3D /* Headache+CoreDataProperties.swift in Sources */,
+				9018BFF71C5BB28F00168E7D /* HeadacheListTableViewCell.swift in Sources */,
 				904E4C5F1C51CEE200104B3D /* Year+CoreDataProperties.swift in Sources */,
 				904E4C621C51CEE200104B3D /* Month.swift in Sources */,
 				904E4C611C51CEE200104B3D /* Month+CoreDataProperties.swift in Sources */,
+				9018BFF11C5A637800168E7D /* MedicationsListTableViewCell.swift in Sources */,
 				904E4C481C4DDC1300104B3D /* CoreDataStack.swift in Sources */,
 				904E4C5D1C51CEE200104B3D /* Week+CoreDataProperties.swift in Sources */,
+				9018BFE51C5973C800168E7D /* MedicationTableViewController.swift in Sources */,
 				903EA91E1C3C11090086BBF4 /* SeverityPieChartViewController.swift in Sources */,
 				904E4C511C4DDE9000104B3D /* Headache.swift in Sources */,
+				9018BFEB1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift in Sources */,
 				90A8F63C1BF2BCCC00356B56 /* HeadacheTableViewController.swift in Sources */,
+				9018BFF51C5AC6C200168E7D /* Medication.swift in Sources */,
 				904E4C4D1C4DDE1600104B3D /* Headache.xcdatamodeld in Sources */,
+				9018BFF41C5AC6C200168E7D /* Medication+CoreDataProperties.swift in Sources */,
 				904E4C601C51CEE200104B3D /* Year.swift in Sources */,
+				9018BFED1C59BCD900168E7D /* SeverityTableViewCell.swift in Sources */,
 				90A8F62A1BF2B15D00356B56 /* AppDelegate.swift in Sources */,
 				90A8F6401BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift in Sources */,
+				9018BFE91C599CDD00168E7D /* DatePickerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
