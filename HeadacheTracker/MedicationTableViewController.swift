@@ -217,6 +217,7 @@ class MedicationTableViewController: UITableViewController {
         let alert = UIAlertController(title: alertTitle, message: nil, preferredStyle: .Alert)
         
         alert.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            textField.autocapitalizationType = UITextAutocapitalizationType.Words
             if medication != nil {
                 textField.text = medication?.name
             } else {
@@ -255,7 +256,7 @@ class MedicationTableViewController: UITableViewController {
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction) -> Void in
-            print("Cancel")
+            //print("Cancel")
         }))
         
         presentViewController(alert, animated: true, completion: nil)
