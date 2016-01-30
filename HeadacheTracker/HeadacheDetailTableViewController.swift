@@ -71,7 +71,7 @@ class HeadacheDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         switch indexPath.section {
-        case 0:
+        case 0: // DATEPICKER
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.DatePickerCellReuseIdentifier, forIndexPath: indexPath) as! DatePickerTableViewCell
             datePicker = cell.datePicker
             
@@ -82,7 +82,7 @@ class HeadacheDetailTableViewController: UITableViewController {
             validateSelectedDate(cell.datePicker.date)
             
             return cell
-        case 1:
+        case 1: // SEVERITY
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.SeverityCellReuseIdentifier, forIndexPath: indexPath) as! SeverityTableViewCell
             severitySlider = cell.severitySlider
             if let headache = headacheToEdit {
@@ -90,28 +90,36 @@ class HeadacheDetailTableViewController: UITableViewController {
             }
             
             return cell 
-        case 2:
+        case 2: // MEDICATIONS LIST
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.MedicationsListCellReuseIdentifier, forIndexPath: indexPath) as! MedicationsListTableViewCell
 
             cell.textLabel?.text = medications[indexPath.row].name
             cell.detailTextLabel?.text = countMedications(forIndexPath: indexPath)
             
+            if selectedMedications.indexOf(medications[indexPath.row]) != nil {
+                cell.accessoryType = .Checkmark
+            }
+            
             return cell
-        default:
+        default: // MANAGE MEDICATIONS
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.MedicationsCellReuseIdentifier, forIndexPath: indexPath) as! MedicationsTableViewCell
             return cell
         }
     }
-    
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let medicationJustSelected = medications[indexPath.row]
-        
-        if selectedMedications.indexOf(medicationJustSelected) == nil {
-            selectedMedications.append(medicationJustSelected)
-        }
-        
+        let indexOfMedicationJustSelected = selectedMedications.indexOf(medicationJustSelected)
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell?.detailTextLabel?.text = "✓"
+        
+        if indexOfMedicationJustSelected == nil {
+            selectedMedications.append(medicationJustSelected)
+            cell?.accessoryType = .Checkmark
+        } else {
+            selectedMedications.removeAtIndex(indexOfMedicationJustSelected!)
+            cell?.accessoryType = .None
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -122,46 +130,35 @@ class HeadacheDetailTableViewController: UITableViewController {
         }
     }
     
+    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if editingStyle == .Delete {
             // Delete the row from the data source
             //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            //tableView.reloadData()
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
+    */
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        
-        let button = UITableViewRowAction(style: .Default, title: "Clear", handler: { (action, indexPath) in
-            //self.medications[indexPath.row][1] = 0
-            
-            // TODO: find all matching medications to the selected one and remove from selectedMedications
-            self.clearMedication(atIndexPath: indexPath)
-//            let clearedMedication = self.medications[indexPath.row]
-//            //let indexOfClearedMedication = self.selectedMedications.indexOf(clearedMedication)
-//            //self.selectedMedications.removeAtIndex(indexOfClearedMedication!)
-//            for selectedMed in self.selectedMedications {
-//                if selectedMed.name == clearedMedication.name {
-//                    let index = self.selectedMedications.indexOf(selectedMed)
-//                    print(index)
-//                    self.selectedMedications.removeAtIndex(index!)
-//                }
-//            }
-//            print(self.selectedMedications)
-            
-            let cell = tableView.cellForRowAtIndexPath(indexPath)
-            cell!.detailTextLabel?.text = ""
-            //tableView.reloadData()
-            tableView.setEditing(false, animated: true)
-        })
-        button.backgroundColor = UIColor.orangeColor()
-        
-        return [button]
-    }
+//    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+//        
+//        let button = UITableViewRowAction(style: .Default, title: "Clear", handler: { (action, indexPath) in
+//            //self.medications[indexPath.row][1] = 0
+//            
+//            self.clearMedication(atIndexPath: indexPath)
+//            
+//            let cell = tableView.cellForRowAtIndexPath(indexPath)
+//            cell!.detailTextLabel?.text = ""
+//            //tableView.reloadData()
+//            tableView.setEditing(false, animated: true)
+//        })
+//        button.backgroundColor = UIColor.orangeColor()
+//        
+//        return [button]
+//    }
 
     
     
@@ -338,6 +335,7 @@ class HeadacheDetailTableViewController: UITableViewController {
 
         // Can't use NSFetchedResultsController in this table view because of the static sections
         let fetchRequest = NSFetchRequest(entityName: "Medication")
+        // Need a predicate to order
         
         do {
             let results = try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Medication]
