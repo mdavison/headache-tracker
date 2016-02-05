@@ -222,8 +222,15 @@ class HeadacheDetailTableViewController: UITableViewController {
     }
     
     @IBAction func done() {
+        // Format datePicker date to just save date portion, not time
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let formattedDateString = dateFormatter.stringFromDate(datePicker.date)
+        let formattedDate = dateFormatter.dateFromString(formattedDateString)
+        
         if let headache = headacheToEdit {
-            headache.date = datePicker.date
+            headache.date = formattedDate
+            
             headache.severity = NSNumber(integer: lroundf(severitySlider.value))
             headache.medications = NSSet(array: selectedMedications)
             
@@ -237,7 +244,7 @@ class HeadacheDetailTableViewController: UITableViewController {
             
             let headacheEntity = NSEntityDescription.entityForName("Headache", inManagedObjectContext: coreDataStack.context)
             let headache = Headache(entity: headacheEntity!, insertIntoManagedObjectContext: coreDataStack.context)
-            headache.date = datePicker.date
+            headache.date = formattedDate
             headache.severity = NSNumber(integer: lroundf(severitySlider.value))
             headache.medications = NSSet(array: selectedMedications)
             

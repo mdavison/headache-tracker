@@ -16,6 +16,9 @@
 		9018BFF41C5AC6C200168E7D /* Medication+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFF21C5AC6C200168E7D /* Medication+CoreDataProperties.swift */; };
 		9018BFF51C5AC6C200168E7D /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFF31C5AC6C200168E7D /* Medication.swift */; };
 		9018BFF71C5BB28F00168E7D /* HeadacheListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFF61C5BB28F00168E7D /* HeadacheListTableViewCell.swift */; };
+		9018C0131C619A5400168E7D /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018C0121C619A5400168E7D /* CalendarCollectionViewController.swift */; };
+		9018C0191C62AF7000168E7D /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018C0181C62AF7000168E7D /* CalendarCollectionViewCell.swift */; };
+		9018C01B1C62D35600168E7D /* CalendarCollectionReusableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018C01A1C62D35600168E7D /* CalendarCollectionReusableHeaderView.swift */; };
 		903EA9161C3888B70086BBF4 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903EA9111C38889B0086BBF4 /* Charts.framework */; };
 		903EA9171C3888B70086BBF4 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 903EA9111C38889B0086BBF4 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		903EA91C1C388AD70086BBF4 /* MonthBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */; };
@@ -94,6 +97,9 @@
 		9018BFF21C5AC6C200168E7D /* Medication+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Medication+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9018BFF31C5AC6C200168E7D /* Medication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
 		9018BFF61C5BB28F00168E7D /* HeadacheListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheListTableViewCell.swift; sourceTree = "<group>"; };
+		9018C0121C619A5400168E7D /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
+		9018C0181C62AF7000168E7D /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		9018C01A1C62D35600168E7D /* CalendarCollectionReusableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionReusableHeaderView.swift; sourceTree = "<group>"; };
 		903EA90A1C38889A0086BBF4 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MonthBarChartViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		903EA91D1C3C11090086BBF4 /* SeverityPieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeverityPieChartViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +194,9 @@
 				9018BFEE1C5A634C00168E7D /* MedicationsTableViewCell.swift */,
 				9018BFF01C5A637800168E7D /* MedicationsListTableViewCell.swift */,
 				9018BFE41C5973C800168E7D /* MedicationTableViewController.swift */,
+				9018C0121C619A5400168E7D /* CalendarCollectionViewController.swift */,
+				9018C0181C62AF7000168E7D /* CalendarCollectionViewCell.swift */,
+				9018C01A1C62D35600168E7D /* CalendarCollectionReusableHeaderView.swift */,
 				903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */,
 				903EA91D1C3C11090086BBF4 /* SeverityPieChartViewController.swift */,
 				90A8F6291BF2B15D00356B56 /* AppDelegate.swift */,
@@ -320,11 +329,13 @@
 				9018BFF71C5BB28F00168E7D /* HeadacheListTableViewCell.swift in Sources */,
 				904E4C5F1C51CEE200104B3D /* Year+CoreDataProperties.swift in Sources */,
 				904E4C621C51CEE200104B3D /* Month.swift in Sources */,
+				9018C0131C619A5400168E7D /* CalendarCollectionViewController.swift in Sources */,
 				904E4C611C51CEE200104B3D /* Month+CoreDataProperties.swift in Sources */,
 				9018BFF11C5A637800168E7D /* MedicationsListTableViewCell.swift in Sources */,
 				904E4C481C4DDC1300104B3D /* CoreDataStack.swift in Sources */,
 				904E4C5D1C51CEE200104B3D /* Week+CoreDataProperties.swift in Sources */,
 				9018BFE51C5973C800168E7D /* MedicationTableViewController.swift in Sources */,
+				9018C01B1C62D35600168E7D /* CalendarCollectionReusableHeaderView.swift in Sources */,
 				903EA91E1C3C11090086BBF4 /* SeverityPieChartViewController.swift in Sources */,
 				904E4C511C4DDE9000104B3D /* Headache.swift in Sources */,
 				9018BFEB1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift in Sources */,
@@ -335,6 +346,7 @@
 				904E4C601C51CEE200104B3D /* Year.swift in Sources */,
 				9018BFED1C59BCD900168E7D /* SeverityTableViewCell.swift in Sources */,
 				90A8F62A1BF2B15D00356B56 /* AppDelegate.swift in Sources */,
+				9018C0191C62AF7000168E7D /* CalendarCollectionViewCell.swift in Sources */,
 				90A8F6401BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift in Sources */,
 				9018BFE91C599CDD00168E7D /* DatePickerTableViewCell.swift in Sources */,
 			);

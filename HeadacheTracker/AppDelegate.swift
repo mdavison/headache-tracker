@@ -19,10 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let tabBarController = window!.rootViewController as! HeadacheTabBarController
         let allHeadachesNavigationController = tabBarController.viewControllers![0] as! UINavigationController
-        let monthBarChartViewNavigationController = tabBarController.viewControllers![1] as! UINavigationController
-        let severityPieChartViewNavigationController = tabBarController.viewControllers![2] as! UINavigationController
+        let calendarViewNavigationController = tabBarController.viewControllers![1] as! UINavigationController
+        let monthBarChartViewNavigationController = tabBarController.viewControllers![2] as! UINavigationController
+        let severityPieChartViewNavigationController = tabBarController.viewControllers![3] as! UINavigationController
         
         let allHeadachesController = allHeadachesNavigationController.viewControllers[0] as! HeadacheTableViewController
+        let calendarCollectionViewController = calendarViewNavigationController.viewControllers[0] as! CalendarCollectionViewController
         let monthBarChartViewController = monthBarChartViewNavigationController.viewControllers[0] as! MonthBarChartViewController
         let severityPieChartViewController = severityPieChartViewNavigationController.viewControllers[0] as! SeverityPieChartViewController
 
@@ -31,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //severityPieChartViewController.managedContext = coreDataStack.context
         
         allHeadachesController.coreDataStack = coreDataStack
+        calendarCollectionViewController.coreDataStack = coreDataStack
         monthBarChartViewController.coreDataStack = coreDataStack
         severityPieChartViewController.coreDataStack = coreDataStack
         
