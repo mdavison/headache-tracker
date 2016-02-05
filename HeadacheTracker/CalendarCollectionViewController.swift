@@ -187,7 +187,7 @@ class CalendarCollectionViewController: UICollectionViewController {
                 //print("ha date: \(ha.date)")
                 if let headacheDate = ha.date { // Make sure it doesn't crash if we delete a headache
                     if headacheDate == dateOfThisCell {
-                        drawRedCircle(forCell: cell)
+                        drawCircle(forCell: cell, andHeadache: ha)
                     }
                 }
             }
@@ -272,7 +272,7 @@ class CalendarCollectionViewController: UICollectionViewController {
         }
     }
     
-    private func drawRedCircle(forCell cell: CalendarCollectionViewCell) {
+    private func drawCircle(forCell cell: CalendarCollectionViewCell, andHeadache headache: Headache) {
         // Draw a circle
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: cell.frame.width/2,y: cell.frame.width/2), radius: CGFloat(cell.frame.width/3.3), startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
         
@@ -280,7 +280,11 @@ class CalendarCollectionViewController: UICollectionViewController {
         shapeLayer.path = circlePath.CGPath
         
         //change the fill color
-        shapeLayer.fillColor = UIColor.redColor().CGColor
+        //shapeLayer.fillColor = UIColor.redColor().CGColor
+        let severityColor = headache.severityColor()
+        if let red = severityColor["red"], green = severityColor["green"], blue = severityColor["blue"] {
+            shapeLayer.fillColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1).CGColor
+        }
         
         cell.layer.addSublayer(shapeLayer)
         
