@@ -87,6 +87,7 @@ class SeverityPieChartViewController: UIViewController {
     }
     
     private func setChart(dataPoints: [String], values: [Double]) {
+        pieChartView.noDataText = "There are no headaches"
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPoints.count {

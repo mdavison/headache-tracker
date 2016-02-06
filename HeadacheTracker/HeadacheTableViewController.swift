@@ -46,13 +46,12 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        //return 1
         return fetchedResultsController.sections!.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return headaches.count
         let sectionInfo = fetchedResultsController.sections![section]
+        
         return sectionInfo.numberOfObjects
     }
 
@@ -187,6 +186,8 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         } catch let error as NSError {
             print("Error: \(error) " + "description: \(error.localizedDescription)")
         }
+        
+        toggleNoDataLabel()
     }
     
     private func fetchYears() -> NSFetchedResultsController {
@@ -286,7 +287,22 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
                 coreDataStack.context.deleteObject(yearToDelete)
             }
         }
-
+    }
+    
+    private func toggleNoDataLabel() {
+        if let label = view.viewWithTag(1000) {
+            label.removeFromSuperview()
+        }
+        
+        if fetchedResultsController.fetchedObjects?.count == 0 {
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
+            label.text = "There are no headaches"
+            label.textColor = UIColor.lightGrayColor()
+            label.textAlignment = .Center
+            label.font = UIFont.preferredFontForTextStyle("body")
+            label.tag = 1000
+            view.addSubview(label)
+        }
     }
     
 }
@@ -318,6 +334,7 @@ extension HeadacheTableViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
+        toggleNoDataLabel()
     }
     
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {

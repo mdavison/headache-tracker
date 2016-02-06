@@ -230,6 +230,8 @@ class CalendarCollectionViewController: UICollectionViewController {
         } catch let error as NSError {
             print("Error: \(error) " + "description \(error.localizedDescription)")
         }
+        
+        toggleNoDataLabel()
     }
     
     private func getNumberOfMonths(forHeadaches headaches: [Headache]) -> Int {
@@ -238,12 +240,14 @@ class CalendarCollectionViewController: UICollectionViewController {
         // Get the number of months between the first and last headache
         if !headaches.isEmpty {
             // Get month for last headache
-            let componentsOfLastHeadache = calendar.components([.Month, .Year], fromDate: headaches.last!.date!)
-            // Set last date to be the first of the month, as partial months don't get counted
-            let modifiedLastDate = calendar.dateFromComponents(componentsOfLastHeadache)
-            let months = calendar.components(NSCalendarUnit.Month, fromDate: modifiedLastDate!, toDate: headaches.first!.date!, options: [])
-            
-            return months.month + 1 // Need to add one to make sure it includes the last one
+            if let lastHeadacheDate = headaches.last?.date {
+                let componentsOfLastHeadache = calendar.components([.Month, .Year], fromDate: lastHeadacheDate)
+                // Set last date to be the first of the month, as partial months don't get counted
+                let modifiedLastDate = calendar.dateFromComponents(componentsOfLastHeadache)
+                let months = calendar.components(NSCalendarUnit.Month, fromDate: modifiedLastDate!, toDate: headaches.first!.date!, options: [])
+                
+                return months.month + 1 // Need to add one to make sure it includes the last one
+            }
         }
         return 0
     }
@@ -254,31 +258,34 @@ class CalendarCollectionViewController: UICollectionViewController {
         
         let calendar = NSCalendar.currentCalendar()
         let monthSpan = getNumberOfMonths(forHeadaches: headaches)
-        let components = calendar.components([.Month, .Year], fromDate: headaches.first!.date!)
         
-        // Create var to hold month component of each item in the loop,
-        // Initial value set to first headache
-        var nsDateCounter = calendar.dateFromComponents(components)
+        if let firstHeadacheDate = headaches.first?.date {
+            let components = calendar.components([.Month, .Year], fromDate: firstHeadacheDate)
+            
+            // Create var to hold month component of each item in the loop,
+            // Initial value set to first headache
+            var nsDateCounter = calendar.dateFromComponents(components)
 
-        if monthSpan > 0 {
-            for _ in 1...monthSpan {
-                let components = calendar.components([.Month, .Year], fromDate: nsDateCounter!)
-                var headachesArray = [Headache]()
-                
-                for headache in headaches {
-                    // Get month and year components from the headache
-                    let headacheComponents = calendar.components([.Month, .Year], fromDate: headache.date!)
-                    // When they match the outer loop components, add to headache array
-                    if (headacheComponents.month == components.month) && (headacheComponents.year == components.year) {
-                        headachesArray.append(headache)
+            if monthSpan > 0 {
+                for _ in 1...monthSpan {
+                    let components = calendar.components([.Month, .Year], fromDate: nsDateCounter!)
+                    var headachesArray = [Headache]()
+                    
+                    for headache in headaches {
+                        // Get month and year components from the headache
+                        let headacheComponents = calendar.components([.Month, .Year], fromDate: headache.date!)
+                        // When they match the outer loop components, add to headache array
+                        if (headacheComponents.month == components.month) && (headacheComponents.year == components.year) {
+                            headachesArray.append(headache)
+                        }
                     }
+                    
+                    let monthYear = MonthYear(month: components.month, year: components.year, headaches: headachesArray)
+                    monthsAndYears.append(monthYear)
+                    
+                    // decrement nsDateCounter by 1 month
+                    nsDateCounter = calendar.dateByAddingUnit(.Month, value: -1, toDate: nsDateCounter!, options: [])
                 }
-                
-                let monthYear = MonthYear(month: components.month, year: components.year, headaches: headachesArray)
-                monthsAndYears.append(monthYear)
-                
-                // decrement nsDateCounter by 1 month
-                nsDateCounter = calendar.dateByAddingUnit(.Month, value: -1, toDate: nsDateCounter!, options: [])
             }
         }
     }
@@ -326,6 +333,22 @@ class CalendarCollectionViewController: UICollectionViewController {
             if circle.isKindOfClass(CAShapeLayer) {
                 circle.removeFromSuperlayer()
             }
+        }
+    }
+    
+    private func toggleNoDataLabel() {
+        if let label = view.viewWithTag(1000) {
+            label.removeFromSuperview()
+        }
+        
+        if headaches.count == 0 {
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
+            label.text = "There are no headaches"
+            label.textColor = UIColor.lightGrayColor()
+            label.textAlignment = .Center
+            label.font = UIFont.preferredFontForTextStyle("body")
+            label.tag = 1000
+            collectionView?.addSubview(label)
         }
     }
 

@@ -137,7 +137,7 @@ class MonthBarChartViewController: UIViewController {
     }
     
     private func setChart(dataPoints: [String], values: [Double]) {
-        barChartView.noDataText = "There is no data currently available"
+        barChartView.noDataText = "There are no headaches"
         
         var dataEntries: [BarChartDataEntry] = []
         
