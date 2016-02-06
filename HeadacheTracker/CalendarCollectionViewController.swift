@@ -237,9 +237,13 @@ class CalendarCollectionViewController: UICollectionViewController {
         
         // Get the number of months between the first and last headache
         if !headaches.isEmpty {
-            let months = calendar.components(NSCalendarUnit.Month, fromDate: headaches.last!.date!, toDate: headaches.first!.date!, options: [])
+            // Get month for last headache
+            let componentsOfLastHeadache = calendar.components([.Month, .Year], fromDate: headaches.last!.date!)
+            // Set last date to be the first of the month, as partial months don't get counted
+            let modifiedLastDate = calendar.dateFromComponents(componentsOfLastHeadache)
+            let months = calendar.components(NSCalendarUnit.Month, fromDate: modifiedLastDate!, toDate: headaches.first!.date!, options: [])
             
-            return months.month + 1 // Need to add one to make it inclusive on both ends
+            return months.month + 1 // Need to add one to make sure it includes the last one
         }
         return 0
     }
@@ -256,24 +260,26 @@ class CalendarCollectionViewController: UICollectionViewController {
         // Initial value set to first headache
         var nsDateCounter = calendar.dateFromComponents(components)
 
-        for _ in 1...monthSpan {
-            let components = calendar.components([.Month, .Year], fromDate: nsDateCounter!)
-            var headachesArray = [Headache]()
-            
-            for headache in headaches {
-                // Get month and year components from the headache
-                let headacheComponents = calendar.components([.Month, .Year], fromDate: headache.date!)
-                // When they match the outer loop components, add to headache array
-                if (headacheComponents.month == components.month) && (headacheComponents.year == components.year) {
-                    headachesArray.append(headache)
+        if monthSpan > 0 {
+            for _ in 1...monthSpan {
+                let components = calendar.components([.Month, .Year], fromDate: nsDateCounter!)
+                var headachesArray = [Headache]()
+                
+                for headache in headaches {
+                    // Get month and year components from the headache
+                    let headacheComponents = calendar.components([.Month, .Year], fromDate: headache.date!)
+                    // When they match the outer loop components, add to headache array
+                    if (headacheComponents.month == components.month) && (headacheComponents.year == components.year) {
+                        headachesArray.append(headache)
+                    }
                 }
+                
+                let monthYear = MonthYear(month: components.month, year: components.year, headaches: headachesArray)
+                monthsAndYears.append(monthYear)
+                
+                // decrement nsDateCounter by 1 month
+                nsDateCounter = calendar.dateByAddingUnit(.Month, value: -1, toDate: nsDateCounter!, options: [])
             }
-            
-            let monthYear = MonthYear(month: components.month, year: components.year, headaches: headachesArray)
-            monthsAndYears.append(monthYear)
-            
-            // decrement nsDateCounter by 1 month
-            nsDateCounter = calendar.dateByAddingUnit(.Month, value: -1, toDate: nsDateCounter!, options: [])
         }
     }
     
