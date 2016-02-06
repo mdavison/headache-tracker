@@ -391,6 +391,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="barChartView" destination="rXp-am-iCS" id="67K-lR-XYV"/>
+                        <outlet property="saveButton" destination="eiv-d8-RLo" id="EDx-lE-T21"/>
                         <outlet property="segmentedControl" destination="LsW-GN-yXg" id="chP-gF-LWe"/>
                     </connections>
                 </viewController>
@@ -445,6 +446,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="pieChartView" destination="l03-P7-DMB" id="Z4p-NJ-RRm"/>
+                        <outlet property="saveButton" destination="CPS-Xh-PdT" id="vgc-aC-KdM"/>
                         <outlet property="segmentedControl" destination="1JJ-q3-1be" id="sfV-iq-9Ik"/>
                     </connections>
                 </viewController>

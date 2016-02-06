@@ -33,9 +33,7 @@ class CalendarCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         
         setHeadaches()
-        if !headaches.isEmpty {
-            setMonthsAndYears()
-        }
+        setMonthsAndYears()
         collectionView?.reloadData()
     }
 
@@ -224,9 +222,10 @@ class CalendarCollectionViewController: UICollectionViewController {
         
         do {
             let results = try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Headache]
-            if results.count > 0 {
+            
+            //if results.count > 0 {
                 headaches = results
-            }
+            //}
         } catch let error as NSError {
             print("Error: \(error) " + "description \(error.localizedDescription)")
         }
@@ -340,7 +339,7 @@ class CalendarCollectionViewController: UICollectionViewController {
         if let label = view.viewWithTag(1000) {
             label.removeFromSuperview()
         }
-        
+
         if headaches.count == 0 {
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40))
             label.text = "There are no headaches"

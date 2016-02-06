@@ -14,6 +14,7 @@ class SeverityPieChartViewController: UIViewController {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var pieChartView: PieChartView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var coreDataStack: CoreDataStack!
     let severityLevels = ["1", "2", "3", "4", "5"]
@@ -28,10 +29,13 @@ class SeverityPieChartViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         setHeadaches()
+        saveButton.enabled = false
+        pieChartView.clear()
 
         if let selectedSegment = getSelectedSegment(selectedSegmentIndex) {
             if let headaches = getHeadachesBySeverity(selectedSegment) {
                 setChart(severityLevels, values: headaches)
+                saveButton.enabled = true
             }
         }
     }
@@ -130,20 +134,21 @@ class SeverityPieChartViewController: UIViewController {
         let headachesForTimePeriod = fetchHeadachesFor(timePeriod)
         
         if let hftp = headachesForTimePeriod {
-            for headache in hftp {
-                let severityInt = Int(headache.severity!)
-                severityArray[severityInt-1] += [headache]
-            }
+            if !hftp.isEmpty {
+                for headache in hftp {
+                    let severityInt = Int(headache.severity!)
+                    severityArray[severityInt-1] += [headache]
+                }
 
-            for ha in severityArray {
-                headacheCountBySeverity.append(Double(ha.count))
+                for ha in severityArray {
+                    headacheCountBySeverity.append(Double(ha.count))
+                }
+                
+                return headacheCountBySeverity
             }
-            
-            return headacheCountBySeverity
-            
-        } else {
-            return nil
         }
+        
+        return nil
     }
     
     private func getSelectedSegment(index: Int) -> String? {

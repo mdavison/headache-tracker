@@ -14,6 +14,7 @@ class MonthBarChartViewController: UIViewController {
 
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var coreDataStack: CoreDataStack!
     var fetchedResultsController: NSFetchedResultsController!
@@ -26,17 +27,18 @@ class MonthBarChartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(animated: Bool) {
         fetchYears()
         fetchHeadaches()
-        setSegmentedControl()
+        saveButton.enabled = false
+        barChartView.clear()
         
         if let headaches = setHeadachesForYear(selectedYear) {
             setChart(months, values: headaches)
-        }
+            saveButton.enabled = true
+        } 
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,6 +100,8 @@ class MonthBarChartViewController: UIViewController {
         
         do {
             try yearsFetchedResultsController.performFetch()
+            
+            setSegmentedControl()
         } catch let error as NSError {
             print("Error: \(error) " + "description: \(error.localizedDescription)")
         }
@@ -106,7 +110,7 @@ class MonthBarChartViewController: UIViewController {
     private func loadYears() {
         years = [] // reset so don't keep appending and getting duplicates
         
-        // Yes, I end up looping through the years twice but it's just a lot easier
+        // I end up looping through the years twice but it's just a lot easier
         // to deal with a simple array and there shouldn't ever be that many years
         for year in yearsFetchedResultsController.fetchedObjects as! [Year] {
             years.append(Int(year.number!))
@@ -224,12 +228,11 @@ class MonthBarChartViewController: UIViewController {
         }
         
         if let yearFetched = headachesForYearFetchedResultsController.fetchedObjects?.first as? Year {
-            
             var headaches = [Headache]()
             for headache in yearFetched.headaches! {
                 headaches.append(headache as! Headache)
             }
-
+            
             return headaches
         } else {
             return nil
