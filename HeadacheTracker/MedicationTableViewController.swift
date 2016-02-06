@@ -255,7 +255,7 @@ class MedicationTableViewController: UITableViewController {
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) -> Void in
             //print("Cancel")
         }))
         
