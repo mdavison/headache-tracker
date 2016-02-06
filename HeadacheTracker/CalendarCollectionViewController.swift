@@ -33,7 +33,9 @@ class CalendarCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         
         setHeadaches()
-        setMonthsAndYears()
+        if !headaches.isEmpty {
+            setMonthsAndYears()
+        }
         collectionView?.reloadData()
     }
 
@@ -234,9 +236,12 @@ class CalendarCollectionViewController: UICollectionViewController {
         let calendar = NSCalendar.currentCalendar()
         
         // Get the number of months between the first and last headache
-        let months = calendar.components(NSCalendarUnit.Month, fromDate: headaches.last!.date!, toDate: headaches.first!.date!, options: [])
-        
-        return months.month + 1 // Need to add one to make it inclusive on both ends
+        if !headaches.isEmpty {
+            let months = calendar.components(NSCalendarUnit.Month, fromDate: headaches.last!.date!, toDate: headaches.first!.date!, options: [])
+            
+            return months.month + 1 // Need to add one to make it inclusive on both ends
+        }
+        return 0
     }
     
     private func setMonthsAndYears() {

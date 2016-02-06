@@ -27,11 +27,9 @@
 		904E4C4D1C4DDE1600104B3D /* Headache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C4B1C4DDE1600104B3D /* Headache.xcdatamodeld */; };
 		904E4C501C4DDE9000104B3D /* Headache+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C4E1C4DDE9000104B3D /* Headache+CoreDataProperties.swift */; };
 		904E4C511C4DDE9000104B3D /* Headache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C4F1C4DDE9000104B3D /* Headache.swift */; };
-		904E4C5D1C51CEE200104B3D /* Week+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C571C51CEE200104B3D /* Week+CoreDataProperties.swift */; };
 		904E4C5E1C51CEE200104B3D /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C581C51CEE200104B3D /* Week.swift */; };
 		904E4C5F1C51CEE200104B3D /* Year+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C591C51CEE200104B3D /* Year+CoreDataProperties.swift */; };
 		904E4C601C51CEE200104B3D /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C5A1C51CEE200104B3D /* Year.swift */; };
-		904E4C611C51CEE200104B3D /* Month+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C5B1C51CEE200104B3D /* Month+CoreDataProperties.swift */; };
 		904E4C621C51CEE200104B3D /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C5C1C51CEE200104B3D /* Month.swift */; };
 		90A8F62A1BF2B15D00356B56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6291BF2B15D00356B56 /* AppDelegate.swift */; };
 		90A8F62F1BF2B15D00356B56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A8F62D1BF2B15D00356B56 /* Main.storyboard */; };
@@ -108,11 +106,9 @@
 		904E4C4C1C4DDE1600104B3D /* Headache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Headache.xcdatamodel; sourceTree = "<group>"; };
 		904E4C4E1C4DDE9000104B3D /* Headache+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Headache+CoreDataProperties.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		904E4C4F1C4DDE9000104B3D /* Headache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Headache.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		904E4C571C51CEE200104B3D /* Week+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Week+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		904E4C581C51CEE200104B3D /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		904E4C591C51CEE200104B3D /* Year+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Year+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		904E4C5A1C51CEE200104B3D /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
-		904E4C5B1C51CEE200104B3D /* Month+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Month+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		904E4C5C1C51CEE200104B3D /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		90A8F6261BF2B15D00356B56 /* HeadacheTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeadacheTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A8F6291BF2B15D00356B56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -153,8 +149,6 @@
 				904E4C471C4DDC1300104B3D /* CoreDataStack.swift */,
 				904E4C4E1C4DDE9000104B3D /* Headache+CoreDataProperties.swift */,
 				904E4C591C51CEE200104B3D /* Year+CoreDataProperties.swift */,
-				904E4C5B1C51CEE200104B3D /* Month+CoreDataProperties.swift */,
-				904E4C571C51CEE200104B3D /* Week+CoreDataProperties.swift */,
 				9018BFF21C5AC6C200168E7D /* Medication+CoreDataProperties.swift */,
 				904E4C4F1C4DDE9000104B3D /* Headache.swift */,
 				904E4C581C51CEE200104B3D /* Week.swift */,
@@ -330,10 +324,8 @@
 				904E4C5F1C51CEE200104B3D /* Year+CoreDataProperties.swift in Sources */,
 				904E4C621C51CEE200104B3D /* Month.swift in Sources */,
 				9018C0131C619A5400168E7D /* CalendarCollectionViewController.swift in Sources */,
-				904E4C611C51CEE200104B3D /* Month+CoreDataProperties.swift in Sources */,
 				9018BFF11C5A637800168E7D /* MedicationsListTableViewCell.swift in Sources */,
 				904E4C481C4DDC1300104B3D /* CoreDataStack.swift in Sources */,
-				904E4C5D1C51CEE200104B3D /* Week+CoreDataProperties.swift in Sources */,
 				9018BFE51C5973C800168E7D /* MedicationTableViewController.swift in Sources */,
 				9018C01B1C62D35600168E7D /* CalendarCollectionReusableHeaderView.swift in Sources */,
 				903EA91E1C3C11090086BBF4 /* SeverityPieChartViewController.swift in Sources */,

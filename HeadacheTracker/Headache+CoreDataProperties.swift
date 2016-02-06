@@ -16,8 +16,6 @@ extension Headache {
 
     @NSManaged var date: NSDate?
     @NSManaged var severity: NSNumber?
-    @NSManaged var month: Month?
-    @NSManaged var week: Week?
     @NSManaged var year: Year?
     @NSManaged var medications: NSSet?
 
