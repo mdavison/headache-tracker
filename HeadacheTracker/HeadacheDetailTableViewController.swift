@@ -328,7 +328,7 @@ class HeadacheDetailTableViewController: UITableViewController {
     private func fetchMedications() {
         // Can't use NSFetchedResultsController in this table view because of the static sections
         let fetchRequest = NSFetchRequest(entityName: "Medication")
-        let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        let nameSortDescriptor = NSSortDescriptor(key: "displayOrder", ascending: true)
         fetchRequest.sortDescriptors = [nameSortDescriptor]
         
         do {
@@ -371,12 +371,6 @@ class HeadacheDetailTableViewController: UITableViewController {
         if let clearedMedicationIndex = selectedMedications.indexOf(clearedMedication) {
             selectedMedications.removeAtIndex(clearedMedicationIndex)
         }
-//        for selectedMed in selectedMedications {
-//            if selectedMed.name == clearedMedication.name {
-//                let index = self.selectedMedications.indexOf(selectedMed)
-//                selectedMedications.removeAtIndex(index!)
-//            }
-//        }
     }
 
 }

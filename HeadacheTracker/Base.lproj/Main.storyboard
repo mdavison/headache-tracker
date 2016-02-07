@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Headache Tab Bar Controller-->
@@ -300,16 +301,23 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="All Medications" id="xwT-eY-KV1">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="hjN-94-9AP">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="GUZ-G5-7js">
                             <connections>
-                                <action selector="done" destination="dcA-QN-HsM" id="veN-fa-Z51"/>
+                                <action selector="edit:" destination="dcA-QN-HsM" id="4cw-95-LXD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0ea-Gw-BLa">
-                            <connections>
-                                <action selector="add:" destination="dcA-QN-HsM" id="yR6-HM-CDB"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="0ea-Gw-BLa">
+                                <connections>
+                                    <action selector="add:" destination="dcA-QN-HsM" id="yR6-HM-CDB"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="save" id="hjN-94-9AP">
+                                <connections>
+                                    <action selector="save" destination="dcA-QN-HsM" id="Yjs-AL-jaI"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2P-dP-u8U" userLabel="First Responder" sceneMemberID="firstResponder"/>

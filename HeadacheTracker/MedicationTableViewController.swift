@@ -19,28 +19,12 @@ class MedicationTableViewController: UITableViewController {
     var medicationFetchedResultsController = NSFetchedResultsController()
     weak var delegate: MedicationTableViewControllerDelegate?
     
-//    var medications = [
-//        ["Advil", 0],
-//        ["Tylenol", 0],
-//        ["Aspirin", 0],
-//        ["Aleeve", 0],
-//        ["Imitrex", 0],
-//        ["GoodStuff", 0],
-//        ["KnockMeOut", 0]
-//    ]
-    
     struct Storyboard {
         static let MedicationCellReuseIdentifier = "MedicationCell"
     }
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         fetchMedications()
         medicationFetchedResultsController.delegate = self
@@ -54,12 +38,10 @@ class MedicationTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        //return 1
         return medicationFetchedResultsController.sections!.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return medicationFetchedResultsController.fetchedObjects?.count ?? 0
         let sectionInfo = medicationFetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
     }
@@ -68,8 +50,6 @@ class MedicationTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.MedicationCellReuseIdentifier, forIndexPath: indexPath)
         
         configureCell(cell, indexPath: indexPath)
-        
-
 
         return cell
     }
@@ -100,15 +80,27 @@ class MedicationTableViewController: UITableViewController {
             //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
+    }
+    
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
 
-    /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+        var medicationsArray = medicationFetchedResultsController.fetchedObjects as! [Medication]
+        let movedMedication = medicationFetchedResultsController.objectAtIndexPath(fromIndexPath) as? Medication
+        
+        medicationsArray.removeAtIndex(fromIndexPath.row)
+        medicationsArray.insert(movedMedication!, atIndex: toIndexPath.row)
+        
+        var i = 0
+        for medication in medicationsArray {
+            medication.displayOrder = i
+            i++
+        }
     }
-    */
 
     /*
     // Override to support conditional rearranging of the table view.
@@ -135,59 +127,35 @@ class MedicationTableViewController: UITableViewController {
 //        dismissViewControllerAnimated(true, completion: nil)
 //    }
     
-    @IBAction func done() {
-        //delegate?.medicationTableViewController(self)
+    @IBAction func save() {
+        //coreDataStack.saveContext()
         delegate?.medicationTableViewControllerDidFinish(self)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func add(sender: UIBarButtonItem) {
-//        let alert = UIAlertController(title: "Add Medication", message: nil, preferredStyle: .Alert)
-//        
-//        alert.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
-//            textField.placeholder = "Medication Name"
-//        }
-//        
-//        alert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action: UIAlertAction) -> Void in
-//            let nameTextField = alert.textFields!.first
-//            let name = nameTextField!.text
-//            var nameIsValid = true
-//            
-//            // check that name is not blank
-//            if name!.isEmpty == true {
-//                nameIsValid = false
-//                self.showInvalidNameAlert("Oops!", message: "Name can't be blank.")
-//            }
-//            // check that name is not duplicate
-//            if self.nameIsDuplicate(ofMedicationName: name!) {
-//                nameIsValid = false
-//                self.showInvalidNameAlert("Oops!", message: "That name already exists.")
-//            }
-//            
-//            if nameIsValid {
-//                let medication = NSEntityDescription.insertNewObjectForEntityForName("Medication", inManagedObjectContext: self.coreDataStack.context) as! Medication
-//                medication.name = nameTextField!.text
-//                self.coreDataStack.saveContext()
-//            }
-//            
-//        }))
-//        
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction) -> Void in
-//            print("Cancel")
-//        }))
-//        
-//        presentViewController(alert, animated: true, completion: nil)
-        
         showMedicationNameAlert(nil)
     }
     
+    @IBAction func edit(sender: UIBarButtonItem) {
+        editing = !editing
+        
+        if editing {
+            sender.title = "Done"
+            sender.style = .Done
+        } else {
+            sender.title = "Edit"
+            sender.style = .Plain
+            coreDataStack.saveContext()
+        }
+    }
     
     
     // MARK: - Helper Methods
     
     private func fetchMedications() {
         let fetch = NSFetchRequest(entityName: "Medication")
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "displayOrder", ascending: true)
         fetch.sortDescriptors = [sortDescriptor]
         
         medicationFetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
@@ -301,8 +269,8 @@ extension MedicationTableViewController: NSFetchedResultsControllerDelegate {
             let cell = tableView.cellForRowAtIndexPath(indexPath!)
             configureCell(cell!, indexPath: indexPath!)
         case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
         }
     }
     
