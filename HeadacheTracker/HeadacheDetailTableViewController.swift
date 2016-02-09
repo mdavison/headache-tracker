@@ -436,9 +436,9 @@ class HeadacheDetailTableViewController: UITableViewController {
     }
     
     private func fetchDose(forMedication medication: Medication) -> Dose? {
-        if let headacheToEdit = headacheToEdit  {
+        if let headacheToEdit = headacheToEdit, medicationName = medication.name  {
             let fetchRequest = NSFetchRequest(entityName: "Dose")
-            fetchRequest.predicate = NSPredicate(format: "headache.date == %@ AND medication.name == %@", headacheToEdit.date!, medication.name!)
+            fetchRequest.predicate = NSPredicate(format: "headache.date == %@ AND medication.name == %@", headacheToEdit.date!, medicationName)
             
             do {
                 let results = try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Dose]

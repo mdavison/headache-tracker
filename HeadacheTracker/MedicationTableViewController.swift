@@ -266,8 +266,11 @@ extension MedicationTableViewController: NSFetchedResultsControllerDelegate {
         case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
         case .Update:
-            let cell = tableView.cellForRowAtIndexPath(indexPath!)
-            configureCell(cell!, indexPath: indexPath!)
+            //let cell = tableView.cellForRowAtIndexPath(indexPath!)
+            //configureCell(cell!, indexPath: indexPath!)
+            
+            // http://oleb.net/blog/2013/02/nsfetchedresultscontroller-documentation-bug/
+            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
         case .Move:
             tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
