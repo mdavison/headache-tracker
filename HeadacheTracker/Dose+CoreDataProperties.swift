@@ -1,5 +1,5 @@
 //
-//  Medication+CoreDataProperties.swift
+//  Dose+CoreDataProperties.swift
 //  HeadacheTracker
 //
 //  Created by Morgan Davison on 2/7/16.
@@ -12,11 +12,10 @@
 import Foundation
 import CoreData
 
-extension Medication {
+extension Dose {
 
-    @NSManaged var displayOrder: NSNumber?
-    @NSManaged var name: String?
-    @NSManaged var headaches: NSSet?
-    @NSManaged var doses: NSSet?
+    @NSManaged var quantity: NSNumber?
+    @NSManaged var medication: Medication?
+    @NSManaged var headache: Headache?
 
 }

@@ -27,7 +27,7 @@ class HeadacheDetailTableViewController: UITableViewController {
     var headacheToEdit: Headache?
     var fetchedResultsController: NSFetchedResultsController!
     var medications = [Medication]()
-    var selectedMedications = [Medication]()
+    var medicationDoses = [Medication: Int]()
     
     struct Storyboard {
         static let DatePickerCellReuseIdentifier = "DatePickerCell"
@@ -44,13 +44,14 @@ class HeadacheDetailTableViewController: UITableViewController {
         
         if (headacheToEdit != nil) {
             title = "Edit Headache"
-            setSelectedMedications()
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
-        // Prevent future dates
-        //datePicker.maximumDate = NSDate()
-        
-        //validateSelectedDate(datePicker.date)
+        // Clear the dictionary for each headache so don't keep appending
+        medicationDoses.removeAll()
     }
     
     
@@ -94,10 +95,10 @@ class HeadacheDetailTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.MedicationsListCellReuseIdentifier, forIndexPath: indexPath) as! MedicationsListTableViewCell
 
             cell.textLabel?.text = medications[indexPath.row].name
-            cell.detailTextLabel?.text = countMedications(forIndexPath: indexPath)
-            
-            if selectedMedications.indexOf(medications[indexPath.row]) != nil {
-                cell.accessoryType = .Checkmark
+            if let dose = fetchDose(forMedication: medications[indexPath.row]) {
+                cell.detailTextLabel?.text = "\(dose.quantity!)"
+            } else {
+                cell.detailTextLabel?.text = ""
             }
             
             return cell
@@ -109,16 +110,34 @@ class HeadacheDetailTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let medicationJustSelected = medications[indexPath.row]
-        let indexOfMedicationJustSelected = selectedMedications.indexOf(medicationJustSelected)
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
-        if indexOfMedicationJustSelected == nil {
-            selectedMedications.append(medicationJustSelected)
-            cell?.accessoryType = .Checkmark
-        } else {
-            selectedMedications.removeAtIndex(indexOfMedicationJustSelected!)
-            cell?.accessoryType = .None
+        // Add dose to array
+        var incrementedQuantity = 0
+        // Existing headache
+        if let dose = fetchDose(forMedication: medicationJustSelected) {
+            
+            // Has already incremented once
+            if let medDose = medicationDoses[medicationJustSelected] {
+                incrementedQuantity = medDose + 1
+            } else {
+                // First time incrementing
+                incrementedQuantity = Int(dose.quantity!) + 1
+            }
+        } else { // New headache
+            
+            // Has been incremented once
+            if let medDose = medicationDoses[medicationJustSelected] {
+                incrementedQuantity = medDose + 1
+            } else {
+                // First time incrementing
+                incrementedQuantity = 1
+            }
         }
+        
+        medicationDoses[medicationJustSelected] = incrementedQuantity
+        cell?.detailTextLabel?.text = "\(incrementedQuantity)"
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -130,7 +149,6 @@ class HeadacheDetailTableViewController: UITableViewController {
         }
     }
     
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -141,24 +159,21 @@ class HeadacheDetailTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
-    */
     
-//    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-//        
-//        let button = UITableViewRowAction(style: .Default, title: "Clear", handler: { (action, indexPath) in
-//            //self.medications[indexPath.row][1] = 0
-//            
-//            self.clearMedication(atIndexPath: indexPath)
-//            
-//            let cell = tableView.cellForRowAtIndexPath(indexPath)
-//            cell!.detailTextLabel?.text = ""
-//            //tableView.reloadData()
-//            tableView.setEditing(false, animated: true)
-//        })
-//        button.backgroundColor = UIColor.orangeColor()
-//        
-//        return [button]
-//    }
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        // TODO: maybe only show button if there is actually something to clear
+        let button = UITableViewRowAction(style: .Default, title: "Clear", handler: { (action, indexPath) in
+            self.clearMedication(atIndexPath: indexPath)
+            
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            cell!.detailTextLabel?.text = ""
+            tableView.setEditing(false, animated: true)
+        })
+        button.backgroundColor = UIColor.orangeColor()
+        
+        return [button]
+    }
 
     
     
@@ -172,22 +187,6 @@ class HeadacheDetailTableViewController: UITableViewController {
         default: return ""
         }
     }
-    
-//    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-//        switch section {
-//        case 1:
-//            if let severity = severitySlider {
-//                return "Value of slider: \(lroundf(severity.value))"
-//            } else {
-//                if (headacheToEdit != nil) {
-//                    return "Value of slider: \(headacheToEdit?.severity)"
-//                } else {
-//                    return "Value of slider: 3"
-//                }
-//            }
-//        default: return ""
-//        }
-//    }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.section {
@@ -232,7 +231,8 @@ class HeadacheDetailTableViewController: UITableViewController {
             headache.date = formattedDate
             
             headache.severity = NSNumber(integer: lroundf(severitySlider.value))
-            headache.medications = NSSet(array: selectedMedications)
+
+            addMedicationsAndDoses(toHeadache: headache)
             
             addHeadacheToYear(headache)
             
@@ -246,7 +246,8 @@ class HeadacheDetailTableViewController: UITableViewController {
             let headache = Headache(entity: headacheEntity!, insertIntoManagedObjectContext: coreDataStack.context)
             headache.date = formattedDate
             headache.severity = NSNumber(integer: lroundf(severitySlider.value))
-            headache.medications = NSSet(array: selectedMedications)
+            
+            addMedicationsAndDoses(toHeadache: headache)
             
             addHeadacheToYear(headache)
             
@@ -306,6 +307,37 @@ class HeadacheDetailTableViewController: UITableViewController {
 
     }
     
+    private func addMedicationsAndDoses(toHeadache headache: Headache) {
+        if let dosesForHeadache = fetchDoses(forHeadache: headache) {
+            for dose in dosesForHeadache {
+                // If this dose is in medicationDoses, delete it so we can update, below
+                if let _ = medicationDoses.indexOf({ (med, qty) -> Bool in
+                    return med == dose.medication
+                }) { coreDataStack.context.deleteObject(dose) }
+            }
+        }
+        
+        var medications = [Medication]()
+        // Put existing headache medications into array
+        for med in headache.medications! {
+            medications.append(med as! Medication)
+        }
+        
+        for medicationDose in medicationDoses {
+            // Add the new medication
+            medications.append(medicationDose.0)
+            
+            // Add the new dose
+            let doseEntity = NSEntityDescription.entityForName("Dose", inManagedObjectContext: coreDataStack.context)
+            let dose = Dose(entity: doseEntity!, insertIntoManagedObjectContext: coreDataStack.context)
+            dose.quantity = medicationDose.1
+            dose.headache = headache
+            dose.medication = medicationDose.0
+        }
+        
+        headache.medications = NSSet(array: medications)
+    }
+    
     private func validateSelectedDate(date: NSDate) {
         let calendar = NSCalendar.currentCalendar()
         
@@ -342,14 +374,6 @@ class HeadacheDetailTableViewController: UITableViewController {
     
     }
     
-    private func setSelectedMedications() {
-        if let headacheMeds = headacheToEdit?.medications {
-            for med in headacheMeds {
-                selectedMedications.append(med as! Medication)
-            }
-        }
-    }
-    
     private func countMedications(forIndexPath indexPath: NSIndexPath) -> String {
         var count = 0
         if let headacheMeds = headacheToEdit?.medications {
@@ -367,12 +391,84 @@ class HeadacheDetailTableViewController: UITableViewController {
     
     private func clearMedication(atIndexPath indexPath: NSIndexPath) {
         let clearedMedication = medications[indexPath.row]
-        
-        if let clearedMedicationIndex = selectedMedications.indexOf(clearedMedication) {
-            selectedMedications.removeAtIndex(clearedMedicationIndex)
-        }
-    }
 
+        // Delete the dose, if there is one
+        if let dose = fetchDose(forMedication: clearedMedication) {
+            coreDataStack.context.deleteObject(dose)
+        }
+        
+        // Delete the medication from the headache
+        if let headache = headacheToEdit {
+            var newHeadacheMedications = [Medication]()
+            
+            // Create array of medications that doesn't include the clearedMedication
+            for headacheMedication in headache.medications! {
+                if headacheMedication as! Medication != clearedMedication {
+                    newHeadacheMedications.append(headacheMedication as! Medication)
+                }
+            }
+            
+            // Update headache medications
+            headache.medications = NSSet(array: newHeadacheMedications)
+            
+        }
+        
+        // Clear from medicationDoses
+        medicationDoses.removeValueForKey(clearedMedication)
+    }
+    
+    
+    
+    private func fetchDoses() -> [Dose]? {
+        let fetchRequest = NSFetchRequest(entityName: "Dose")
+        fetchRequest.relationshipKeyPathsForPrefetching = ["headache", "medication"]
+        
+        do {
+            let results = try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Dose]
+            if results.count > 0 {
+                return results
+            }
+        } catch let error as NSError {
+            print("Error: \(error) " + "description \(error.localizedDescription)")
+        }
+
+        return nil
+    }
+    
+    private func fetchDose(forMedication medication: Medication) -> Dose? {
+        if let headacheToEdit = headacheToEdit  {
+            let fetchRequest = NSFetchRequest(entityName: "Dose")
+            fetchRequest.predicate = NSPredicate(format: "headache.date == %@ AND medication.name == %@", headacheToEdit.date!, medication.name!)
+            
+            do {
+                let results = try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Dose]
+                if results.count > 0 {
+                    return results.last
+                }
+            } catch let error as NSError {
+                print("Error: \(error) " + "description \(error.localizedDescription)")
+            }
+        }
+        
+        return nil
+    }
+    
+    private func fetchDoses(forHeadache headache: Headache) -> [Dose]? {
+        let fetchRequest = NSFetchRequest(entityName: "Dose")
+        fetchRequest.predicate = NSPredicate(format: "headache.date == %@", headache.date!)
+        
+        do {
+            let results = try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Dose]
+            if results.count > 0 {
+                return results
+            }
+        } catch let error as NSError {
+            print("Error: \(error) " + "description \(error.localizedDescription)")
+        }
+        
+        return nil
+    }
+    
 }
 
 

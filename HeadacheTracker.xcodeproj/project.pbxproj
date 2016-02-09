@@ -27,10 +27,8 @@
 		904E4C4D1C4DDE1600104B3D /* Headache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C4B1C4DDE1600104B3D /* Headache.xcdatamodeld */; };
 		904E4C501C4DDE9000104B3D /* Headache+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C4E1C4DDE9000104B3D /* Headache+CoreDataProperties.swift */; };
 		904E4C511C4DDE9000104B3D /* Headache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C4F1C4DDE9000104B3D /* Headache.swift */; };
-		904E4C5E1C51CEE200104B3D /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C581C51CEE200104B3D /* Week.swift */; };
 		904E4C5F1C51CEE200104B3D /* Year+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C591C51CEE200104B3D /* Year+CoreDataProperties.swift */; };
 		904E4C601C51CEE200104B3D /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C5A1C51CEE200104B3D /* Year.swift */; };
-		904E4C621C51CEE200104B3D /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E4C5C1C51CEE200104B3D /* Month.swift */; };
 		90A8F62A1BF2B15D00356B56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6291BF2B15D00356B56 /* AppDelegate.swift */; };
 		90A8F62F1BF2B15D00356B56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A8F62D1BF2B15D00356B56 /* Main.storyboard */; };
 		90A8F6311BF2B15D00356B56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90A8F6301BF2B15D00356B56 /* Assets.xcassets */; };
@@ -38,6 +36,8 @@
 		90A8F63C1BF2BCCC00356B56 /* HeadacheTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */; };
 		90A8F6401BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */; };
 		90A8F6461BF44B7D00356B56 /* HeadacheTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */; };
+		90C0F6101C681454006B3811 /* Dose+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0F60E1C681454006B3811 /* Dose+CoreDataProperties.swift */; };
+		90C0F6111C681454006B3811 /* Dose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0F60F1C681454006B3811 /* Dose.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,10 +106,8 @@
 		904E4C4C1C4DDE1600104B3D /* Headache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Headache.xcdatamodel; sourceTree = "<group>"; };
 		904E4C4E1C4DDE9000104B3D /* Headache+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Headache+CoreDataProperties.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		904E4C4F1C4DDE9000104B3D /* Headache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Headache.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		904E4C581C51CEE200104B3D /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		904E4C591C51CEE200104B3D /* Year+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Year+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		904E4C5A1C51CEE200104B3D /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
-		904E4C5C1C51CEE200104B3D /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		90A8F6261BF2B15D00356B56 /* HeadacheTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeadacheTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A8F6291BF2B15D00356B56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		90A8F62E1BF2B15D00356B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,6 +117,8 @@
 		90A8F63B1BF2BCCC00356B56 /* HeadacheTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HeadacheTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		90A8F63F1BF2E0AE00356B56 /* HeadacheDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HeadacheDetailTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HeadacheTabBarController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		90C0F60E1C681454006B3811 /* Dose+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dose+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		90C0F60F1C681454006B3811 /* Dose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dose.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,11 +150,11 @@
 				904E4C4E1C4DDE9000104B3D /* Headache+CoreDataProperties.swift */,
 				904E4C591C51CEE200104B3D /* Year+CoreDataProperties.swift */,
 				9018BFF21C5AC6C200168E7D /* Medication+CoreDataProperties.swift */,
+				90C0F60E1C681454006B3811 /* Dose+CoreDataProperties.swift */,
 				904E4C4F1C4DDE9000104B3D /* Headache.swift */,
-				904E4C581C51CEE200104B3D /* Week.swift */,
 				904E4C5A1C51CEE200104B3D /* Year.swift */,
-				904E4C5C1C51CEE200104B3D /* Month.swift */,
 				9018BFF31C5AC6C200168E7D /* Medication.swift */,
+				90C0F60F1C681454006B3811 /* Dose.swift */,
 			);
 			name = CoreDataStack;
 			sourceTree = "<group>";
@@ -315,14 +315,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C0F6111C681454006B3811 /* Dose.swift in Sources */,
 				903EA91C1C388AD70086BBF4 /* MonthBarChartViewController.swift in Sources */,
 				90A8F6461BF44B7D00356B56 /* HeadacheTabBarController.swift in Sources */,
 				9018BFEF1C5A634C00168E7D /* MedicationsTableViewCell.swift in Sources */,
-				904E4C5E1C51CEE200104B3D /* Week.swift in Sources */,
 				904E4C501C4DDE9000104B3D /* Headache+CoreDataProperties.swift in Sources */,
 				9018BFF71C5BB28F00168E7D /* HeadacheListTableViewCell.swift in Sources */,
 				904E4C5F1C51CEE200104B3D /* Year+CoreDataProperties.swift in Sources */,
-				904E4C621C51CEE200104B3D /* Month.swift in Sources */,
 				9018C0131C619A5400168E7D /* CalendarCollectionViewController.swift in Sources */,
 				9018BFF11C5A637800168E7D /* MedicationsListTableViewCell.swift in Sources */,
 				904E4C481C4DDC1300104B3D /* CoreDataStack.swift in Sources */,
@@ -332,6 +331,7 @@
 				904E4C511C4DDE9000104B3D /* Headache.swift in Sources */,
 				9018BFEB1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift in Sources */,
 				90A8F63C1BF2BCCC00356B56 /* HeadacheTableViewController.swift in Sources */,
+				90C0F6101C681454006B3811 /* Dose+CoreDataProperties.swift in Sources */,
 				9018BFF51C5AC6C200168E7D /* Medication.swift in Sources */,
 				904E4C4D1C4DDE1600104B3D /* Headache.xcdatamodeld in Sources */,
 				9018BFF41C5AC6C200168E7D /* Medication+CoreDataProperties.swift in Sources */,

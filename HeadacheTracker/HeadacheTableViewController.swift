@@ -267,11 +267,13 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
             cell.severityLabel.textColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
         }
         
-        var medicationsArray = [String]()
-        for medication in headache.medications! {
-            medicationsArray.append(medication.name)
-        }
-        cell.medicationsLabel.text = medicationsArray.joinWithSeparator(", ")
+//        var medicationsArray = [String]()
+//        for medication in headache.medications! {
+//            medicationsArray.append(medication.name)
+//        }
+//        cell.medicationsLabel.text = medicationsArray.joinWithSeparator(", ")
+        
+        cell.medicationsLabel.text = getMedicationsAndDosesToDisplay(forHeadache: headache)
     }
     
     private func deleteYearIfNoHeadaches(headacheYear: Int) {
@@ -303,6 +305,39 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
             label.tag = 1000
             view.addSubview(label)
         }
+    }
+    
+    private func getMedicationsAndDosesToDisplay(forHeadache headache: Headache) -> String {
+        var medicationDoses = [Medication: Int]()
+        
+        for medication in headache.medications! {
+            if let dose = fetchDose(forMedication: medication as! Medication, andHeadache: headache) {
+                medicationDoses[medication as! Medication] = Int(dose.quantity!)
+            }
+        }
+        
+        var displayArray = [String]()
+        for medDose in medicationDoses {
+            displayArray.append("\(medDose.1) \(medDose.0.name!)")
+        }
+        
+        return displayArray.joinWithSeparator(", ")
+    }
+    
+    private func fetchDose(forMedication medication: Medication, andHeadache headache: Headache) -> Dose? {
+        let fetchRequest = NSFetchRequest(entityName: "Dose")
+        fetchRequest.predicate = NSPredicate(format: "headache.date == %@ AND medication.name == %@", headache.date!, medication.name!)
+        
+        do {
+            let results = try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Dose]
+            if results.count > 0 {
+                return results.last
+            }
+        } catch let error as NSError {
+            print("Error: \(error) " + "description \(error.localizedDescription)")
+        }
+        
+        return nil
     }
     
 }
