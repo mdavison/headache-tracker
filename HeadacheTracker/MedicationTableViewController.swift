@@ -170,10 +170,6 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func add(sender: UIBarButtonItem) {
-        showMedicationNameAlert(nil)
-    }
-    
     @IBAction func edit(sender: UIBarButtonItem) {
         editing = !editing
         
