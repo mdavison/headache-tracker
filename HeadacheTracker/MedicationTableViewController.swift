@@ -13,9 +13,10 @@ protocol MedicationTableViewControllerDelegate: class {
     func medicationTableViewControllerDidFinish(controller: MedicationTableViewController)
 }
 
-class MedicationTableViewController: UITableViewController {
+class MedicationTableViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var addMedicationTextField: UITextField!
     
     var coreDataStack: CoreDataStack!
     var medicationFetchedResultsController = NSFetchedResultsController()
@@ -28,6 +29,7 @@ class MedicationTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addMedicationTextField.delegate = self
         fetchMedications()
         medicationFetchedResultsController.delegate = self
     }
@@ -111,6 +113,44 @@ class MedicationTableViewController: UITableViewController {
         return true
     }
     */
+    
+    
+    // MARK: - UITextFieldDelegate Methods
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if let name = textField.text {
+            var nameIsValid = true
+            
+            // Make sure name is not blank
+            let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
+            let trimmedString = name.stringByTrimmingCharactersInSet(whitespaceSet)
+
+            if trimmedString.characters.count == 0 {
+                nameIsValid = false
+                textField.text = ""
+            }
+            
+            // Make sure name is not duplicate
+            if nameIsDuplicate(ofMedicationName: name) {
+                nameIsValid = false
+                showInvalidNameAlert("Oops!", message: "That name already exists.")
+            }
+
+            if nameIsValid {
+                let medication = NSEntityDescription.insertNewObjectForEntityForName("Medication", inManagedObjectContext: self.coreDataStack.context) as! Medication
+                medication.name = name
+                coreDataStack.saveContext()
+                textField.text = ""
+            }
+        }
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -140,12 +180,16 @@ class MedicationTableViewController: UITableViewController {
         if editing {
             sender.title = "Done"
             sender.style = .Done
+            
             doneButton.enabled = false
+            doneButton.style = .Plain
         } else {
             sender.title = "Edit"
             sender.style = .Plain
             coreDataStack.saveContext()
+            
             doneButton.enabled = true
+            doneButton.style = .Done
         }
     }
     

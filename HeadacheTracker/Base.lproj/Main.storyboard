@@ -283,9 +283,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="xWp-GQ-J5o">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="760" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Medication" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yRv-OO-6Re">
+                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="yRv-OO-6Re" secondAttribute="bottom" constant="7" id="6Fo-Gg-agE"/>
+                                <constraint firstAttribute="trailing" secondItem="yRv-OO-6Re" secondAttribute="trailing" constant="8" id="6me-Sf-RDb"/>
+                                <constraint firstItem="yRv-OO-6Re" firstAttribute="top" secondItem="xWp-GQ-J5o" secondAttribute="top" constant="7" id="TAc-YH-boH"/>
+                                <constraint firstItem="yRv-OO-6Re" firstAttribute="leading" secondItem="xWp-GQ-J5o" secondAttribute="leading" constant="8" id="Wgf-rl-dtn"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedicationCell" textLabel="pnu-8T-rop" style="IBUITableViewCellStyleDefault" id="vMG-zs-kxl">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vMG-zs-kxl" id="h6b-3I-hKh">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -327,6 +346,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addMedicationTextField" destination="yRv-OO-6Re" id="ZRu-Ot-Adv"/>
                         <outlet property="doneButton" destination="hjN-94-9AP" id="kyr-jm-lOY"/>
                     </connections>
                 </tableViewController>
