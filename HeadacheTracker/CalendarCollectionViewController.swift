@@ -308,7 +308,7 @@ class CalendarCollectionViewController: UICollectionViewController {
         // Add a label on top, since the drawn circle covers the existing label
         let label = UILabel(frame: CGRect(x: 19, y: 18, width: 20, height: 20))
         label.textColor = UIColor.whiteColor()
-        label.font = UIFont.preferredFontForTextStyle("caption 1")
+        //label.font = UIFont.preferredFontForTextStyle("body")
         
         label.translatesAutoresizingMaskIntoConstraints = false // So we can set constraints
         label.text = cell.dayNumberLabel.text
