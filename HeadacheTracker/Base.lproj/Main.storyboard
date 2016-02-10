@@ -319,13 +319,16 @@
                                     <action selector="add:" destination="dcA-QN-HsM" id="yR6-HM-CDB"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="save" id="hjN-94-9AP">
+                            <barButtonItem systemItem="done" id="hjN-94-9AP">
                                 <connections>
-                                    <action selector="save" destination="dcA-QN-HsM" id="Yjs-AL-jaI"/>
+                                    <action selector="done" destination="dcA-QN-HsM" id="mzh-fC-U07"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="hjN-94-9AP" id="kyr-jm-lOY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2P-dP-u8U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

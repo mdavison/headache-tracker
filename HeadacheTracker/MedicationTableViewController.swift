@@ -15,6 +15,8 @@ protocol MedicationTableViewControllerDelegate: class {
 
 class MedicationTableViewController: UITableViewController {
 
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     var coreDataStack: CoreDataStack!
     var medicationFetchedResultsController = NSFetchedResultsController()
     weak var delegate: MedicationTableViewControllerDelegate?
@@ -123,12 +125,7 @@ class MedicationTableViewController: UITableViewController {
     
     // MARK: - Actions
     
-//    @IBAction func cancel() {
-//        dismissViewControllerAnimated(true, completion: nil)
-//    }
-    
-    @IBAction func save() {
-        //coreDataStack.saveContext()
+    @IBAction func done() {
         delegate?.medicationTableViewControllerDidFinish(self)
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -143,10 +140,12 @@ class MedicationTableViewController: UITableViewController {
         if editing {
             sender.title = "Done"
             sender.style = .Done
+            doneButton.enabled = false
         } else {
             sender.title = "Edit"
             sender.style = .Plain
             coreDataStack.saveContext()
+            doneButton.enabled = true
         }
     }
     
