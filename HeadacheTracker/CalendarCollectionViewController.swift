@@ -74,28 +74,44 @@ class CalendarCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
-        switch kind {
-        case UICollectionElementKindSectionHeader:
+//        switch kind {
+//        case UICollectionElementKindSectionHeader:
+//            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Header", forIndexPath: indexPath) as! CalendarCollectionReusableHeaderView
+//            
+//            headerView.backgroundColor = UIColor(red: 230.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, alpha: 1)
+//            
+//            let dateFormatter = NSDateFormatter()
+//            let monthText = dateFormatter.shortMonthSymbols[monthsAndYears[indexPath.section].month - 1]
+//            let yearText = monthsAndYears[indexPath.section].year
+//        
+//            headerView.titleLabel.text = "\(monthText) \(yearText)".uppercaseString
+//            return headerView
+//            
+//        case UICollectionElementKindSectionFooter:
+//            let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Footer", forIndexPath: indexPath) 
+//            
+//            footerView.backgroundColor = UIColor.greenColor();
+//            return footerView
+//            
+//        default:
+//            
+//            assert(false, "Unexpected element kind")
+//        }
+        if kind == UICollectionElementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Header", forIndexPath: indexPath) as! CalendarCollectionReusableHeaderView
-            
+
             headerView.backgroundColor = UIColor(red: 230.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, alpha: 1)
-            
+
             let dateFormatter = NSDateFormatter()
             let monthText = dateFormatter.shortMonthSymbols[monthsAndYears[indexPath.section].month - 1]
             let yearText = monthsAndYears[indexPath.section].year
-        
+
             headerView.titleLabel.text = "\(monthText) \(yearText)".uppercaseString
             return headerView
-            
-        case UICollectionElementKindSectionFooter:
-            let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Footer", forIndexPath: indexPath) 
-            
-            footerView.backgroundColor = UIColor.greenColor();
+        } else {
+            let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Footer", forIndexPath: indexPath)
+
             return footerView
-            
-        default:
-            
-            assert(false, "Unexpected element kind")
         }
     }
     

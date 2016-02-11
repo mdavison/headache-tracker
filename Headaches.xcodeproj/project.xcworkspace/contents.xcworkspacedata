@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:HeadacheTracker.xcodeproj">
+      location = "self:/Users/morgan/Code/ios/HeadacheTracker/Headaches.xcodeproj">
    </FileRef>
 </Workspace>
