@@ -23,9 +23,9 @@
         <relationship name="headaches" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Headache" inverseName="year" inverseEntity="Headache" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Dose" positionX="88" positionY="-135" width="128" height="88"/>
         <element name="Headache" positionX="61" positionY="-372" width="128" height="118"/>
         <element name="Medication" positionX="-182" positionY="-213" width="128" height="103"/>
         <element name="Year" positionX="288" positionY="-306" width="128" height="73"/>
-        <element name="Dose" positionX="88" positionY="-135" width="128" height="88"/>
     </elements>
 </model>
