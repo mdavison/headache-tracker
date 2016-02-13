@@ -24,7 +24,7 @@ class CoreDataStack {
         return managedObjectContext
     }()
     
-    private lazy var psc: NSPersistentStoreCoordinator = {
+    internal lazy var psc: NSPersistentStoreCoordinator = {
         
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         
@@ -41,7 +41,7 @@ class CoreDataStack {
         return coordinator
     }()
     
-    private lazy var managedObjectModel: NSManagedObjectModel = {
+    internal lazy var managedObjectModel: NSManagedObjectModel = {
         
         let modelURL = NSBundle.mainBundle().URLForResource(self.modelName, withExtension: "momd")!
         

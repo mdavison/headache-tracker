@@ -38,6 +38,9 @@
 		90A8F6461BF44B7D00356B56 /* HeadacheTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */; };
 		90C0F6101C681454006B3811 /* Dose+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0F60E1C681454006B3811 /* Dose+CoreDataProperties.swift */; };
 		90C0F6111C681454006B3811 /* Dose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0F60F1C681454006B3811 /* Dose.swift */; };
+		90C0F64F1C6F76CC006B3811 /* HeadacheTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0F64E1C6F76CC006B3811 /* HeadacheTrackerTests.swift */; };
+		90C0F6591C6F76FC006B3811 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0F6581C6F76FC006B3811 /* TestCoreDataStack.swift */; };
+		90C0F65B1C6F7AF3006B3811 /* HeadacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0F65A1C6F7AF3006B3811 /* HeadacheTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
 			remoteInfo = "Charts-iOS";
+		};
+		90C0F6511C6F76CC006B3811 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90A8F61E1BF2B15D00356B56 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90A8F6251BF2B15D00356B56;
+			remoteInfo = HeadacheTracker;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -119,6 +129,11 @@
 		90A8F6451BF44B7D00356B56 /* HeadacheTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HeadacheTabBarController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		90C0F60E1C681454006B3811 /* Dose+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dose+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		90C0F60F1C681454006B3811 /* Dose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dose.swift; sourceTree = "<group>"; };
+		90C0F64C1C6F76CC006B3811 /* HeadacheTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeadacheTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90C0F64E1C6F76CC006B3811 /* HeadacheTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadacheTrackerTests.swift; sourceTree = "<group>"; };
+		90C0F6501C6F76CC006B3811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90C0F6581C6F76FC006B3811 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
+		90C0F65A1C6F7AF3006B3811 /* HeadacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadacheTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +142,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				903EA9161C3888B70086BBF4 /* Charts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90C0F6491C6F76CC006B3811 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +186,7 @@
 			children = (
 				903EA90A1C38889A0086BBF4 /* Charts.xcodeproj */,
 				90A8F6281BF2B15D00356B56 /* HeadacheTracker */,
+				90C0F64D1C6F76CC006B3811 /* HeadacheTrackerTests */,
 				90A8F6271BF2B15D00356B56 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -172,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				90A8F6261BF2B15D00356B56 /* HeadacheTracker.app */,
+				90C0F64C1C6F76CC006B3811 /* HeadacheTrackerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -206,6 +230,17 @@
 			path = HeadacheTracker;
 			sourceTree = "<group>";
 		};
+		90C0F64D1C6F76CC006B3811 /* HeadacheTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				90C0F6581C6F76FC006B3811 /* TestCoreDataStack.swift */,
+				90C0F65A1C6F7AF3006B3811 /* HeadacheTests.swift */,
+				90C0F64E1C6F76CC006B3811 /* HeadacheTrackerTests.swift */,
+				90C0F6501C6F76CC006B3811 /* Info.plist */,
+			);
+			path = HeadacheTrackerTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -228,13 +263,31 @@
 			productReference = 90A8F6261BF2B15D00356B56 /* HeadacheTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		90C0F64B1C6F76CC006B3811 /* HeadacheTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90C0F6571C6F76CC006B3811 /* Build configuration list for PBXNativeTarget "HeadacheTrackerTests" */;
+			buildPhases = (
+				90C0F6481C6F76CC006B3811 /* Sources */,
+				90C0F6491C6F76CC006B3811 /* Frameworks */,
+				90C0F64A1C6F76CC006B3811 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90C0F6521C6F76CC006B3811 /* PBXTargetDependency */,
+			);
+			name = HeadacheTrackerTests;
+			productName = HeadacheTrackerTests;
+			productReference = 90C0F64C1C6F76CC006B3811 /* HeadacheTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		90A8F61E1BF2B15D00356B56 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Morgan Davison";
 				TargetAttributes = {
@@ -246,6 +299,10 @@
 								enabled = 1;
 							};
 						};
+					};
+					90C0F64B1C6F76CC006B3811 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 90A8F6251BF2B15D00356B56;
 					};
 				};
 			};
@@ -269,6 +326,7 @@
 			projectRoot = "";
 			targets = (
 				90A8F6251BF2B15D00356B56 /* HeadacheTracker */,
+				90C0F64B1C6F76CC006B3811 /* HeadacheTrackerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -308,6 +366,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		90C0F64A1C6F76CC006B3811 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -344,6 +409,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		90C0F6481C6F76CC006B3811 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90C0F64F1C6F76CC006B3811 /* HeadacheTrackerTests.swift in Sources */,
+				90C0F6591C6F76FC006B3811 /* TestCoreDataStack.swift in Sources */,
+				90C0F65B1C6F7AF3006B3811 /* HeadacheTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -351,6 +426,11 @@
 			isa = PBXTargetDependency;
 			name = "Charts-iOS";
 			targetProxy = 903EA9181C3888B70086BBF4 /* PBXContainerItemProxy */;
+		};
+		90C0F6521C6F76CC006B3811 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90A8F6251BF2B15D00356B56 /* HeadacheTracker */;
+			targetProxy = 90C0F6511C6F76CC006B3811 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -492,6 +572,32 @@
 			};
 			name = Release;
 		};
+		90C0F6531C6F76CC006B3811 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HeadacheTrackerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.morgandavison.HeadacheTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HeadacheTracker.app/HeadacheTracker";
+			};
+			name = Debug;
+		};
+		90C0F6541C6F76CC006B3811 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HeadacheTrackerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.morgandavison.HeadacheTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HeadacheTracker.app/HeadacheTracker";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -512,6 +618,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		90C0F6571C6F76CC006B3811 /* Build configuration list for PBXNativeTarget "HeadacheTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90C0F6531C6F76CC006B3811 /* Debug */,
+				90C0F6541C6F76CC006B3811 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

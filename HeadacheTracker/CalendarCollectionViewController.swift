@@ -33,6 +33,7 @@ class CalendarCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         
         setHeadaches()
+        toggleNoDataLabel()
         setMonthsAndYears()
         collectionView?.reloadData()
     }
@@ -246,7 +247,6 @@ class CalendarCollectionViewController: UICollectionViewController {
             print("Error: \(error) " + "description \(error.localizedDescription)")
         }
         
-        toggleNoDataLabel()
     }
     
     private func getNumberOfMonths(forHeadaches headaches: [Headache]) -> Int {

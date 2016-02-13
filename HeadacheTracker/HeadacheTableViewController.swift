@@ -27,6 +27,7 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         super.viewDidLoad()
         
         loadHeadaches()
+        toggleNoDataLabel()
         fetchedResultsController.delegate = self
         
 //        let yearFetchedResultsController = fetchYears()
@@ -187,7 +188,6 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
             print("Error: \(error) " + "description: \(error.localizedDescription)")
         }
         
-        toggleNoDataLabel()
     }
     
     private func fetchYears() -> NSFetchedResultsController {
