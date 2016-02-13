@@ -626,6 +626,7 @@
 				90C0F6541C6F76CC006B3811 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
