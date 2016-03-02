@@ -16,7 +16,9 @@ extension Medication {
 
     @NSManaged var displayOrder: NSNumber?
     @NSManaged var name: String?
-    @NSManaged var headaches: NSSet?
-    @NSManaged var doses: NSSet?
+    //@NSManaged var headaches: NSSet?
+    @NSManaged var headaches: Set<Headache>?
+    //@NSManaged var doses: NSSet?
+    @NSManaged var doses: Set<Medication>?
 
 }

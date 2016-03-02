@@ -219,7 +219,6 @@ class MonthBarChartViewController: UIViewController {
         yearFetch.predicate = NSPredicate(format: "number == %d", year)
         
         let headachesForYearFetchedResultsController = NSFetchedResultsController(fetchRequest: yearFetch, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
-
         
         do {
             try headachesForYearFetchedResultsController.performFetch()
@@ -230,7 +229,7 @@ class MonthBarChartViewController: UIViewController {
         if let yearFetched = headachesForYearFetchedResultsController.fetchedObjects?.first as? Year {
             var headaches = [Headache]()
             for headache in yearFetched.headaches! {
-                headaches.append(headache as! Headache)
+                headaches.append(headache)
             }
             
             return headaches

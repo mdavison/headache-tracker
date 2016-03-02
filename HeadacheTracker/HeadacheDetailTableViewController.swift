@@ -37,6 +37,10 @@ class HeadacheDetailTableViewController: UITableViewController {
         static let ManageMedicationSegueIdentifier = "ManageMedications"
     }
     
+    deinit {
+        //NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,7 +104,6 @@ class HeadacheDetailTableViewController: UITableViewController {
             } else {
                 cell.detailTextLabel?.text = ""
             }
-            
             return cell
         default: // MANAGE MEDICATIONS
             let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.MedicationsCellReuseIdentifier, forIndexPath: indexPath) as! MedicationsTableViewCell
@@ -301,9 +304,20 @@ class HeadacheDetailTableViewController: UITableViewController {
         let headacheYear = setHeadacheYear()
         
         // Insert the new headache into the Year's headaches set
-        let headaches = headacheYear.headaches!.mutableCopy() as! NSMutableOrderedSet
-        headaches.addObject(headache)
-        headacheYear.headaches = headaches.copy() as? NSOrderedSet
+        
+        //let headaches = headacheYear.headaches!.mutableCopy() as! NSMutableOrderedSet
+        //let headaches = headacheYear.headaches as! AnyObject
+        //headaches.addObject(headache)
+        //headacheYear.headaches = headaches.copy() as? NSOrderedSet
+        //headacheYear.headaches = headaches as? Set<Headache>
+        
+        var headaches = [Headache]() // Mutable array
+        for ha in headacheYear.headaches! {
+            headaches.append(ha) // Add existing headaches
+        }
+        headaches.append(headache) // Add new headache
+        
+        headacheYear.headaches = Set(headaches)
 
     }
     
@@ -320,7 +334,7 @@ class HeadacheDetailTableViewController: UITableViewController {
         var medications = [Medication]()
         // Put existing headache medications into array
         for med in headache.medications! {
-            medications.append(med as! Medication)
+            medications.append(med )
         }
         
         for medicationDose in medicationDoses {
@@ -335,7 +349,8 @@ class HeadacheDetailTableViewController: UITableViewController {
             dose.medication = medicationDose.0
         }
         
-        headache.medications = NSSet(array: medications)
+        //headache.medications = NSSet(array: medications)
+        headache.medications = Set(medications)
     }
     
     private func validateSelectedDate(date: NSDate) {
@@ -362,12 +377,9 @@ class HeadacheDetailTableViewController: UITableViewController {
         let fetchRequest = NSFetchRequest(entityName: "Medication")
         let nameSortDescriptor = NSSortDescriptor(key: "displayOrder", ascending: true)
         fetchRequest.sortDescriptors = [nameSortDescriptor]
-        
         do {
             let results = try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Medication]
-            if results.count > 0 {
-                medications = results
-            }
+            medications = results
         } catch let error as NSError {
             print("Error: \(error) " + "description \(error.localizedDescription)")
         }
@@ -403,13 +415,14 @@ class HeadacheDetailTableViewController: UITableViewController {
             
             // Create array of medications that doesn't include the clearedMedication
             for headacheMedication in headache.medications! {
-                if headacheMedication as! Medication != clearedMedication {
-                    newHeadacheMedications.append(headacheMedication as! Medication)
+                if (headacheMedication != clearedMedication) {
+                    newHeadacheMedications.append(headacheMedication)
                 }
             }
             
             // Update headache medications
-            headache.medications = NSSet(array: newHeadacheMedications)
+            //headache.medications = NSSet(array: newHeadacheMedications)
+            headache.medications = Set(newHeadacheMedications)
             
         }
         
@@ -473,8 +486,8 @@ class HeadacheDetailTableViewController: UITableViewController {
 
 
 extension HeadacheDetailTableViewController: MedicationTableViewControllerDelegate {
-    func medicationTableViewControllerDidFinish(controller: MedicationTableViewController) {
-        fetchMedications()
-        tableView.reloadData()
+    func medicationTableViewControllerDidFinish(controller: MedicationTableViewController, medications: [Medication]) {
+        self.medications = medications
+        tableView.reloadSections(NSIndexSet(index: 2), withRowAnimation: .Automatic)
     }
 }

@@ -25,18 +25,25 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadHeadaches()
         toggleNoDataLabel()
         fetchedResultsController.delegate = self
-        
-//        let yearFetchedResultsController = fetchYears()
-//        print(yearFetchedResultsController.fetchedObjects?.count)
+        //coreDataStack.updateContextWithUbiquitousContentUpdates = true
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 90.0
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Get any new data from icloud
+//        loadHeadaches()
+//        fetchedResultsController.delegate = self
+//        tableView.reloadData()
+//        toggleNoDataLabel()
+        coreDataStack.updateContextWithUbiquitousContentUpdates = true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -311,8 +318,8 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         var medicationDoses = [Medication: Int]()
         
         for medication in headache.medications! {
-            if let dose = fetchDose(forMedication: medication as! Medication, andHeadache: headache) {
-                medicationDoses[medication as! Medication] = Int(dose.quantity!)
+            if let dose = fetchDose(forMedication: medication, andHeadache: headache) {
+                medicationDoses[medication] = Int(dose.quantity!)
             }
         }
         

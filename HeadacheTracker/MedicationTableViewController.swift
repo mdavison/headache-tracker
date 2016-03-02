@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol MedicationTableViewControllerDelegate: class {
-    func medicationTableViewControllerDidFinish(controller: MedicationTableViewController)
+    func medicationTableViewControllerDidFinish(controller: MedicationTableViewController, medications: [Medication])
 }
 
 class MedicationTableViewController: UITableViewController, UITextFieldDelegate {
@@ -30,6 +30,7 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
         super.viewDidLoad()
         
         addMedicationTextField.delegate = self
+        addMedicationTextField.becomeFirstResponder()
         fetchMedications()
         medicationFetchedResultsController.delegate = self
     }
@@ -166,7 +167,10 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
     // MARK: - Actions
     
     @IBAction func done() {
-        delegate?.medicationTableViewControllerDidFinish(self)
+        addMedicationTextField.text = ""
+        let medications = medicationFetchedResultsController.fetchedObjects as! [Medication]
+        
+        delegate?.medicationTableViewControllerDidFinish(self, medications: medications)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -256,7 +260,7 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
                     let medication = NSEntityDescription.insertNewObjectForEntityForName("Medication", inManagedObjectContext: self.coreDataStack.context) as! Medication
                     medication.name = name
                 }
-                
+            
                 self.coreDataStack.saveContext()
             }
             
@@ -288,10 +292,6 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
 
 
 extension MedicationTableViewController: NSFetchedResultsControllerDelegate {
-    
-//    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-//        tableView.reloadData()
-//    }
 
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
