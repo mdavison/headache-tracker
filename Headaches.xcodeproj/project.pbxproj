@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9018BFE51C5973C800168E7D /* MedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFE41C5973C800168E7D /* MedicationTableViewController.swift */; };
 		9018BFE91C599CDD00168E7D /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFE81C599CDD00168E7D /* DatePickerTableViewCell.swift */; };
-		9018BFEB1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFEA1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift */; };
 		9018BFED1C59BCD900168E7D /* SeverityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFEC1C59BCD900168E7D /* SeverityTableViewCell.swift */; };
 		9018BFEF1C5A634C00168E7D /* MedicationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFEE1C5A634C00168E7D /* MedicationsTableViewCell.swift */; };
 		9018BFF11C5A637800168E7D /* MedicationsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BFF01C5A637800168E7D /* MedicationsListTableViewCell.swift */; };
@@ -99,7 +98,6 @@
 /* Begin PBXFileReference section */
 		9018BFE41C5973C800168E7D /* MedicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationTableViewController.swift; sourceTree = "<group>"; };
 		9018BFE81C599CDD00168E7D /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
-		9018BFEA1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = backupHeadacheDetailTableViewController.swift; sourceTree = "<group>"; };
 		9018BFEC1C59BCD900168E7D /* SeverityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeverityTableViewCell.swift; sourceTree = "<group>"; };
 		9018BFEE1C5A634C00168E7D /* MedicationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationsTableViewCell.swift; sourceTree = "<group>"; };
 		9018BFF01C5A637800168E7D /* MedicationsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationsListTableViewCell.swift; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 				903EA91B1C388AD70086BBF4 /* MonthBarChartViewController.swift */,
 				903EA91D1C3C11090086BBF4 /* SeverityPieChartViewController.swift */,
 				90A8F6291BF2B15D00356B56 /* AppDelegate.swift */,
-				9018BFEA1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift */,
 				904E4C631C51CF0000104B3D /* CoreDataStack */,
 				904E4C4B1C4DDE1600104B3D /* Headache.xcdatamodeld */,
 				90A8F6301BF2B15D00356B56 /* Assets.xcassets */,
@@ -399,7 +396,6 @@
 				9018C01B1C62D35600168E7D /* CalendarCollectionReusableHeaderView.swift in Sources */,
 				903EA91E1C3C11090086BBF4 /* SeverityPieChartViewController.swift in Sources */,
 				904E4C511C4DDE9000104B3D /* Headache.swift in Sources */,
-				9018BFEB1C59BC3400168E7D /* backupHeadacheDetailTableViewController.swift in Sources */,
 				90A8F63C1BF2BCCC00356B56 /* HeadacheTableViewController.swift in Sources */,
 				90C0F6101C681454006B3811 /* Dose+CoreDataProperties.swift in Sources */,
 				9018BFF51C5AC6C200168E7D /* Medication.swift in Sources */,

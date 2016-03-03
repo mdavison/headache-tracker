@@ -27,10 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let calendarCollectionViewController = calendarViewNavigationController.viewControllers[0] as! CalendarCollectionViewController
         let monthBarChartViewController = monthBarChartViewNavigationController.viewControllers[0] as! MonthBarChartViewController
         let severityPieChartViewController = severityPieChartViewNavigationController.viewControllers[0] as! SeverityPieChartViewController
-
-        //allHeadachesController.managedContext = coreDataStack.context
-        //monthBarChartViewController.managedContext = coreDataStack.context
-        //severityPieChartViewController.managedContext = coreDataStack.context
         
         allHeadachesController.coreDataStack = coreDataStack
         calendarCollectionViewController.coreDataStack = coreDataStack

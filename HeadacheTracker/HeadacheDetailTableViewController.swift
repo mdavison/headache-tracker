@@ -37,9 +37,6 @@ class HeadacheDetailTableViewController: UITableViewController {
         static let ManageMedicationSegueIdentifier = "ManageMedications"
     }
     
-    deinit {
-        //NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -304,13 +301,6 @@ class HeadacheDetailTableViewController: UITableViewController {
         let headacheYear = setHeadacheYear()
         
         // Insert the new headache into the Year's headaches set
-        
-        //let headaches = headacheYear.headaches!.mutableCopy() as! NSMutableOrderedSet
-        //let headaches = headacheYear.headaches as! AnyObject
-        //headaches.addObject(headache)
-        //headacheYear.headaches = headaches.copy() as? NSOrderedSet
-        //headacheYear.headaches = headaches as? Set<Headache>
-        
         var headaches = [Headache]() // Mutable array
         for ha in headacheYear.headaches! {
             headaches.append(ha) // Add existing headaches
@@ -349,7 +339,6 @@ class HeadacheDetailTableViewController: UITableViewController {
             dose.medication = medicationDose.0
         }
         
-        //headache.medications = NSSet(array: medications)
         headache.medications = Set(medications)
     }
     
@@ -421,7 +410,6 @@ class HeadacheDetailTableViewController: UITableViewController {
             }
             
             // Update headache medications
-            //headache.medications = NSSet(array: newHeadacheMedications)
             headache.medications = Set(newHeadacheMedications)
             
         }

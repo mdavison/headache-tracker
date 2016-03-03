@@ -34,7 +34,6 @@ class CoreDataStack {
         do {
             let options =
                 [NSMigratePersistentStoresAutomaticallyOption: true,
-                NSPersistentStoreUbiquitousContentNameKey: "HeadacheTrackr",
                 NSInferMappingModelAutomaticallyOption: true]
             
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
@@ -52,19 +51,6 @@ class CoreDataStack {
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
-    var updateContextWithUbiquitousContentUpdates: Bool = false {
-        willSet {
-            ubiquitousChangesObserver = newValue ? NSNotificationCenter.defaultCenter(): nil
-        }
-    }
-    
-    private var ubiquitousChangesObserver: NSNotificationCenter? {
-        didSet{
-            oldValue?.removeObserver(self, name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: psc)
-            ubiquitousChangesObserver?.addObserver(self, selector: "persistentStoreDidImportUbiquitousContentChanges:", name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: psc)
-        }
-    }
-    
     
     func saveContext() {
         if context.hasChanges {
@@ -74,13 +60,6 @@ class CoreDataStack {
                 print("Error: \(error.localizedDescription)")
                 abort()
             }
-        }
-    }
-    
-    @objc func persistentStoreDidImportUbiquitousContentChanges(notification: NSNotification) {
-        NSLog("Merging ubiquitous content changes")
-        context.performBlock { () -> Void in
-            self.context.mergeChangesFromContextDidSaveNotification(notification)
         }
     }
     

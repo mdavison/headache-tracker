@@ -43,17 +43,6 @@ class CalendarCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     // MARK: UICollectionViewDataSource
     
@@ -75,29 +64,6 @@ class CalendarCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
-//        switch kind {
-//        case UICollectionElementKindSectionHeader:
-//            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Header", forIndexPath: indexPath) as! CalendarCollectionReusableHeaderView
-//            
-//            headerView.backgroundColor = UIColor(red: 230.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, alpha: 1)
-//            
-//            let dateFormatter = NSDateFormatter()
-//            let monthText = dateFormatter.shortMonthSymbols[monthsAndYears[indexPath.section].month - 1]
-//            let yearText = monthsAndYears[indexPath.section].year
-//        
-//            headerView.titleLabel.text = "\(monthText) \(yearText)".uppercaseString
-//            return headerView
-//            
-//        case UICollectionElementKindSectionFooter:
-//            let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Footer", forIndexPath: indexPath) 
-//            
-//            footerView.backgroundColor = UIColor.greenColor();
-//            return footerView
-//            
-//        default:
-//            
-//            assert(false, "Unexpected element kind")
-//        }
         if kind == UICollectionElementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Header", forIndexPath: indexPath) as! CalendarCollectionReusableHeaderView
 
@@ -153,6 +119,7 @@ class CalendarCollectionViewController: UICollectionViewController {
     
     // MARK: - Helper Methods
     
+    // This doesn't work very well - decided to make the calendar backwards instead
 //    private func scrollToBottom() {
 //        let lastSectionIndex = (collectionView?.numberOfSections())! - 1
 //        let lastItemIndex = (collectionView?.numberOfItemsInSection(lastSectionIndex))! - 1
@@ -239,10 +206,7 @@ class CalendarCollectionViewController: UICollectionViewController {
         
         do {
             let results = try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Headache]
-            
-            //if results.count > 0 {
-                headaches = results
-            //}
+            headaches = results
         } catch let error as NSError {
             print("Error: \(error) " + "description \(error.localizedDescription)")
         }

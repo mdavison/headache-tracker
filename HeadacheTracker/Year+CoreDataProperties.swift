@@ -15,7 +15,6 @@ import CoreData
 extension Year {
 
     @NSManaged var number: NSNumber?
-    //@NSManaged var headaches: NSOrderedSet?
     @NSManaged var headaches: Set<Headache>?
 
 }

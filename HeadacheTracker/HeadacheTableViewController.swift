@@ -11,9 +11,7 @@ import CoreData
 
 class HeadacheTableViewController: UITableViewController, HeadacheDetailTableViewControllerDelegate {
     
-    //var dataModel: DataModel!
     var coreDataStack: CoreDataStack!
-    //var managedContext: NSManagedObjectContext!
     var headaches = [Headache]()
     var fetchedResultsController: NSFetchedResultsController!
     
@@ -28,21 +26,9 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         loadHeadaches()
         toggleNoDataLabel()
         fetchedResultsController.delegate = self
-        //coreDataStack.updateContextWithUbiquitousContentUpdates = true
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 90.0
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // Get any new data from icloud
-//        loadHeadaches()
-//        fetchedResultsController.delegate = self
-//        tableView.reloadData()
-//        toggleNoDataLabel()
-        coreDataStack.updateContextWithUbiquitousContentUpdates = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,25 +81,6 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-    
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//    }
         
     
     
@@ -126,12 +93,6 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     }
     
     func headacheDetailTableViewController(controller: HeadacheDetailTableViewController, didFinishAddingHeadache headache: Headache) {
-//        let newRowIndex = headaches.count
-//        headaches.append(headache)
-//        headaches.sortInPlace({ $0.date!.compare($1.date!) == NSComparisonResult.OrderedDescending })
-//        
-//        let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
-//        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         tableView.reloadData()
         
         dismissViewControllerAnimated(true, completion: nil)
@@ -158,19 +119,15 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
             let navigationController = segue.destinationViewController as! UINavigationController
             let controller = navigationController.topViewController as! HeadacheDetailTableViewController
             controller.delegate = self
-            //controller.managedContext = managedContext
             controller.coreDataStack = coreDataStack
             controller.fetchedResultsController = fetchedResultsController
         } else if segue.identifier == Storyboard.EditHeadacheSegueIdentifier {
             let navigationController = segue.destinationViewController as! UINavigationController
             let controller = navigationController.topViewController as! HeadacheDetailTableViewController
             controller.delegate = self
-            //controller.managedContext = managedContext
             controller.coreDataStack = coreDataStack
-            //controller.headaches = headaches
             controller.fetchedResultsController = fetchedResultsController
             if let indexPath = tableView.indexPathForCell(sender as! UITableViewCell) {
-                //controller.headacheToEdit = headaches[indexPath.row]
                 controller.headacheToEdit = fetchedResultsController.objectAtIndexPath(indexPath) as? Headache
             }
         }
@@ -249,8 +206,6 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     }
     
     private func configureTableCell(cell: HeadacheListTableViewCell, withHeadache headache: Headache) {
-        //let label = cell.viewWithTag(1000) as! UILabel
-        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         
@@ -270,15 +225,8 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         
         let severityColor = headache.severityColor()
         if let red = severityColor["red"], green = severityColor["green"], blue = severityColor["blue"] {
-            //cell.detailTextLabel?.textColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
             cell.severityLabel.textColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
         }
-        
-//        var medicationsArray = [String]()
-//        for medication in headache.medications! {
-//            medicationsArray.append(medication.name)
-//        }
-//        cell.medicationsLabel.text = medicationsArray.joinWithSeparator(", ")
         
         cell.medicationsLabel.text = getMedicationsAndDosesToDisplay(forHeadache: headache)
     }
