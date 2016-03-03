@@ -27,6 +27,8 @@ class MonthBarChartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Theme.setup(withView: view, navigationBar: navigationController?.navigationBar)
     }
     
     override func viewWillAppear(animated: Bool) {

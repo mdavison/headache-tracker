@@ -46,6 +46,8 @@ class HeadacheDetailTableViewController: UITableViewController {
         if (headacheToEdit != nil) {
             title = "Edit Headache"
         }
+        
+        Theme.setup(withView: view, navigationBar: navigationController?.navigationBar)
     }
     
     override func viewDidAppear(animated: Bool) {

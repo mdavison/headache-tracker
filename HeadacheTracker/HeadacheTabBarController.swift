@@ -12,6 +12,10 @@ class HeadacheTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        view.tintColor = Theme.Colors.tint
+//        tabBar.barTintColor = Theme.Colors.barTint
+        Theme.setup(withView: view, tabBar: tabBar)
     }
 
     override func didReceiveMemoryWarning() {

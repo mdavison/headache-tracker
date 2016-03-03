@@ -33,6 +33,8 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
         addMedicationTextField.becomeFirstResponder()
         fetchMedications()
         medicationFetchedResultsController.delegate = self
+        
+        Theme.setup(withView: view, navigationBar: navigationController?.navigationBar)
     }
 
     override func didReceiveMemoryWarning() {
@@ -259,6 +261,8 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
             //print("Cancel")
         }))
         
+        alert.view.tintColor = Theme.Colors.tint
+        
         presentViewController(alert, animated: true, completion: nil)
     }
 
@@ -274,6 +278,7 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
     private func showInvalidNameAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        alert.view.tintColor = Theme.Colors.tint
         
         presentViewController(alert, animated: true, completion: nil)
     }

@@ -29,6 +29,8 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 90.0
+        
+        Theme.setup(withView: view, navigationBar: navigationController?.navigationBar)
     }
 
     override func didReceiveMemoryWarning() {
