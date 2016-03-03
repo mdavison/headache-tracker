@@ -40,9 +40,14 @@ class CalendarCollectionViewController: UICollectionViewController {
     
     // Redraw view when device rotates
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        
+        coordinator.animateAlongsideTransition({ (context: UIViewControllerTransitionCoordinatorContext) -> Void in
+            self.collectionView?.reloadData()
+            }) { (context: UIViewControllerTransitionCoordinatorContext) -> Void in
+                // complete
+        }
+        
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-
-        collectionView?.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
