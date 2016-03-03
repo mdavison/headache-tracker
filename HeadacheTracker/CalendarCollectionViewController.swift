@@ -37,7 +37,14 @@ class CalendarCollectionViewController: UICollectionViewController {
         setMonthsAndYears()
         collectionView?.reloadData()
     }
+    
+    // Redraw view when device rotates
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
 
+        collectionView?.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
