@@ -130,14 +130,7 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
         if let name = textField.text {
             var nameIsValid = true
             
-            // Make sure name is not blank
-            let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
-            let trimmedString = name.stringByTrimmingCharactersInSet(whitespaceSet)
-
-            if trimmedString.characters.count == 0 {
-                nameIsValid = false
-                textField.text = ""
-            }
+            nameIsValid = !textFieldIsBlank(textField)
             
             // Make sure name is not duplicate
             if nameIsDuplicate(ofMedicationName: name) {
@@ -149,20 +142,25 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
                 let medication = NSEntityDescription.insertNewObjectForEntityForName("Medication", inManagedObjectContext: self.coreDataStack.context) as! Medication
                 medication.name = name
                 coreDataStack.saveContext()
-                textField.text = ""
             }
+            
+            textField.text = ""
         }
     }
+    
     
     
     // MARK: - Actions
     
     @IBAction func done() {
-        addMedicationTextField.text = ""
-        let medications = medicationFetchedResultsController.fetchedObjects as! [Medication]
+        // If there is text in the textField, send alert
+        if !textFieldIsBlank(addMedicationTextField) {
+            showTextFieldNotEmptyAlert(addMedicationTextField.text)
+            addMedicationTextField.text = ""
+            return
+        }
         
-        delegate?.medicationTableViewControllerDidFinish(self, medications: medications)
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss()
     }
     
     @IBAction func edit(sender: UIBarButtonItem) {
@@ -282,6 +280,58 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
         
         presentViewController(alert, animated: true, completion: nil)
     }
+    
+    private func textFieldIsBlank(textField: UITextField) -> Bool {
+        if let name = textField.text {
+            let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
+            let trimmedString = name.stringByTrimmingCharactersInSet(whitespaceSet)
+            
+            if trimmedString.characters.count == 0 {
+                textField.text = ""
+                return true
+            }
+        }
+
+        return false
+    }
+    
+    private func showTextFieldNotEmptyAlert(textFieldText: String?) {
+        let title = "Are you sure?"
+        var message = ""
+        if let text = textFieldText {
+            message = "\"\(text)\" was not saved."
+        } else {
+            message = "Medication entered in text field was not saved."
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
+        alert.addAction(UIAlertAction(title: "Done", style: .Default, handler: { (action: UIAlertAction) -> Void in
+            self.dismiss()
+        }))
+
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction) -> Void in
+            self.addMedicationTextField.text = textFieldText
+            self.addMedicationTextField.becomeFirstResponder()
+        }))
+        
+        alert.view.tintColor = Theme.Colors.tint
+        
+        presentViewController(alert, animated: true, completion: nil)
+        
+        addMedicationTextField.text = textFieldText
+
+    }
+    
+    private func dismiss() {
+        addMedicationTextField.text = ""
+        let medications = medicationFetchedResultsController.fetchedObjects as! [Medication]
+        
+        delegate?.medicationTableViewControllerDidFinish(self, medications: medications)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }
 
 
