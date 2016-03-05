@@ -14,7 +14,8 @@ class SeverityPieChartViewController: UIViewController {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var pieChartView: PieChartView!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    //@IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     var coreDataStack: CoreDataStack!
     let severityLevels = ["1", "2", "3", "4", "5"]
@@ -31,13 +32,13 @@ class SeverityPieChartViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         setHeadaches()
-        saveButton.enabled = false
+        shareButton.enabled = false
         pieChartView.clear()
 
         if let selectedSegment = getSelectedSegment(selectedSegmentIndex) {
             if let headaches = getHeadachesBySeverity(selectedSegment) {
                 setChart(severityLevels, values: headaches)
-                saveButton.enabled = true
+                shareButton.enabled = true
             }
         }
     }
@@ -59,13 +60,13 @@ class SeverityPieChartViewController: UIViewController {
         }
     }
     
-    @IBAction func saveChart(sender: UIBarButtonItem) {
-        //pieChartView.saveToCameraRoll()
-        
+    @IBAction func share(sender: UIBarButtonItem) {
         let image = pieChartView.getChartImage(transparent: false)
-        UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
+        
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        
+        presentViewController(activityViewController, animated: true, completion: nil)
     }
-    
     
     // MARK: - Helper methods
     

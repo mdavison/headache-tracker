@@ -14,7 +14,8 @@ class MonthBarChartViewController: UIViewController {
 
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    //@IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     var coreDataStack: CoreDataStack!
     var fetchedResultsController: NSFetchedResultsController!
@@ -34,12 +35,12 @@ class MonthBarChartViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         fetchYears()
         fetchHeadaches()
-        saveButton.enabled = false
+        shareButton.enabled = false
         barChartView.clear()
         
         if let headaches = setHeadachesForYear(selectedYear) {
             setChart(months, values: headaches)
-            saveButton.enabled = true
+            shareButton.enabled = true
         } 
     }
 
@@ -61,14 +62,14 @@ class MonthBarChartViewController: UIViewController {
         
     }
     
-    @IBAction func saveChart(sender: UIBarButtonItem) {
-        //barChartView.saveToCameraRoll()
-        
+    @IBAction func share(sender: UIBarButtonItem) {
         let image = barChartView.getChartImage(transparent: false)
-        UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
+        //UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
         
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        
+        presentViewController(activityViewController, animated: true, completion: nil)
     }
-    
     
     // MARK: - Helper Methods
     

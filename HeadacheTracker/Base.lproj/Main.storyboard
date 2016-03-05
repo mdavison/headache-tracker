@@ -418,16 +418,16 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Number of Headaches" id="GLB-qa-wKj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="eiv-d8-RLo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="eiv-d8-RLo">
                             <connections>
-                                <action selector="saveChart:" destination="tzb-Wl-wLa" id="9ut-pB-6GW"/>
+                                <action selector="share:" destination="tzb-Wl-wLa" id="bsN-1D-amP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="barChartView" destination="rXp-am-iCS" id="67K-lR-XYV"/>
-                        <outlet property="saveButton" destination="eiv-d8-RLo" id="EDx-lE-T21"/>
                         <outlet property="segmentedControl" destination="LsW-GN-yXg" id="chP-gF-LWe"/>
+                        <outlet property="shareButton" destination="eiv-d8-RLo" id="0Dx-Gd-m6A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ovu-hu-lan" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -473,16 +473,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Severity of Headaches" id="2Ny-bT-x8O">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="CPS-Xh-PdT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="CPS-Xh-PdT">
                             <connections>
-                                <action selector="saveChart:" destination="bhc-cH-hbZ" id="6q2-W4-ix7"/>
+                                <action selector="share:" destination="bhc-cH-hbZ" id="bUf-RG-I7K"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="pieChartView" destination="l03-P7-DMB" id="Z4p-NJ-RRm"/>
-                        <outlet property="saveButton" destination="CPS-Xh-PdT" id="vgc-aC-KdM"/>
                         <outlet property="segmentedControl" destination="1JJ-q3-1be" id="sfV-iq-9Ik"/>
+                        <outlet property="shareButton" destination="CPS-Xh-PdT" id="gpB-2u-sSh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofs-IY-81l" userLabel="First Responder" sceneMemberID="firstResponder"/>
