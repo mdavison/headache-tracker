@@ -93,6 +93,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Headache List" id="0vu-9C-42A">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="px0-6t-Upy">
+                            <connections>
+                                <action selector="export:" destination="nZx-Xi-0fd" id="kXr-PC-JOz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8T1-6f-EcI">
                             <connections>
                                 <segue destination="BTi-Zp-hhN" kind="presentation" identifier="AddHeadache" id="bli-V3-lS8"/>
