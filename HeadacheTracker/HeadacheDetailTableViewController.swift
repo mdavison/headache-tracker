@@ -183,9 +183,9 @@ class HeadacheDetailTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0: return "Date"
-        case 1: return "Severity"
-        case 2: return "Medications"
+        case 0: return NSLocalizedString("Date", comment: "")
+        case 1: return NSLocalizedString("Severity", comment: "")
+        case 2: return NSLocalizedString("Medications", comment: "")
         default: return ""
         }
     }

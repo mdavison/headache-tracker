@@ -28,6 +28,7 @@ class CalendarCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = NSLocalizedString("Calendar View", comment: "")
         Theme.setup(withView: view, navigationBar: navigationController?.navigationBar)
     }
     

@@ -24,6 +24,8 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = NSLocalizedString("Headaches List", comment: "list of headaches")
         loadHeadaches()
         toggleNoDataLabel()
         fetchedResultsController.delegate = self

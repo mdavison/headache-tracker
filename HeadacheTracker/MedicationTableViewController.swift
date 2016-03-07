@@ -29,6 +29,7 @@ class MedicationTableViewController: UITableViewController, UITextFieldDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = NSLocalizedString("All Medications", comment: "")
         addMedicationTextField.delegate = self
         addMedicationTextField.becomeFirstResponder()
         fetchMedications()

@@ -29,6 +29,7 @@ class MonthBarChartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = NSLocalizedString("Number of Headaches", comment: "")
         Theme.setup(withView: view, navigationBar: navigationController?.navigationBar)
     }
     
