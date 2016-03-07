@@ -138,7 +138,7 @@ class MonthBarChartViewController: UIViewController {
     }
     
     private func setChart(dataPoints: [String], values: [Double]) {
-        barChartView.noDataText = "There are no headaches"
+        barChartView.noDataText = NSLocalizedString("There are no headaches", comment: "")
         
         var dataEntries: [BarChartDataEntry] = []
         
@@ -161,7 +161,7 @@ class MonthBarChartViewController: UIViewController {
         //barChartView.rightAxis.valueFormatter = numberFormatter
         //barChartView.leftAxis.valueFormatter = numberFormatter
         
-        barChartView.descriptionText = "Total headaches by month"
+        barChartView.descriptionText = NSLocalizedString("Total headaches by month", comment: "")
     }
     
     private func setHeadachesForYear(year: Int) -> [Double]? {
@@ -241,11 +241,11 @@ class MonthBarChartViewController: UIViewController {
         
         if let error = error {
             print(error.domain)
-            alert.title = "Error"
-            alert.message = "Unable to save chart. Please check permissions for this app in Settings."
+            alert.title = NSLocalizedString("Error", comment: "")
+            alert.message = NSLocalizedString("Unable to save chart. Please check permissions for this app in Settings.", comment: "")
         } else {
-            alert.title = "Saved"
-            alert.message = "Chart was saved to Photos"
+            alert.title = NSLocalizedString("Saved", comment: "")
+            alert.message = NSLocalizedString("Chart was saved to Photos", comment: "")
         }
         
         alert.addAction(defaultAction)

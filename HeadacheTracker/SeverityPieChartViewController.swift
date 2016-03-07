@@ -87,7 +87,7 @@ class SeverityPieChartViewController: UIViewController {
     }
     
     private func setChart(dataPoints: [String], values: [Double]) {
-        pieChartView.noDataText = "There are no headaches"
+        pieChartView.noDataText = NSLocalizedString("There are no headaches", comment: "")
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
@@ -118,9 +118,9 @@ class SeverityPieChartViewController: UIViewController {
         pieChartView.data = pieChartData
         
         if let segment = getSelectedSegment(selectedSegmentIndex) {
-            pieChartView.descriptionText = "Headaches by severity for past \(segment)"
+            pieChartView.descriptionText = NSLocalizedString("Headaches by severity for past \(segment)", comment: "")
         } else {
-            pieChartView.descriptionText = "Headaches by severity"
+            pieChartView.descriptionText = NSLocalizedString("Headaches by severity", comment: "")
         }
     }
     
@@ -194,11 +194,11 @@ class SeverityPieChartViewController: UIViewController {
         
         if let error = error {
             print(error.domain)
-            alert.title = "Error"
-            alert.message = "Unable to save chart. Please check permissions for this app in Settings."
+            alert.title = NSLocalizedString("Error", comment: "")
+            alert.message = NSLocalizedString("Unable to save chart. Please check permissions for this app in Settings.", comment: "")
         } else {
-            alert.title = "Saved"
-            alert.message = "Chart was saved to Photos"
+            alert.title = NSLocalizedString("Saved", comment: "")
+            alert.message = NSLocalizedString("Chart was saved to Photos", comment: "")
         }
         
         alert.addAction(defaultAction)
