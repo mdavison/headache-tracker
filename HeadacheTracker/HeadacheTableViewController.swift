@@ -140,22 +140,23 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
     // MARK: - Actions
     
     @IBAction func export(sender: UIBarButtonItem) {
-        if MFMailComposeViewController.canSendMail() {
-            let data = prepareCSVData()
+        if let data = prepareCSVData() {
+            let filename = getDocumentsDirectory().stringByAppendingPathComponent("headaches.csv")
             
-            let mailController = MFMailComposeViewController()
-            mailController.mailComposeDelegate = self
-            mailController.setSubject("Headaches Export")
-            mailController.setMessageBody("Attached is a CSV file containing your headache data.", isHTML: false)
+            data.writeToFile(filename, atomically: true)
             
-            // Add attachment
-            if let data = data {
-                mailController.addAttachmentData(data, mimeType: "text/comma-separated-values", fileName: "headaches.csv")
-                
-                presentViewController(mailController, animated: true, completion: nil)
-            } else {
-                NSLog("No data")
+            let url = NSURL(fileURLWithPath: filename)
+            
+            let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            
+            if let popoverController = activityViewController.popoverPresentationController {
+                popoverController.barButtonItem = sender
             }
+
+            presentViewController(activityViewController, animated: true, completion: nil)
+
+        } else {
+            NSLog("Unable to prepare data")
         }
     }
     
@@ -343,6 +344,11 @@ class HeadacheTableViewController: UITableViewController, HeadacheDetailTableVie
         return csvString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
     }
     
+    private func getDocumentsDirectory() -> NSString {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
     
 }
 
