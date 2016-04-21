@@ -68,7 +68,8 @@ class MonthBarChartViewController: UIViewController {
         //UIImageWriteToSavedPhotosAlbum(image, self, Selector("image:didFinishSavingWithError:contextInfo:"), nil)
         
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = view
+        //activityViewController.popoverPresentationController?.sourceView = shareButton
+        activityViewController.popoverPresentationController?.barButtonItem = shareButton
         
         presentViewController(activityViewController, animated: true, completion: nil)
     }
