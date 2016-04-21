@@ -65,6 +65,7 @@ class SeverityPieChartViewController: UIViewController {
         let image = pieChartView.getChartImage(transparent: false)
         
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = view
         
         presentViewController(activityViewController, animated: true, completion: nil)
     }
